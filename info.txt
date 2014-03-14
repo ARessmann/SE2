@@ -23,4 +23,6 @@ Ich habe einmal folgende Struktur angelegt:
 
 Bei der Verwendung von Git ist zu beachten:
  - commit and push für das einchecken der Files zum Repository
- - 
+ - pull vor jeder Bearbeitung von Files MUSS ein pull durchgeführt werden! Damit immer am aktuellsten Stand gearbeitet wird
+ 
+ 
