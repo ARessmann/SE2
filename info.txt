@@ -1,0 +1,26 @@
+Verwendung von Git:
+
+ich würde eine Folderstruktur anlegen in welcher wir das gesammte Projekt inkl. 
+Scrum Protokolle etc. ablegen. 
+
+Des weiteren würde ich vorschlagen, dass wir uns auf Coding-Standards einigen.
+(sprich wie bezeichnet man Variablen, Groß-Kleinschreibung, etc.) 
+
+Im Entwicklungsprozess werden wir uns auf eine Einheitliche Struktur einigen müssen, damit falls
+Ausfälle vorkommen der Prozess der Einarbeitung für einen 3. so kurz wie möglich ist.
+
+Ich habe einmal folgende Struktur angelegt: 
+
+- documents: Hier werden alle Dokumente, Zeitplanung, Spezifikation, Handout, Applicationdocument angelegt
+- scrum: Hier werden alle Backlogs, Scrum-Protokolle etc. in der Struktur
+  scrum 
+    - 14032014
+       - Backlog bzw. Scrum-Protokoll angelegt
+- trash: Hier werden wir alle gefundenen Dokumente welche für die Entwicklung der Software benötigt werden gesammelt.
+         z.B. Twitter Schnittstellenbeschreibung, etc. 
+- source: Hier befinden sich die Source-Files und nichts anderes. 
+
+
+Bei der Verwendung von Git ist zu beachten:
+ - commit and push für das einchecken der Files zum Repository
+ - 
