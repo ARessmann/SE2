@@ -1,0 +1,53 @@
+<!-- 
+	show a list of customers it is possible to set a new amount for the customer
+	
+	Julius Wukoutz
+	24.01.2014
+ -->
+<div class="row-fluid">
+    <div class="span2">
+        <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action, 'authRole' => $this->authRole, 'menuOptions' => $this->menuOptions)); ?>
+    </div>
+    <div class="span10">
+        <h3>Guthaben aufbuchen</h3>
+        <br>
+        <div class="row-fluid">
+            <form id="action_frm" action="bookamount">
+                <div class="span12">
+                    
+                    <div class="grid-head">
+                        <i class="icon-user"></i> Kunden
+                        <span class="label label-important pull-right"><?= $this->counter ?></span>
+                    </div>
+                    <table class="table table-condensed table-bordered table-striped" id="customer-table">
+                        <thead>
+                            <tr>
+                                <th width="25px" class="grid-caption"></th>
+                                <th class="grid-caption">Vorname</th>
+                                <th class="grid-caption">Nachname</th>
+                                <th class="grid-caption">Guthaben</th>
+                                <th class="grid-caption">letztes Buchungsdatum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <?php foreach ($this->customers as $customer) { ?>
+                            
+                                <tr class="user-row">
+                                    <td class="warning">
+                                        <i view-name="newbooking" data-id="<?= $customer->getId (); ?>" title="Guthaben aufbuchen" class="icon-pencil"></i>&nbsp;
+                                    </td>
+                                    <td><?= $customer->getFirstName (); ?></td>
+                                    <td><?= $customer->getLastName (); ?></td>
+                                    <td><?= $customer->getAmount (); ?></td>
+                                    <td><?= $customer->getStamp (); ?></td>
+                                </tr>
+                            
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

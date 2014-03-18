@@ -1,0 +1,14 @@
+<!-- 
+	this form will be displayed if a user has not the correct rights
+	
+	Julius Wukoutz
+	24.01.2014
+ -->
+<div class="box">
+	<div class="box-970px-top"></div>
+	<div class="box-970px-content">
+		<h1>Fehler 403</h1>
+		<span>Sie haben nicht die erforderlichen Rechte um auf diese Seite zuzugreifen!</span>
+	</div>
+	<div class="box-970px-bottom"></div>
+</div>

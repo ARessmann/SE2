@@ -1,0 +1,145 @@
+<?php
+/**
+ * AccountManager entity is a User
+ * represents the AccountManager with his attributes
+ *
+ * @author Andreas Ressmann
+ * 23.01.2014
+ */
+class Core_Model_AccountManager extends Core_Model_User {
+	
+
+	/* [PROPERTIES] */
+    protected $persnr;
+    
+    /* [CONSTRUCT] */
+    /**
+	 * initializing the parent
+	 */
+	public function __construct() {
+		parent::init();
+	}
+
+	/**
+	 * getting the database tablename
+	 * 
+	 * @return database tablename
+	 */
+	public function getTableName () {
+		return 'user_accountManager';
+	}
+
+	/**
+	 * getting the class variables of the current class
+	 * 
+	 * @return class properties
+	 */
+	public function getProperties () {
+		return get_class_vars('Core_Model_AccountManager');
+	}
+	
+	/* [GETTERS/SETTERS] */
+	/**
+	 * getting the PersNr
+	 * 
+	 * @return PersNr
+	 */
+    public function getPersNr() {
+    	return $this->persnr;
+    }
+    
+	/**
+	 * setting the PersNr
+	 */
+    public function setPersNr($persNr) {
+		$this->persnr = $persNr;    	
+    }
+    
+	/**
+	 * getting attributes of this class as array
+	 *
+	 * @return array with attributes
+	 */
+    public function getData () {
+        return array_merge($this->toArray (), $this->getParent ()->getData());
+    }
+    
+    /* [TRANSFORMERS] */
+    /**
+	 * transform object to array
+	 * 
+	 * @return array of attributes
+	 */
+	public function toArray() {
+		
+		$data = array(
+			'id'					=> $this->id,
+            'persnr'	    		=> $this->persnr,
+		);
+		
+		$this->data = $data;
+		
+		return $data;
+	}
+	
+	/**
+	 * function to load all objects of the current type
+	 * 
+	 * @return array<AccountManager>
+	 */
+	public function loadAll () {
+		
+		$results = $this->_loadAll ();
+		$ret 	 = array (); 
+		
+		foreach ($results as $result) {
+			$user = new Core_Model_AccountManager ();
+			$values = array_merge($user->getParent ()->loadById($result['id']), $result);
+			$user->setValues ($values);
+			
+			$ret[] = $user;
+		}
+		
+		return $ret;
+	}
+	
+	/**
+	 * funtion to load a object of the current type
+	 * 
+	 * @return AccountManager 
+	 */
+	public function loadById ($id) {
+		$values = array_merge($this->getParent ()->loadById($id), $this->_loadById($id));
+		$this->setValues ($values);
+
+		return $values;		
+	}
+	
+	/**
+	 * function to save a AccountManager
+	 * 
+	 * @return inserted id
+	 */
+	public function save () {
+		$this->id = $this->getParent ()->save();
+		$this->_save();
+		
+		return $this->id;
+	}
+	
+	/**
+	 * function to update a AccountManager
+	 */
+	public function update () {
+		$this->getParent ()->update();
+		$this->_update();
+	}
+	
+	/**
+	 * function to delete a AccountManager
+	 */
+	public function delete ($id) {
+		$this->getParent ()->delete ($id);
+		$this->_delete($id);
+	}
+}

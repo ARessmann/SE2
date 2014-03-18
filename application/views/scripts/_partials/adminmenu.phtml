@@ -1,0 +1,15 @@
+<?php
+
+echo '<ul class="well nav nav-list">';
+echo '<li class="nav-header">Verwaltung</li>';
+
+if($this->authRole !== Core_Plugin_Acl::ROLE_GUEST) {
+    foreach($this->menuOptions as $m) {
+        if($this->authRole == $m[2]) {
+            $activeClass = ($m[1] == $this->action) ? 'active' : '';
+            echo '<li class="' . $activeClass . '"><a href="' . $m[1] . '">' . $m[0] . '</a></li>';
+        }
+    }
+}
+
+echo '</ul>';

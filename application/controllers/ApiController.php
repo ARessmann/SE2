@@ -1,0 +1,555 @@
+<?php
+/**
+ * this class handle all ajax calls and includes also 
+ * the main api calls like booking amount or getting the transaction file
+ *
+ * @author Andreas Ressmann
+ * 23.01.2014
+ */
+class ApiController extends Core_AbstractController
+{
+	/*
+	 * initialize the controller
+	 * setting content type and encoding disable the zend page rendering 
+	 */   
+    public function init() {
+        
+        parent::init();
+        
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
+        $this->view->encoding = 'UTF-8';
+    }
+    
+	/**
+	 * getting an AccountManager by Id and transform it to a json string
+	 *
+	 * @return json string 
+	 */
+    public function getaccountmanagerAction () {
+        $id = $this->_getParam('id');
+        
+        $accountManager = new Core_Model_AccountManager ();
+        
+        if (isset ($id)) {
+            $values = $accountManager->loadById ($id);
+            
+            if (isset ($values)) {
+                return $this->apiControllerHelper->formatOutput($values);
+            }
+        }
+    }
+    
+	/**
+	 * getting an Device by Id and transform it to a json string
+	 *
+	 * @return json string 
+	 */
+    public function getdeviceAction () {
+        $id = $this->_getParam('id');
+        
+        $device = new Core_Model_Device ();
+        
+        if (isset ($id)) {
+            $values = $device->loadById ($id);
+            
+            if (isset ($values)) {
+                return $this->apiControllerHelper->formatOutput($values);
+            }
+        }
+    }
+    
+	/**
+	 * getting a Customer by Id and transform it to a json string
+	 *
+	 * @return json string 
+	 */
+    public function getcustomerAction () {
+        $id = $this->_getParam('id');
+        
+        $customer = new Core_Model_Customer ();
+        
+        if (isset ($id)) {
+            $values = $customer->loadById ($id);
+            
+            if (isset ($values)) {
+                return $this->apiControllerHelper->formatOutput($values);
+            }
+        }
+    }
+    
+	/**
+	 * Function to delete a Device by the given Id
+	 *
+	 * @return json success message or a error message
+	 */
+    public function deletedeviceAction () {
+        
+        $id = $this->_getParam('id');
+        
+        try {
+            if (isset ($id)) {
+                $device = new Core_Model_Device ();
+                $device->delete ($id);
+            }
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Endgerät wurde erfolgreich gelöscht',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Löschen des Endgerätes',
+                'error_description' => ''
+            ));
+        }
+    }
+    
+	/**
+	 * Function to delete a AccountManager by the given Id
+	 *
+	 * @return json success message or a error message
+	 */
+    public function deleteaccountmanagerAction () {
+        
+        $id = $this->_getParam('id');
+        
+        try {
+            if (isset ($id)) {
+                $accountmanager = new Core_Model_AccountManager ();
+                $accountmanager->delete ($id);
+            }
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Kundenbetreuer wurde erfolgreich gelöscht',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Löschen des Kundenbetreuer',
+                'error_description' => ''
+            ));
+        }
+    }
+    
+	/**
+	 * Function to delete a Customer by the given Id
+	 *
+	 * @return json success message or a error message
+	 */
+    public function deletecustomerAction () {
+        
+        $id = $this->_getParam('id');
+        
+        try {
+            if (isset ($id)) {
+                $customer = new Core_Model_Customer ();
+                $customer->delete ($id);
+            }
+            return $this->apiControllerHelper->formatOutput(array(
+                    'success'               => true,
+                    'success_title'     => 'Kunde wurde erfolgreich gelöscht',
+                    'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Löschen des Kunden',
+                'error_description' => ''
+            ));
+        }
+    }
+    
+	/**
+	 * function to save a Transaction object with the given parameter 
+	 */
+    private function saveTransaction ($sourceId, $targetId, $info) {
+        $transaction = new Core_Model_Transaction ();
+            
+        $transaction->setStamp (date('Y-m-d H:i:s'));
+        $transaction->setSourceId ($sourceId);
+        $transaction->setTargetId ($targetId);
+        $transaction->setInfo ($info);
+        
+        $transaction->save ();
+    }
+    
+	/**
+	 * getting all Transactions by the given authenticationId
+	 * that can be a device or a customer or something else
+	 *
+	 * @return json list of transactions
+	 */
+    public function gettransactionsAction () {
+        
+        $authId = $this->_getParam('authId', null); // deviceId
+        
+        $transaction = new Core_Model_Transaction ();
+        $transactions = $transaction->loadAll ();
+        
+        $ret = array ();
+        
+        foreach ($transactions as $transaction) {
+            if ($transaction->getSourceId () == $authId) {
+                $ret[] = $transaction->getData ();
+            }
+        }
+        
+        return $this->apiControllerHelper->formatOutput($ret);
+    }
+    
+	/**
+	 * api function to add or substract the amount for a customer
+	 * by using the bookFuntion the bookValue can be added or substracted
+	 *
+	 * @return json success message or a error message
+	 */
+    public function dobookingAction () {
+        $customerId = $this->_getParam('customerId', null);
+        $authId = $this->_getParam('authId', null);
+        $bookFuntion = $this->_getParam('function', null);
+        $bookValue = $this->_getParam('value', null);
+        
+        if (isset ($customerId) && isset ($authId)) {
+            
+            $customer = new Core_Model_Customer ();
+            $customer->loadById ($customerId);
+            
+            $auth = new Core_Model_Auth ();
+            $auth->loadById ($authId);
+            
+            if (($bookFuntion == 'add' || $bookFuntion == 'sub') && isset ($bookValue)) {
+                $newAmount = $customer->getAmount ();
+                
+                if ($bookFuntion == 'add') {
+                    $newAmount += $bookValue;
+                }
+                else {
+                    $newAmount -= $bookValue;
+                }
+                
+                $customer->setAmount  ($newAmount);
+                $customer->update ();
+                $this->saveTransaction($authId, $customerId, 'Für Kunden: "' . $customer->getFirstname () . ' ' . $customer->getLastName () . '" wurde das Guthaben auf: ' . $newAmount . ' von Benutzer: "' . $auth->getIdentity () . '" geändert');
+                
+                return $this->apiControllerHelper->formatOutput(array(
+                    'success'               => true,
+                    'success_title'     => 'Buchung wurde erfolgreich durchgeführt',
+                    'success_description'   => ''
+                ));
+            }
+        }
+        
+        return $this->apiControllerHelper->formatOutput(array(
+                'success'               => false,
+                'success_title'     => 'Fehler bei der Durchführung der Buchung',
+                'success_description'   => ''
+            ));
+    }
+    
+	/**
+	 * function to set the new amount for a customer 
+	 * this function includes a validator to check if the given value is valid
+	 *
+	 * @return json success message or a error message
+	 */
+    public function newbookingAction () {
+        $validation = array ('Guthaben' => 'amount:X:double');
+        $data = json_decode($_POST['data']);
+        
+        $id = $data->id;
+        $amount = $data->amount;
+        
+        try {
+                
+            $validationResponse = Core_Validationhelper::validate ($validation, $data);
+            
+            if ($validationResponse != null) {
+                return $this->apiControllerHelper->formatOutput(array(
+                    'error'             => true,
+                    'error_title'       => 'Eingabefehler',
+                    'error_description' => $validationResponse
+                ));
+            }
+            
+            $customer = new Core_Model_Customer ();
+            $customer->loadById ($id);
+            
+            $customer->setAmount ($amount);
+            $customer->setStamp (date('Y-m-d H:i:s'));
+            
+            $customer->update ();
+            
+            //add transaction
+            $this->saveTransaction($this->session->auth->getId (), $id, 'Für Kunden: "' . $customer->getFirstname () . ' ' . $customer->getLastName () . '" wurde das Guthaben auf: ' . $amount . ' von Benutzer: "' . $this->session->auth->getIdentity () . '" geändert');
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Guthaben wurde erfolgreich gespeichert',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Speichern des Guthabens',
+                'error_description' => ''
+            ));
+        }
+    }
+    
+	/**
+	 * function that response a json string 
+	 *
+	 * @return json list of transactions
+	 */
+    public function gettransactionAction () {
+        $id = $this->_getParam('id');
+        
+        $customer = new Core_Model_Customer ();
+        
+        if (isset ($id)) {
+            $values = $customer->loadById ($id);
+            
+            if (isset ($values)) {
+                return $this->apiControllerHelper->formatOutput($values);
+            }
+        }
+    }
+    
+	/**
+	 * function to save or update a Customer object 
+	 * the validation array includes the pattern for the validator to validate the 
+	 * fields
+	 *
+	 * @return json success message or a error message
+	 */
+    public function editcustomerAction () {
+        $validation = array ('Benutzername' => 'identity:X:mail', 'Vorname' => 'firstname:X:string', 'Nachname' => 'lastname:X:string', 'TelefonNr' => 'string:N:tel', 'Adresse' => 'address:X:string');
+        $data = json_decode($_POST['data']);
+        
+        $id = $data->id;
+        $identity = $data->identity;
+        $firstname = $data->firstname;
+        $lastname = $data->lastname;
+        $telnr = $data->telnr;
+        $address = $data->address;
+        
+        try {
+            
+            $customer = new Core_Model_Customer ();
+            
+            if (isset ($id) && $id != '') {
+                $customer->loadById ($id);
+            }
+            
+            $validationResponse = Core_Validationhelper::validate ($validation, $data);
+            
+            if ($validationResponse != null) {
+                return $this->apiControllerHelper->formatOutput(array(
+                    'error'             => true,
+                    'error_title'       => 'Eingabefehler',
+                    'error_description' => $validationResponse
+                ));
+            }
+            
+            $customer->setFirstName ($firstname);
+            $customer->setLastName ($lastname);
+            $customer->setIdentity ($identity);
+            $customer->setTelNr ($telnr);
+            $customer->setAddress ($address);
+            
+            if (isset ($id) && $id != '') {
+                $customer->update ();
+            }
+            else {
+                $customer->setAmount (0);
+                $customer->setPassword (md5($lastname));
+                $customer->setCreated (date('Y-m-d H:i:s'));
+                $customer->setRoleId (Core_Plugin_Acl::ROLE_CUSTOMER);
+                $customer->setIsActive (1);
+                $customer->setIsFirstLogin (1);
+                
+                $customer->save();
+            }
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Kunde wurde erfolgreich gespeichert',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Speichern des Kunde',
+                'error_description' => ''
+            ));
+        }
+    }   
+    
+	/**
+	 * function to save or update a Device object 
+	 * the validation array includes the pattern for the validator to validate the 
+	 * fields
+	 *
+	 * @return json success message or a error message
+	 */
+    public function editdeviceAction () {
+        
+        $validation = array ('Login' => 'identity:X:mail', 'Passwort' => 'password:X:string', 'GeräteNr' => 'devicenr:X:string', 'Typ' => 'type:N:int', 'Beschreibung' => 'description:X:string');
+        
+        $data = json_decode($_POST['data']);
+        
+        $id = $data->id;
+        $identity = $data->identity;
+        $password = $data->password;
+        $devicenr = $data->devicenr;
+        $description = $data->description;
+        $type = $data->type;
+        
+        try {
+            
+            $device = new Core_Model_Device ();
+            
+            if (isset ($id) && $id != '') {
+                $device->loadById ($id);
+            }
+            
+            $validationResponse = Core_Validationhelper::validate ($validation, $data);
+            
+            if ($validationResponse != null) {
+                return $this->apiControllerHelper->formatOutput(array(
+                    'error'             => true,
+                    'error_title'       => 'Eingabefehler',
+                    'error_description' => $validationResponse
+                ));
+            }
+            
+            $device->setDeviceNr ($devicenr);
+            $device->setDescription ($description);
+            $device->setType ($type);
+            $device->setPassword (md5($password));
+            
+            if (isset ($id) && $id != '') {
+                $device->update ();
+            }
+            else {
+                $device->setIdentity ($identity);
+                $device->setCreated (date('Y-m-d H:i:s'));
+                $device->setRoleId (Core_Plugin_Acl::ROLE_DEVICE);
+                $device->setIsActive (1);
+                $device->setIsFirstLogin (0);
+                
+                $device->save();
+            }
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Endgerät wurde erfolgreich gespeichert',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Speichern des Endgerätes',
+                'error_description' => ''
+            ));
+        }
+    }   
+    
+	/**
+	 * function to save or update a ApplicationManager object 
+	 * the validation array includes the pattern for the validator to validate the 
+	 * fields
+	 *
+	 * @return json success message or a error message
+	 */
+    public function editaccountmanagerAction () {
+        
+        $validation = array ('E-Mail' => 'identity:X:mail', 'Vorname' => 'firstname:X:string', 'Nachname' => 'lastname:X:string', 'TelefonNr' => 'telnr:N:string', 'PersNr' => 'persnr:X:persnr', 'Adresse' => 'address:X:string');
+        
+        $data = json_decode($_POST['data']);
+        
+        $id = $data->id;
+        $identity = $data->identity;
+        $firstname = $data->firstname;
+        $lastname = $data->lastname;
+        $telnr = $data->telnr;
+        $persnr = $data->persnr;
+        $address = $data->address;
+        
+        try {
+            
+            $accountManager = new Core_Model_AccountManager ();
+            
+            if (isset ($id) && $id != '') {
+                $accountManager->loadById ($id);
+            }
+            
+            $validationResponse = Core_Validationhelper::validate ($validation, $data);
+            
+            if ($validationResponse != null) {
+                return $this->apiControllerHelper->formatOutput(array(
+                    'error'             => true,
+                    'error_title'       => 'Eingabefehler',
+                    'error_description' => $validationResponse
+                ));
+            }
+            
+            $accountManager->setPersNr ($persnr);
+            $accountManager->setFirstName ($firstname);
+            $accountManager->setLastName ($lastname);
+            $accountManager->setIdentity ($identity);
+            $accountManager->setTelNr ($telnr);
+            $accountManager->setAddress ($address);
+            
+            if (isset ($id) && $id != '') {
+                $accountManager->update ();
+            }
+            else {
+                $accountManager->setPassword (md5($lastname));
+                $accountManager->setCreated (date('Y-m-d H:i:s'));
+                $accountManager->setRoleId (Core_Plugin_Acl::ROLE_ACCOUNT_MANAGER);
+                $accountManager->setIsActive (1);
+                $accountManager->setIsFirstLogin (1);
+                
+                $accountManager->save();
+            }
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Kundenbetreuer wurde erfolgreich gespeichert',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Speichern des Kundenbetreuers',
+                'error_description' => ''
+            ));
+        }
+    }   
+}

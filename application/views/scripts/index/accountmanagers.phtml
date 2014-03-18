@@ -1,0 +1,73 @@
+<!-- 
+	show a list of accountmanagers it is possible to create, modify or delete one
+	it is also possible to set a listfilter
+	
+	Julius Wukoutz
+	24.01.2014
+ -->
+<div class="row-fluid">
+    <div class="span2">
+        <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action, 'authRole' => $this->authRole, 'menuOptions' => $this->menuOptions)); ?>
+    </div>
+    <div class="span10">
+        <h3>Kundenbetreuer</h3>
+        <br>
+        <div class="row-fluid">
+            <div class="input-prepend pull-left">
+                <span class="add-on"><i class="icon-plus-sign"></i></span>
+                <a id="accountmanager-add" href="#!" onclick="javascript:editModal(null, 'accountmanager');" class="btn">Neuen Kundenbetreuer anlegen</a>
+            </div>
+            
+            <div class="control-group pull-right">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-eye-open"></i></span>
+                    <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="alle Kundenbetreuer anzeigen" />
+                    <a id="search_btn" href="#!" onclick="javascript:search('accountmanager');" class="btn">Suchen</a>
+                </div>
+            </div>
+        </div>
+        
+        <form id="action_frm" action="accountmanagers">
+            <input type="hidden" id="filter" name="filter" value="" />
+            <div class="row-fluid">
+                <div class="span12">
+                    
+                    <div class="grid-head">
+                        <i class="icon-user"></i> Kundenbetreuer
+                        <span class="label label-important pull-right"><?= $this->counter ?></span>
+                    </div>
+                    <table class="table table-condensed table-bordered table-striped" id="accountmanager-table">
+                        <thead>
+                            <tr>
+                                <th width="37px" class="grid-caption"></th>
+                                <th class="grid-caption">PersonalNr</th>
+                                <th class="grid-caption">Vorname</th>
+                                <th class="grid-caption">Nachname</th>
+                                <th class="grid-caption">TelNr</th>
+                                <th class="grid-caption">Benutzername</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <?php foreach ($this->accountmanagers as $accountmanager) { ?>
+                            
+                                <tr class="user-row">
+                                    <td class="warning">
+                                        <i view-name="accountmanager" data-id="<?= $accountmanager->getId (); ?>" title="Kundenbetreuer bearbeiten" class="icon-edit"></i>&nbsp;
+                                        <i view-name="accountmanager" data-id="<?= $accountmanager->getId (); ?>" title="Kundenbetreuer deaktivieren" class="icon-ban-circle">
+                                    </td>
+                                    <td><?= $accountmanager->getPersNr (); ?></td>
+                                    <td><?= $accountmanager->getFirstName (); ?></td>
+                                    <td><?= $accountmanager->getLastName (); ?></td>
+                                    <td><?= $accountmanager->getTelNr (); ?></td>
+                                    <td><?= $accountmanager->getIdentity (); ?></td>
+                                </tr>
+                            
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

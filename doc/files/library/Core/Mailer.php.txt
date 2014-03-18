@@ -1,0 +1,108 @@
+<?php
+/**
+ * core class for mailing
+ * 
+ * @author Andreas Ressmann 
+ */
+class Core_Mailer {
+	
+	private $adminMail;
+	private $sender;
+    private $senderName;
+    private $_smtp;
+    
+	/**
+	 * initializing the Mailer class
+	 * getting required informations from the configuration file
+	 */
+	public function __construct() {
+		
+		$appConfig = Zend_Registry::get('config');
+		$this->sender = $appConfig->app->mailer->sender->email;
+		$this->senderName = $appConfig->app->mailer->sender->name;
+		$this->adminMail =  $appConfig->app->mailer->adminmail;
+
+        $smtpConfig = array('auth' => 'login',
+                        'username' => $appConfig->app->mailer->smtp->user,
+                        'password' => $appConfig->app->mailer->smtp->pass);
+
+        $this->_smtp = new Zend_Mail_Transport_Smtp($appConfig->app->mailer->smtp->host, $smtpConfig);
+
+	}
+	
+	/**
+	 * function so send the password reset mail
+	 */
+	public function authPasswordReset(Core_Model_Auth $auth) {
+		$mail = new Zend_Mail('ISO-8859-1');
+		$mail->setFrom($this->sender, $this->senderName);
+		$mail->addTo($auth->getIdentity());
+		$mail->addBcc($this->adminMail);
+		
+		$subject = 'Passwort zurücksetzen';
+		$resetUriShort = $_SERVER['SERVER_NAME'] . '/auth';
+		$resetUri = 'http://' . $_SERVER['SERVER_NAME'] . '/auth/password/token/' . $auth->getToken();
+		$body = 'Guten Tag!<br/><br/>
+				Das Zurücksetzen deines Passworts wurde von der IP Adresse ' . $_SERVER['REMOTE_ADDR'] . ' beantragt.<br/><br/>
+				Wenn du dein Passwort zurücksetzen willst besuche bitte <a href="' . $resetUri . '">' . $resetUri . '</a> (dieser Link ist bis ' . date('d.m.Y') . ' 23:59:59 gültig).<br/><br/> 
+
+				Solltest du dein Passwort nicht zurücksetzen wollen oder diese E-Mail nicht angefordert haben, kannst du diese Nachricht ignorieren.';
+		$body .= self::getFooter();
+		
+		$mail->setSubject(utf8_decode($subject));
+		$mail->setBodyHTML(utf8_decode($body));
+		$mail->send($this->_smtp);
+	}
+	
+	/**
+	 * function to send the welcome mail 
+	 */
+	public function authWelcome(Core_Model_User $user) {
+		$mail = new Zend_Mail('ISO-8859-1');
+		$mail->setFrom($this->sender, $this->senderName);
+		$mail->addTo($user->getEmail());
+		$mail->addBcc($this->adminMail);
+		
+		$subject = 'Willkommen beim Creditserver';
+		$resetUriShort = $_SERVER['SERVER_NAME'] . '/auth';
+		$resetUri = 'http://' . $_SERVER['SERVER_NAME'] . '/auth/password/token/' . $user->getToken();
+		$body = 'Hallo ' . $user->getFirstName() . ',<br/><br/>
+				willkommen beim Creditserver!<br/><br/>
+				Um ein Passwort festzulegen, folge bitte diesem Link: <a href="' . $resetUri . '">' . $resetUri . '</a> (dieser Link ist bis ' . date('d.m.Y') . ' 23:59:59 gültig).<br/><br/> ';
+		$body .= self::getFooter();
+		
+		$mail->setSubject(utf8_decode($subject));
+		$mail->setBodyHTML(utf8_decode($body));
+		$mail->send($this->_smtp);
+	}
+	
+	/**
+	 * function to send a error mail 
+	 */
+    public function sendErrorMail($subject, $body) {
+		$mail = new Zend_Mail('ISO-8859-1');
+		$mail->setFrom('error@creditserver.at', $this->senderName);
+		$mail->addTo($this->adminMail);
+		$mail->setSubject(utf8_decode($subject));
+		//$mail->setBodyHTML(utf8_decode($body));
+		
+		$body .= '<hr/>SERVER_NAME: ' . $_SERVER['SERVER_NAME'];
+		
+		$mail->setBodyHTML($body);
+		
+		//$mail->send($this->_smtp);
+	}
+	
+	/**
+	 * getting the footer of the mail 
+	 */
+	private static function getFooter() {
+		
+		return '<br/><br/><br/><sub>Dies ist eine automatisch versendete E-Mail des Creditserver-Systems. &copy; 2012 - ' . date('Y') . '</sub>';
+		
+        return  '<br/><br/>________________________________<br/>
+        		Dies ist eine automatisch versendete E-Mail des Creditserver. &copy; ' . date('Y') . '<br/><br/>';
+    }
+
+}
+

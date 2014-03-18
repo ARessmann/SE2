@@ -1,0 +1,28 @@
+﻿general_success;<br/>Erfolgreich gespeichert!
+general_pleaschooseuser;<br/>Bitte wählen Sie Benutzer und Rolle aus!
+general_placechooseinstitute;Bitte wählen Sie Institut, Benutzer und Rolle aus!
+general_chooseusersuccess;<br/>Benutzerzuordnung erfolgreich gespeichert
+general_deadlineinpast;<br/>Bitte geben Sie eine Deadline in der Zukunft an
+general_deadlineinvalid;<br/>Bitte geben Sie eine gültige Deadline an
+general_namemissing;<br/>Bitte geben Sie einen Namen an
+general_wrongfileformat;<br/>Unzulässiges Dateiformat!
+general_removfile_success;<br/>Datei erfolgreich entfernt
+general_remove_success;<br/>Erfolgreich gelöscht
+general_right_error;<br/>Sie sind nicht berechtigt diese Seite zu sehen!
+general_noentrysfound;Keine Einträge gefunden
+role_inuse;<br/>Die Rolle kann nicht gelöscht werden da sie in Verwendung ist!
+role_missing_name;<br/>Bitte geben Sie einen Namen für die Rolle an!
+role_name_inuse;<br/>Eine Rolle mit diesem Namen existiert bereits!
+role_description_missing;<br/>Bitte geben Sie eine Beschreibung für die Rolle an!
+login_securedsite;Um diese Seite sehen zu können, müssen Sie angemeldet sein
+login_locked;Ihr Benutzer wurde gesperrt!
+login_error;Anmeldung fehlgeschlagen!
+login_inputmissing;Bitte geben Sie Benutzername und Password an!
+email_already_exists;<br/>E-Mail-Adresse schon vorhanden, bitte andere E-Mail-Adresse angeben!
+internal_email_exists;<br/>Die Registrierung mit bereits existierenden Administrations-E-Mail-Adresse ist nicht möglich!
+email_not_existing;<br/>E-Mail-Adresse existiert nicht!
+emaiL_adress_unknown;<br/>E-Mail Adresse unbekannt!
+deleting_not_allowed;<br/>Löschen des Eintrages nicht erlaubt!
+deleting_ok;<br/>Löschen erfolgreich!
+saving_ok;<br/>Speichern erfolgreich!
+saving_error;<br/>Beim Speichern ist ein Fehler aufgetreten!
