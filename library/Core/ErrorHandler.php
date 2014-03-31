@@ -12,20 +12,8 @@ class Core_ErrorHandler {
 	 */
 	public static function registerError($subject, $exception, $user = null, $request = null, $logfile = true, $sendMail = true) {
 		
-		if($sendMail) self::sendErrorMail($subject, $exception, $user, $request);
 		if($logfile) self::logToFile($subject, $exception, $user, $request);
 		
-	}
-	
-	/**
-	 * function so send the error - mail
-	 */
-	public static function sendErrorMail($subject, $exception, $user, $request) {
-		
-		$body = self::getErrorDetailed($exception, $user, $request);
-		
-		$mailer = new Core_Mailer();
-		$mailer->sendErrorMail($subject, $body);
 	}
 	
 	/**

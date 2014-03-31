@@ -1,14 +1,14 @@
 <!-- 
 	layout for the site 
 	
-	Julius Wukoutz
-	24.01.2014
+	Andreas Ressmann
+	31.03.2014
  -->
 
 <?php echo $this->doctype() ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Creditserver</title>
+		<title>Twitteranalyser</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<?php echo $this->headLink() ?>
 		<?php echo $this->headScript() ?>
@@ -20,11 +20,10 @@
 			
 			<?php echo $this->render('header.phtml'); ?>
 			
-			<div id="content_container" class="container-fluid">
-				<!--<?php if($this->pageTitle != null): ?>
-				<div class="page-header"><h1><?php echo $this->pageTitle; ?></h1></div>
-				<?php endif; ?>-->
-                <?php echo $this->layout()->content ?>
+			<div class="container-fluid" id="content_container" >
+				<div class="row-fluid">
+                	<?php echo $this->layout()->content ?>
+                </div>
 			</div>
 			
 			<?php echo $this->render('footer.phtml'); ?>
@@ -48,7 +47,7 @@
 		
 		<div id="interface-lock" class="interface"></div>
 		<div id="interface-lock-status" class="interface-inner rounded-xl" style="display:none">
-			<img src="/assets/img/loading.gif" style="margin-top: 5px" alt="Loading" /><br/><br/>DATEN WERDEN GELADEN
+		<img src="/assets/img/loading.gif" style="margin-top: 5px" alt="Loading" /><br/><br/>DATEN WERDEN GELADEN
 		</div>
 		<div id="debug"></div>
 		<div id="modal"></div>

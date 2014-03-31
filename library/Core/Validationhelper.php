@@ -35,11 +35,6 @@ class Core_Validationhelper {
                             $ret .= ' ' . $text . ': (z.B. name@server.com)';
                         }
                         break;
-                    case 'persnr':
-                        if (!self::validatePersNr($data->$field)) {
-                            $ret .= ' ' . $text . ': (z.B. CP001)';
-                        }
-                        break;
                     case 'double':
                         if (!self::validateDouble($data->$field)) {
                             $ret .= ' ' . $text . ': (z.B. 1.1)';
@@ -74,17 +69,6 @@ class Core_Validationhelper {
 	 */
     private static function validateMail($value) {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
-    }
-    
-	/**
-	 * validate persNr
-	 * @return true or false
-	 */
-    private static function validatePersNr($value) {
-        if (strpos($value, "CP") !== false)
-            return true;
-        
-        return false; 
     }
     
 	/**

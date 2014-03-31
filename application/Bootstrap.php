@@ -31,8 +31,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	protected function _initSession()
 	{
-		/*$session = Core_Model_Session::getInstance();
-		Zend_Session::start();*/
 	}
 
     protected function _initTranslate()
@@ -61,7 +59,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$config = new Zend_Config($this->getOptions(), true);
 	    
 	    Zend_Registry::set('config', $config);
-	    //Zend_Registry::set('version-app', $config->app->version . '.' . time());
 	    Zend_Registry::set('version-app', $config->app->version);
 	}
 	
@@ -77,7 +74,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		
 		$v = Zend_Registry::get('version-app');
 		
-		$view->headLink()->appendStylesheet('/assets/css/application.min.css?v=' . $v, 'all');
+		$view->headLink()->appendStylesheet('/assets/css/main.css?v=' . $v, 'all');
+		$view->headLink()->appendStylesheet('/assets/css/bootstrap.min.css?v=' . $v, 'all');
 		$view->headScript()->appendFile('/assets/js/jquery-1.10.2.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/jquery.pnotify.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/bootstrap.min.js?v=' . $v);

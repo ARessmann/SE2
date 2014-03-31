@@ -8,7 +8,7 @@
  * 23.01.2014 
  */
 
-var version_app = '1.0.5';
+var version_app = '1.0.0';
 var debug_page = false;
 var debug_console = false;
 var debug_full_information = false;

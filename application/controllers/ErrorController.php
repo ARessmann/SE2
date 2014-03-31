@@ -36,7 +36,7 @@ class ErrorController extends Core_AbstractController
         $e = $errors->exception;
         if(strpos($e->getMessage(), 'favicon.ico') == null) {
         	$request = '<br/>URI: ' . $_SERVER["REQUEST_URI"] . '<br/>GET: ' . var_export($_GET, true) . '<br/>POST: ' . var_export($_POST, true);
-        	$this->errorHandler->registerError($e->getMessage(), $e, $this->auth(), $request);	
+        	$this->errorHandler->registerError($e->getMessage(), $e, null, $request);	
         }
 		switch ($errors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:

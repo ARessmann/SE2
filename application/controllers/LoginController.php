@@ -3,7 +3,7 @@
  * Redirection Controller for the Login
  *
  * @author Andreas Ressmann
- * 23.01.2014
+ * 31.03.2014
  */
 class LoginController extends Core_AbstractController {
 	

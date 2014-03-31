@@ -10,8 +10,6 @@ class Core_ApiControllerHelper {
 	private $config;
 	private $outputType;
 	private $session;
-	private $user;
-	private $userRole;
 	
 	/**
 	 * initializing the helper 
@@ -22,8 +20,6 @@ class Core_ApiControllerHelper {
 		$this->config = Zend_Registry::get('config');
 		$this->outputType = 'json';
 		$this->session = new Zend_Session_Namespace('Core');
-		$this->user = $this->session->auth;
-		$this->userRole = $this->session->auth_role;
 	}
 	
 	/**
@@ -46,18 +42,4 @@ class Core_ApiControllerHelper {
 			$this->outputType = $outputType;
 	}
 	
-	/**
-	 * checks if admin, else user is only allowed to fetch his own time entries
-	 * @return Returns a valid user id  
-	 */
-	public function userAuthorization($userId) {
-		
-		if($userId != null) {
-			$userId = ($this->user->getIsSuperuser()) ? $userId : $this->user->getId();
-		} else {
-			$userId = $this->user->getId();
-		}
-		
-		return $userId;
-	}
 }

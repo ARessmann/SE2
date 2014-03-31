@@ -18,19 +18,6 @@ $(document).ready(function() {
 function initTriggers() {
 	App.debug('initTriggers()');
 	
-	$('#password-submit').on('click', function(e) {
-		var pwA = $('#password').val();
-		var pwB = $('#password_confirm').val();
-		
-		if (pwA != pwB || pwA.length < 3) {
-			App.notify('Passwort', 'Passwörter stimmen nicht überein oder haben nicht mindestens 3 Zeichen!', 'error');
-		}
-		else {
-			App.notify('Passwort', 'Passwort erfolgreich geändert', 'success');
-			_submitForm (800);
-		}
-	});
-	
 	$('.icon-edit').on('click', function(e) {
 		editModal($(this).attr('data-id'), $(this).attr('view-name'));
 	});
@@ -70,12 +57,6 @@ function deleteItem(data_id, viewName) {
 		case 'accountmanager':
 			deleteAccountManager (data_id);
 			break;
-		case 'device':
-			deleteDevice (data_id);
-			break;
-		case 'customer':
-			deleteCustomer (data_id);
-			break;
 	}
 }
 
@@ -91,15 +72,6 @@ function editModal(data_id, viewName) {
 		case 'accountmanager':
 			editAccountManager (data_id, viewName);
 			break;
-		case 'device':
-			editDevice (data_id, viewName);
-			break;
-		case 'customer':
-			editCustomer (data_id, viewName);
-			break;
-		case 'newbooking':
-			newBooking (data_id, viewName);
-			break;
 	}
 }
 
@@ -114,15 +86,6 @@ function submitModal(viewName) {
 	switch (viewName) {
 		case 'accountmanager':
 			editAccountManagerSubmit ();
-			break;
-		case 'device':
-			editDeviceSubmit ();
-			break;
-		case 'customer':
-			editCustomerSubmit ();
-			break;
-		case 'newbooking':
-			newBookingSubmit ();
 			break;
 	}
 }
@@ -246,274 +209,5 @@ function deleteAccountManager (data_id) {
 		},
 		type : 'GET',
 		url : '/api/deleteaccountmanager/id/' + data_id
-	});
-}
-
-//Device
-/*
- * main function to show a new Device or edit a persisted
- * the partial html will be rendered with EJS, if a persisted one was opend 
- * the data was set automatically
- */
-function editDevice (data_id, viewName) {
-	
-	if (data_id == null) {
-		var data = {
-			id: '',
-			identity: '',
-			password: '',
-			devicenr: '',
-			description: '',
-			type: ''
-		};
-		
-		modal = new EJS({url: '/assets/tpl/modal_device_edit.ejs?v='+version_app}).render(data);
-		_addModalHandle (modal, viewName);
-	}
-	else {
-		$.ajax({
-			dataType : 'json',
-			error : function() {
-				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-			},
-			success : function(data) {
-	
-				modal = new EJS({url: '/assets/tpl/modal_device_edit.ejs?v='+version_app}).render(data);
-				_addModalHandle (modal, viewName);
-			},
-			type : 'GET',
-			url : '/api/getdevice/id/' + data_id
-		});
-	}
-}
-
-/*
- * main function to persist the viewed Device in the dialog
- * the form data will be posted by ajax after displaying the respone the 
- * form will be submitted
- */
-function editDeviceSubmit () {
-	var postData = {
-		id: $('#modal-submit').attr('data-id'),
-		identity: $('#auth_identity').val(),
-		password: $('#auth_password').val(),
-		devicenr: $('#device_nr').val(),
-		description: $('#description').val(),
-		type: $('#type').val()
-	};
-	
-	postData = App.toJSON(postData);
-	App.debug('POST: ' + postData);
-	
-	$.ajax({
-		data: { 'data': postData },
-		dataType: 'json',
-		error: function() {
-			App.notify('Unbekannter Fehler', 'Beim übertragen der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success: function(data) {
-			
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				$('#modal-info').modal('hide');
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm (1000);
-			}
-		},
-		type: 'POST',
-		url: '/api/editdevice/'
-	});
-}
-
-/*
- * main funtion to delete a Device
- * the form will be submitted after displaying the response
- */
-function deleteDevice (data_id) {
-	$.ajax({
-		dataType : 'json',
-		error : function() {
-			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success : function(data) {
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm (1000);
-			}
-		},
-		type : 'GET',
-		url : '/api/deletedevice/id/' + data_id
-	});
-}
-
-//Customer
-/*
- * main function to show a new Customer or edit a persisted
- * the partial html will be rendered with EJS, if a persisted one was opend 
- * the data was set automatically
- */
-function editCustomer (data_id, viewName) {
-	
-	if (data_id == null) {
-		var data = {
-			id: '',
-			identity: '',
-			firstname: '',
-			lastname: '',
-			telnr: '',
-			address: ''
-		};
-		
-		modal = new EJS({url: '/assets/tpl/modal_customer_edit.ejs?v='+version_app}).render(data);
-		_addModalHandle (modal, viewName);
-	}
-	else {
-		$.ajax({
-			dataType : 'json',
-			error : function() {
-				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-			},
-			success : function(data) {
-	
-				modal = new EJS({url: '/assets/tpl/modal_customer_edit.ejs?v='+version_app}).render(data);
-				_addModalHandle (modal, viewName);
-			},
-			type : 'GET',
-			url : '/api/getcustomer/id/' + data_id
-		});
-	}
-}
-
-/*
- * main function to persist the viewed Customer in the dialog
- * the form data will be posted by ajax after displaying the respone the 
- * form will be submitted
- */
-function editCustomerSubmit () {
-	var postData = {
-		id: $('#modal-submit').attr('data-id'),
-		identity: $('#auth_identity').val(),
-		firstname: $('#auth_user_firstname').val(),
-		lastname: $('#auth_user_lastname').val(),
-		telnr: $('#auth_user_telnr').val(),
-		address: $('#adress_field').val()
-	};
-	
-	postData = App.toJSON(postData);
-	App.debug('POST: ' + postData);
-	
-	$.ajax({
-		data: { 'data': postData },
-		dataType: 'json',
-		error: function() {
-			App.notify('Unbekannter Fehler', 'Beim übertragen der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success: function(data) {
-			
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				$('#modal-info').modal('hide');
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm (1000);
-			}
-		},
-		type: 'POST',
-		url: '/api/editcustomer/'
-	});
-}
-
-/*
- * main funtion to delete a Customer
- * the form will be submitted after displaying the response
- */
-function deleteCustomer (data_id) {
-	$.ajax({
-		dataType : 'json',
-		error : function() {
-			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success : function(data) {
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm (1000);
-			}
-		},
-		type : 'GET',
-		url : '/api/deletecustomer/id/' + data_id
-	});
-}
-
-//newbooking
-/*
- * main function to show a new Amount of a Customer or edit a persisted
- * the partial html will be rendered with EJS, if a persisted one was opend 
- * the data was set automatically
- */
-function newBooking (data_id, viewName) {
-	
-	if (data_id == null) {
-		var data = {
-			id: '',
-			amount: ''
-		};
-		
-		modal = new EJS({url: '/assets/tpl/modal_newbooking_edit.ejs?v='+version_app}).render(data);
-		_addModalHandle (modal, viewName);
-	}
-	else {
-		$.ajax({
-			dataType : 'json',
-			error : function() {
-				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-			},
-			success : function(data) {
-	
-				modal = new EJS({url: '/assets/tpl/modal_newbooking_edit.ejs?v='+version_app}).render(data);
-				_addModalHandle (modal, viewName);
-			},
-			type : 'GET',
-			url : '/api/getcustomer/id/' + data_id
-		});
-	}
-}
-
-/*
- * main function to persist the viewed Amount of the Customer in the dialog
- * the form data will be posted by ajax after displaying the respone the 
- * form will be submitted
- */
-function newBookingSubmit () {
-	var postData = {
-		id: $('#modal-submit').attr('data-id'),
-		amount: $('#amount').val()
-	};
-	
-	postData = App.toJSON(postData);
-	App.debug('POST: ' + postData);
-	
-	$.ajax({
-		data: { 'data': postData },
-		dataType: 'json',
-		error: function() {
-			App.notify('Unbekannter Fehler', 'Beim übertragen der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success: function(data) {
-			
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				$('#modal-info').modal('hide');
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm ();
-			}
-		},
-		type: 'POST',
-		url: '/api/newbooking/'
 	});
 }
