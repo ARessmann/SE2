@@ -14,6 +14,16 @@
 		<?php echo $this->headScript() ?>
 		
 		<link rel="shortcut icon" href="/assets/img/fav.ico" type="image/x-icon" />
+		
+		<style type="text/css">
+	        body {
+	            padding-top: 60px;
+	            padding-bottom: 40px;
+	        }
+	        .sidebar-nav {
+	            padding: 9px 0;
+	        }
+	    </style>
 	</head>
 	<body>
 		<div id="site">
@@ -24,7 +34,9 @@
 				<div class="row-fluid">
                 	<?php echo $this->layout()->content ?>
                 </div>
+                
 			</div>
+			<hr>
 			
 			<?php echo $this->render('footer.phtml'); ?>
 			

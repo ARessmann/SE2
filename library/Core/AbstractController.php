@@ -46,6 +46,7 @@ class Core_AbstractController extends Zend_Controller_Action {
     public function getMenu () {
         $menuOptions = array(
             array('Veranstaltung anlegen', 'event'),
+        	array('Tweets ansehen', 'dummy'),
         );
         
         return $menuOptions;
