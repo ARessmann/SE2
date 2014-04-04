@@ -1,4 +1,5 @@
-﻿general_success;Successfully saved!!
-general_remove_success;Successfully deleted
-general_noentrysfound;No Entrys found
-general_saving_error;There was an error during saving!
+general_success	Successfully saved!!
+general_remove_success	Successfully deleted
+general_noentrysfound	No Entrys found
+general_saving_error	There was an error during saving!
+view_language	Language
