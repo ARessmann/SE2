@@ -1,5 +1,47 @@
-"general_success	Successfully saved!!"
-"general_remove_success	Successfully deleted"
-"general_noentrysfound	No Entrys found"
-"general_saving_error	There was an error during saving!"
-"view_language	Language"
+"general_success	Successfully saved!!";
+"general_remove_success	Successfully deleted";
+"general_noentrysfound	No Entrys found";
+"general_saving_error	There was an error during saving!";
+"view_language	Language";
+view_showEvent;Show all events
+view_newEvent;Create new event
+event_search;Search 
+event_title;Ttle
+event_from;From
+event_to;To
+event_description;Description
+menu_management;Management
+menu_seeTweets;See Tweets
+menu_events;Events
+event_save;Save
+status_startCollection;Collection started
+status_endCollection;Collection finished
+status_collection_in_progress;Collection in progress
+status_analysis;Analysis
+event_id;Event-Id
+event_tw_count;Tweet counts
+event_state;Status
+tag_id;Status-Id
+tag_name;Name
+tweet_id;Tweet-Id
+tw_text;Tweet-text
+tw_creationdate;Tweet creation
+tw_user;Tweet-User
+tw_location;Tweet-location
+tw_language;Tweet-language
+tw_deleted;Tweet deleted
+filter_id;Filter-Id
+fi_description;Filter-description
+fi_consider_tweet;Filter-consider Tweet
+ignore_tweet;Ignore Tweet
+time_start;Time start
+time_end;Time end
+filt_ignore_tweet;Filter ignore Tweet
+filt_ignore_id;Filter ignore Id
+ignored_tweet;Ignored Tweet
+filt_consider_id;Filter consider Tweet
+consider_tweet;Consider Tweet
+sent_id;Sent Id
+sent_text;Sent text
+sent_weight;Sent weight
+menu_help;Help
