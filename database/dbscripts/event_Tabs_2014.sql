@@ -11,35 +11,35 @@ DROP TABLE IF EXISTS `EVENT`;
 
 # Event-Table where all events are saved
 CREATE TABLE IF NOT EXISTS `EVENT` (
-  `event_id` int(4) NOT NULL AUTO_INCREMENT,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `event_title` varchar(100) NOT NULL,
   `event_description` varchar(1000) NOT NULL,
   `event_from` date DEFAULT NULL,
   `event_to` date DEFAULT NULL,
   `event_tw_count` int(6) DEFAULT NULL, #tweet count
   `event_state` char(1) DEFAULT '0', #0 Initial ; 1 Sammlung aktiv ; 2 Sammlung beendet
-  PRIMARY KEY (`EVENT_ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
+INSERT INTO `EVENT` (`id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
 (1, 'Spielberg 2014', 'Eine kurze Beschreibung zum Spielberg Event', '2014-05-24', '2014-07-01', 100);
-INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
+INSERT INTO `EVENT` (`id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
 (2, 'Theater Mamma Mia 2014', 'Eine kurze Beschreibung zum MAMA MIA Event', '2014-10-01', '2014-12-24', 100);
 
 # Tweet Tags, which will be considered at collection time. These tags belongs to one event. At least one tag must exists for each event.
 CREATE TABLE IF NOT EXISTS `TWEET_TAG` (
-  `tag_id` int(4) NOT NULL AUTO_INCREMENT,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(50) NOT NULL,
   `event_id` int(4),
-  PRIMARY KEY (`tag_id`),
-  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`event_id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
-INSERT INTO `TWEET_TAG` (`tag_id`, `tag_name`, `event_id`) VALUES (1, 'Spielberg', 1);
-INSERT INTO `TWEET_TAG` (`tag_id`, `tag_name`, `event_id`) VALUES (2, 'F1', 1);
-INSERT INTO `TWEET_TAG` (`tag_id`, `tag_name`, `event_id`) VALUES (3, 'Vettel', 1);
-INSERT INTO `TWEET_TAG` (`tag_id`, `tag_name`, `event_id`) VALUES (4, 'Abba', 2);
-INSERT INTO `TWEET_TAG` (`tag_id`, `tag_name`, `event_id`) VALUES (5, 'Mama Mia', 2);
+INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (1, 'Spielberg', 1);
+INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (2, 'F1', 1);
+INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (3, 'Vettel', 1);
+INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (4, 'Abba', 2);
+INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (5, 'Mama Mia', 2);
 
 # Tweet entries per Event
 CREATE TABLE IF NOT EXISTS `TWEET_ENTRIES` (
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `TWEET_ENTRIES` (
   `tw_deleted` char(1) DEFAULT '0',
   `event_id` int(4),
   PRIMARY KEY (`tweet_id`),
-  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`event_id`)
+  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 INSERT INTO `TWEET_ENTRIES` (`tweet_id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_location`, `tw_language`, `event_id`) VALUES
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `TWEET_FILTER` (
   `TIME_END` date NOT NULL,
   `EVENT_ID` int(4),
   PRIMARY KEY (`FILTER_ID`),
-  FOREIGN KEY (`EVENT_ID`) REFERENCES `EVENT` (`EVENT_ID`)
+  FOREIGN KEY (`EVENT_ID`) REFERENCES `EVENT` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 # All tweet descriptions in this table will be ignored for the filter
