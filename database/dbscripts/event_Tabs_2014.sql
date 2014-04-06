@@ -14,16 +14,16 @@ CREATE TABLE IF NOT EXISTS `EVENT` (
   `event_id` int(4) NOT NULL AUTO_INCREMENT,
   `event_title` varchar(100) NOT NULL,
   `event_description` varchar(1000) NOT NULL,
-  `event_start_date` date DEFAULT NULL,
-  `event_end_date` date DEFAULT NULL,
+  `event_from` date DEFAULT NULL,
+  `event_to` date DEFAULT NULL,
   `event_tw_count` int(6) DEFAULT NULL, #tweet count
   `event_state` char(1) DEFAULT '0', #0 Initial ; 1 Sammlung aktiv ; 2 Sammlung beendet
   PRIMARY KEY (`EVENT_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_start_date`, `event_end_date`, `event_tw_count`) VALUES
+INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
 (1, 'Spielberg 2014', 'Eine kurze Beschreibung zum Spielberg Event', '2014-05-24', '2014-07-01', 100);
-INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_start_date`, `event_end_date`, `event_tw_count`) VALUES
+INSERT INTO `EVENT` (`event_id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`) VALUES
 (2, 'Theater Mamma Mia 2014', 'Eine kurze Beschreibung zum MAMA MIA Event', '2014-10-01', '2014-12-24', 100);
 
 # Tweet Tags, which will be considered at collection time. These tags belongs to one event. At least one tag must exists for each event.
@@ -106,4 +106,3 @@ CREATE TABLE IF NOT EXISTS `SENTIMENT` (
   `sent_weight` int(1) NOT NULL,
   PRIMARY KEY (`sent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6;
-
