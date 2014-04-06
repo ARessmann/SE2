@@ -137,6 +137,24 @@ class Core_Model_Event extends Core_Model_Abstract {
 	}
 	
 	/**
+	 * Get the tweet tags for the event
+	 */
+	public function getTweetTags()
+	{
+		return $this->tweet_tags;
+	}
+	
+	/**
+	 * Set the tweet tags for the event
+	 * 
+	 * @param $tweetTags
+	 */
+	public function setTweetTags($tweetTags)
+	{
+		$this->tweet_tags = $tweetTags;
+	}
+	
+	/**
 	 * getting attributes of this class as array
 	 *
 	 * @return array with attributes
@@ -154,7 +172,7 @@ class Core_Model_Event extends Core_Model_Abstract {
 	public function toArray() {
 		
 		$data = array(
-			'event_id'    			=> $this->id,
+			'id'    				=> $this->id,
 			'event_description'    	=> $this->event_description,
 			'event_title'	       	=> $this->event_title,
 			'event_from'    		=> $this->event_from,
@@ -171,7 +189,7 @@ class Core_Model_Event extends Core_Model_Abstract {
 	/**
 	 * function to load all objects of the current type
 	 * 
-	 * @return array<Auth>
+	 * @return array<Core_Model_Event>
 	 */
 	public function loadAll () {
 		
@@ -179,10 +197,10 @@ class Core_Model_Event extends Core_Model_Abstract {
 		$ret 	 = array (); 
 		
 		foreach ($results as $result) {
-			$auth = new Core_Model_Event ();
-			$auth->setValues ($result);
+			$event = new Core_Model_Event ();
+			$event->setValues ($result);
 			
-			$ret[] = $auth;
+			$ret[] = $event;
 		}
 		
 		return $ret;
@@ -191,17 +209,24 @@ class Core_Model_Event extends Core_Model_Abstract {
 	/**
 	 * funtion to load a object of the current type
 	 * 
-	 * @return Auth 
+	 * @return Core_Model_Event 
 	 */
 	public function loadById ($id) {
 		$values = $this->_loadById($id);
 		$this->setValues ($values);
-
-		return $values;
+		// read the tweet tags for the given event
+		$tweetTags = $this->_selectFor('TWEET_TAG', 'event_id', $id);
+		$tags = array();
+		foreach($tweetTags as $key=>$result) 
+		{
+			$tags[$key] = $tweetTags[$key]["tag_name"];
+		}
+		$this->setTweetTags($tags);
+		return $this->getData();
 	}
 	
 	/**
-	 * function to save a Auth
+	 * function to save a Event
 	 * 
 	 * @return inserted id
 	 */
@@ -212,14 +237,14 @@ class Core_Model_Event extends Core_Model_Abstract {
 	}
 
 	/**
-	 * function to update a Auth
+	 * function to update a Event
 	 */
 	public function update() {
 		$this->_update();
 	}
 	
 	/**
-	 * function to delete a Auth
+	 * function to delete a Event
 	 */
 	public function delete ($id) {
 		$this->_delete($id);
