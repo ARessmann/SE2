@@ -146,5 +146,86 @@ class ApiController extends Core_AbstractController
                 'error_description' => ''
             ));
         }
-    }   
+    } 
+    
+    
+    /**
+	 * getting an Event by Id and transform it to a json string
+	 *
+	 * @return json string 
+	 */
+    public function geteventAction () {
+        $id = $this->_getParam('id');
+        
+        $event = new Core_Model_Event ();
+        
+        if (isset ($id)) {
+            $values = $event->loadById ($id);
+            
+            if (isset ($values)) {
+                return $this->apiControllerHelper->formatOutput($values);
+            }
+        }
+    } 
+    
+    
+    /**
+	 * function to save or update a Event object 
+	 * the validation array includes the pattern for the validator to validate the 
+	 * fields
+	 *
+	 * @return json success message or a error message
+	 */
+    public function editeventAction () {
+        
+        
+        
+        $data = json_decode($_POST['data']);
+        
+        $id = $data->id;
+        $event_description = $data->event_description;
+        $event_title = $data->event_title;
+        $event_from = $data->event_from;
+        $event_to = $data->event_to;
+        $event_tw_count = $data->event_tw_count;
+        $event_state = $data->event_state;
+        
+        try {
+            
+            $event = new Core_Model_Event ();
+            
+            if (isset ($id) && $id != '') {
+                $event->loadById ($id);
+            }
+            
+            
+            
+            $event->setEventDescription ($event_description);
+            $event->setEventTitle ($event_title);
+            $event->setEventFrom ($event_from);
+            $event->setEventTo ($event_to);
+            $event->setEventTwCount ($event_tw_count);
+            $event->setEventState ($event_state);
+            
+            if (isset ($id) && $id != '') {
+                $event->update ();
+            }
+            
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Event wurde erfolgreich gespeichert',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            echo var_dump($e);
+            
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Speichern des Events',
+                'error_description' => ''
+            ));
+        }
+    }  
 }

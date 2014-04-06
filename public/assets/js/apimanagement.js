@@ -38,6 +38,7 @@ function initTriggers() {
 	$('#search_btn').on('click', function(e) {
 		search($(this).attr('view-name'));
 	});
+	
 }
 
 /*
@@ -52,13 +53,13 @@ function search (viewName) {
 /*
  * choose the right way to delete the object by the given viewName
  */
-function deleteItem(data_id, viewName) {
-	switch (viewName) {
-		case 'accountmanager':
-			deleteAccountManager (data_id);
-			break;
-	}
-}
+//function deleteItem(data_id, viewName) {
+//	switch (viewName) {
+//		case 'accountmanager':
+//			deleteAccountManager (data_id);
+//			break;
+//	}
+//}
 
 /*
  * choose the right way to edit the object by the given viewName
@@ -69,8 +70,8 @@ function editModal(data_id, viewName) {
 	var modal 		= null;
 	
 	switch (viewName) {
-		case 'accountmanager':
-			editAccountManager (data_id, viewName);
+		case 'event':
+			editEvent (data_id, viewName);
 			break;
 	}
 }
@@ -84,8 +85,8 @@ function submitModal(viewName) {
 	var modal 		= null;
 	
 	switch (viewName) {
-		case 'accountmanager':
-			editAccountManagerSubmit ();
+		case 'event':
+			editEventSubmit ();
 			break;
 	}
 }
@@ -110,26 +111,26 @@ function _submitForm (delay) {
     }, delay);
 }
 
-//AcountManager
+//Event
 /*
- * main function to show a new AccountManager or edit a persisted
+ * main function to show a new Event or edit a persisted
  * the partial html will be rendered with EJS, if a persisted one was opend 
  * the data was set automatically
  */
-function editAccountManager (data_id, viewName) {
+function editEvent (data_id, viewName) {
 	
 	if (data_id == null) {
 		var data = {
 			id: '',
-			identity: '',
-			persnr: '',
-			firstname: '',
-			lastname: '',
-			telnr: '',
-			address: ''
+			event_description: '',
+			event_title: '',
+			event_from: '',
+			event_to: '',
+			event_tw_count: '',
+			event_state: ''
 		};
 		
-		modal = new EJS({url: '/assets/tpl/modal_accountmanager_edit.ejs?v='+version_app}).render(data);
+		modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 		_addModalHandle (modal, viewName);
 	}
 	else {
@@ -140,11 +141,11 @@ function editAccountManager (data_id, viewName) {
 			},
 			success : function(data) {
 	
-				modal = new EJS({url: '/assets/tpl/modal_accountmanager_edit.ejs?v='+version_app}).render(data);
+				modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 				_addModalHandle (modal, viewName);
 			},
 			type : 'GET',
-			url : '/api/getaccountmanager/id/' + data_id
+			url : '/api/getevent/id/' + data_id
 		});
 	}
 }
@@ -154,15 +155,15 @@ function editAccountManager (data_id, viewName) {
  * the form data will be posted by ajax after displaying the respone the 
  * form will be submitted
  */
-function editAccountManagerSubmit () {
+function editEventSubmit () {
 	var postData = {
 		id: $('#modal-submit').attr('data-id'),
-		identity: $('#auth_identity').val(),
-		persnr: $('#pers_nr').val(),
-		firstname: $('#auth_user_firstname').val(),
-		lastname: $('#auth_user_lastname').val(),
-		telnr: $('#auth_user_telnr').val(),
-		address: $('#adress_field').val()
+		event_description: $('#auth_identity').val(),
+		event_title: $('#pers_nr').val(),
+		event_from: $('#auth_user_firstname').val(),
+		event_to: $('#auth_user_lastname').val(),
+		event_tw_count: $('#auth_user_telnr').val(),
+		event_state: $('#adress_field').val()
 	};
 	
 	postData = App.toJSON(postData);
@@ -185,7 +186,7 @@ function editAccountManagerSubmit () {
 			}
 		},
 		type: 'POST',
-		url: '/api/editaccountmanager/'
+		url: '/api/editevent/'
 	});
 }
 
@@ -193,21 +194,21 @@ function editAccountManagerSubmit () {
  * main funtion to delete a AccountManager 
  * the form will be submitted after displaying the response
  */
-function deleteAccountManager (data_id) {
-	$.ajax({
-		dataType : 'json',
-		error : function() {
-			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-		},
-		success : function(data) {
-			if(data.error == true) {
-				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
-			} else {
-				App.notify(data['success_title'], data['success_description'], 'success');
-				_submitForm (1000);
-			}
-		},
-		type : 'GET',
-		url : '/api/deleteaccountmanager/id/' + data_id
-	});
-}
+//function deleteAccountManager (data_id) {
+//	$.ajax({
+//		dataType : 'json',
+//		error : function() {
+//			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+//		},
+//		success : function(data) {
+//			if(data.error == true) {
+//				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+//			} else {
+//				App.notify(data['success_title'], data['success_description'], 'success');
+//				_submitForm (1000);
+//			}
+//		},
+//		type : 'GET',
+//		url : '/api/deleteaccountmanager/id/' + data_id
+//	});
+//}
