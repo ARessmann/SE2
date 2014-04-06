@@ -8,12 +8,14 @@
  */
 class Core_Model_Event extends Core_Model_Abstract {
 	
-
 	/* [PROPERTIES] */
-    protected $date_from;
-    protected $date_to;
-    protected $description;
-    protected $title;
+    protected $event_title;
+    protected $event_description;
+    protected $event_from;
+    protected $event_to;
+    protected $event_tw_count;
+    protected $event_state;
+    protected $tweet_tags;
     
     /* [CONSTRUCT] */
     /**
@@ -28,7 +30,7 @@ class Core_Model_Event extends Core_Model_Abstract {
 	 * @return database tablename
 	 */
 	public function getTableName () {
-		return 'event';
+		return 'EVENT';
 	}
 	/**
 	 * getting the class variables of the current class
@@ -39,36 +41,99 @@ class Core_Model_Event extends Core_Model_Abstract {
 		return get_class_vars('Core_Model_Event');
 	}
 	
-	public function getDateFrom () {
-		return $this->date_from;
+	/**
+	 * Get the event description
+	 */
+	public function getEventDescription () {
+		return $this->event_description;
 	}
 	
-	public function setDateFrom ($date) {
-		$this->date_from = $date;
+	/**
+	 * Set the event description
+	 * 
+	 * @param $description
+	 */
+	public function setEventDescription ($description) {
+		$this->event_description = $description;
 	}
 	
-	public function getDateTo () {
-		return $this->date_to;
+	/**
+	 * Get the event title
+	 */
+	public function getEventTitle () {
+		return $this->event_title;
 	}
 	
-	public function setDateTo ($date) {
-		$this->date_to = $date;
+	/**
+	 * Set the event title
+	 * @param $title
+	 */
+	public function setEventTitle ($title) {
+		$this->event_title = $title;
 	}
 	
-	public function getDescription () {
-		return $this->description;
+	/**
+	 * Get event start date (event from)
+	 */
+	public function getEventFrom () {
+		return $this->event_from;
 	}
 	
-	public function setDescription ($description) {
-		$this->description = $description;
+	/**
+	 * Set the event start date (event from)
+	 * 
+	 * @param $from
+	 */
+	public function setEventFrom ($from) {
+		$this->event_from = $from;
 	}
 	
-	public function getTitle () {
-		return $this->title;
+	/**
+	 * Get the event end date (event to)
+	 */
+	public function getEventTo () {
+		return $this->event_to;
 	}
 	
-	public function setTitle ($title) {
-		$this->title = $title;
+	/**
+	 * Set the event end date (event to)
+	 * 
+	 * @param $to
+	 */
+	public function setEventTo ($to) {
+		$this->event_to = $to;
+	}
+	
+	/**
+	 * Get the event tweet count
+	 */
+	public function getEventTwCount () {
+		return $this->event_tw_count;
+	}
+	
+	/**
+	 * Set the event tweet count
+	 * 
+	 * @param $twCount
+	 */
+	public function setEventTwCount ($twCount) {
+		$this->event_tw_count = $twCount;
+	}
+	
+	/**
+	 * Get the event current state
+	 */
+	public function getEventState () {
+		return $this->event_state;
+	}
+	
+	/**
+	 * Set the event state
+	 * 
+	 * @param $state
+	 */
+	public function setEventState ($state) {
+		$this->event_state = $state;
 	}
 	
 	/**
@@ -77,7 +142,7 @@ class Core_Model_Event extends Core_Model_Abstract {
 	 * @return array with attributes
 	 */
     public function getData () {
-        return $this->toArray ();
+    	return $this->toArray ();
     }
     
     /* [TRANSFORMERS] */
@@ -89,11 +154,13 @@ class Core_Model_Event extends Core_Model_Abstract {
 	public function toArray() {
 		
 		$data = array(
-			'id' 	    			=> $this->id,
-            'date_from'	    		=> $this->date_from,
-			'date_to'	    		=> $this->date_to,
-			'description'	    	=> $this->description,
-			'title'	    	    	=> $this->title,
+			'event_id'    			=> $this->id,
+			'event_description'    	=> $this->event_description,
+			'event_title'	       	=> $this->event_title,
+			'event_from'    		=> $this->event_from,
+			'event_to'    			=> $this->event_to,
+			'event_tw_count'	    => $this->event_tw_count,
+			'event_state'  			=> $this->event_state
 		);
 		
 		$this->data = $data;
