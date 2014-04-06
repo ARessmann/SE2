@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `TWEET_TAG` (
   `tag_name` varchar(50) NOT NULL,
   `event_id` int(4),
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`id`)
+  FOREIGN KEY (`event_id`) REFERENCES `EVENT` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 INSERT INTO `TWEET_TAG` (`id`, `tag_name`, `event_id`) VALUES (1, 'Spielberg', 1);
