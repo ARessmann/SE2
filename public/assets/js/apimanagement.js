@@ -52,6 +52,7 @@ function search (viewName) {
 /*
  * choose the right way to delete the object by the given viewName
  */
+<<<<<<< HEAD
 function deleteItem(data_id, viewName) {
 	switch (viewName) {
 		case 'event':
@@ -59,6 +60,15 @@ function deleteItem(data_id, viewName) {
 			break;
 	}
 }
+=======
+//function deleteItem(data_id, viewName) {
+//	switch (viewName) {
+//		case 'accountmanager':
+//			deleteAccountManager (data_id);
+//			break;
+//	}
+//}
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
 
 /*
  * choose the right way to edit the object by the given viewName
@@ -110,12 +120,20 @@ function _submitForm (delay) {
     }, delay);
 }
 
+<<<<<<< HEAD
+=======
+//Event
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
 /*
  * main function to show a new Event or edit a persisted
  * the partial html will be rendered with EJS, if a persisted one was opend 
  * the data was set automatically
  */
 function editEvent (data_id, viewName) {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
 	if (data_id == null) {
 		var data = {
 			id: '',
@@ -126,6 +144,10 @@ function editEvent (data_id, viewName) {
 			event_tw_count: '',
 			event_state: ''
 		};
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
 		modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 		_addModalHandle (modal, viewName);
 	}
@@ -136,6 +158,10 @@ function editEvent (data_id, viewName) {
 				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
 			},
 			success : function(data) {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
 				modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 				_addModalHandle (modal, viewName);
 			},
@@ -189,6 +215,7 @@ function editEventSubmit () {
  * main funtion to delete an Event 
  * the form will be submitted after displaying the response
  */
+<<<<<<< HEAD
 function deleteEvent (data_id) {
 	$.ajax({
 		dataType : 'json',
@@ -207,3 +234,23 @@ function deleteEvent (data_id) {
 		url : '/api/deleteevent/id/' + data_id
 	});
 }
+=======
+//function deleteAccountManager (data_id) {
+//	$.ajax({
+//		dataType : 'json',
+//		error : function() {
+//			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+//		},
+//		success : function(data) {
+//			if(data.error == true) {
+//				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+//			} else {
+//				App.notify(data['success_title'], data['success_description'], 'success');
+//				_submitForm (1000);
+//			}
+//		},
+//		type : 'GET',
+//		url : '/api/deleteaccountmanager/id/' + data_id
+//	});
+//}
+>>>>>>> branch 'master' of https://github.com/ARessmann/SE2.git
