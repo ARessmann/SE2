@@ -12,12 +12,11 @@ class Core_AbstractController extends Zend_Controller_Action {
 	public $errorHandler;
 	public $session;
 	public $version;
+	public $translator;
 	
 	/**
 	 * initialisation of the class
 	 * setting default attributes like session, error, config, version, etc
-	 * 
-	 * redirechting to authentication if the currentuser is guest
 	 */
 	public function init() {
 		
@@ -35,6 +34,7 @@ class Core_AbstractController extends Zend_Controller_Action {
 	public function setViewProperties() {
 		$this->view->controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
 		$this->view->action = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+		$this->view->translator = new Core_Texthelper();
 		$this->view->version = $this->config->app->version;
 	}
     

@@ -8,7 +8,7 @@
 <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
     
 <div class="span9">
-	<h3>Eventliste</h3>
+	<h3><?= $this->translator->translate("view_newEvent"); ?></h3>
 	<br>
 	<div class="row-fluid">
 	    <div class="input-prepend pull-left">
@@ -53,10 +53,7 @@
                                         <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event bearbeiten" class="icon-edit"></i>&nbsp;
                                         <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event deaktivieren" class="icon-ban-circle">
                                     </td>
-                                    <td><?= $event->getTitle (); ?></td>
-                                    <td><?= $event->getDateFrom (); ?></td>
-                                    <td><?= $event->getDateTo (); ?></td>
-                                    <td><?= $event->getDescription (); ?></td>
+                                    <td><?= $event->getEventTitle (); ?></td>
                                 </tr>
                             
            				<?php } ?>
