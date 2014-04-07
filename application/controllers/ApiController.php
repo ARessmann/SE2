@@ -22,118 +22,108 @@ class ApiController extends Core_AbstractController
         $this->view->encoding = 'UTF-8';
     }
     
+    /**
+     * Core function to set the application language
+     */
+    public function setlangAction () {
+    	
+    	$this->getResponse()->setHeader('Content-Type', 'text/html');
+    	
+    	$lang = $this->_getParam('lang');
+    	$this->session->lang = $lang;
+
+    }
+    
 	/**
-	 * getting an AccountManager by Id and transform it to a json string
+	 * getting an Event by Id and transform it to a json string
 	 *
 	 * @return json string 
 	 */
-    public function getaccountmanagerAction () {
+    public function geteventAction () {
         $id = $this->_getParam('id');
         
-        $accountManager = new Core_Model_AccountManager ();
+        $event = new Core_Model_Event ();
         
         if (isset ($id)) {
-            $values = $accountManager->loadById ($id);
+            $value = $event->loadById ($id);
             
-            if (isset ($values)) {
-                return $this->apiControllerHelper->formatOutput($values);
+            if (isset ($value))  {
+                return $this->apiControllerHelper->formatOutput($value);
             }
         }
     }
         
 	/**
-	 * Function to delete a AccountManager by the given Id
+	 * Function to delete a Event by the given Id
 	 *
 	 * @return json success message or a error message
 	 */
-    public function deleteaccountmanagerAction () {
+    public function deleteeventAction () {
         
         $id = $this->_getParam('id');
         
         try {
             if (isset ($id)) {
-                $accountmanager = new Core_Model_AccountManager ();
-                $accountmanager->delete ($id);
+                $event = new Core_Model_Event ();
+                $event->delete ($id);
             }
             return $this->apiControllerHelper->formatOutput(array(
                 'success'               => true,
-                'success_title'     => 'Kundenbetreuer wurde erfolgreich gelöscht',
+                'success_title'     => 'Event wurde erfolgreich gelöscht',
                 'success_description'   => ''
             ));
         }
         catch (Exception $e) {
-            echo var_dump($e);
-            
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Löschen des Kundenbetreuer',
+                'error_title'       => 'Fehler beim Löschen des Events',
                 'error_description' => ''
             ));
         }
     }
     
 	/**
-	 * function to save or update a ApplicationManager object 
+	 * function to save or update a Event object 
 	 * the validation array includes the pattern for the validator to validate the 
 	 * fields
 	 *
 	 * @return json success message or a error message
 	 */
-    public function editaccountmanagerAction () {
-        
-        $validation = array ('E-Mail' => 'identity:X:mail', 'Vorname' => 'firstname:X:string', 'Nachname' => 'lastname:X:string', 'TelefonNr' => 'telnr:N:string', 'PersNr' => 'persnr:X:persnr', 'Adresse' => 'address:X:string');
+    public function editeventAction () {
         
         $data = json_decode($_POST['data']);
         
         $id = $data->id;
-        $identity = $data->identity;
-        $firstname = $data->firstname;
-        $lastname = $data->lastname;
-        $telnr = $data->telnr;
-        $persnr = $data->persnr;
-        $address = $data->address;
+        $event_description = $data->event_description;
+        $event_title = $data->event_title;
+        $event_from = $data->event_from;
+        $event_to = $data->event_to;
+        $event_tw_count = $data->event_tw_count;
+        $event_state = $data->event_state;
         
         try {
             
-            $accountManager = new Core_Model_AccountManager ();
+            $event = new Core_Model_Event ();
             
             if (isset ($id) && $id != '') {
-                $accountManager->loadById ($id);
+                $event->loadById ($id);
             }
             
-            $validationResponse = Core_Validationhelper::validate ($validation, $data);
-            
-            if ($validationResponse != null) {
-                return $this->apiControllerHelper->formatOutput(array(
-                    'error'             => true,
-                    'error_title'       => 'Eingabefehler',
-                    'error_description' => $validationResponse
-                ));
-            }
-            
-            $accountManager->setPersNr ($persnr);
-            $accountManager->setFirstName ($firstname);
-            $accountManager->setLastName ($lastname);
-            $accountManager->setIdentity ($identity);
-            $accountManager->setTelNr ($telnr);
-            $accountManager->setAddress ($address);
+            $event->setEventDescription ($event_description);
+            $event->setEventTitle ($event_title);
+            $event->setEventFrom ($event_from);
+            $event->setEventTo ($event_to);
+            $event->setEventTwCount ($event_tw_count);
+            $event->setEventState ($event_state);
             
             if (isset ($id) && $id != '') {
-                $accountManager->update ();
+                $event->update ();
             }
-            else {
-                $accountManager->setPassword (md5($lastname));
-                $accountManager->setCreated (date('Y-m-d H:i:s'));
-                $accountManager->setRoleId (Core_Plugin_Acl::ROLE_ACCOUNT_MANAGER);
-                $accountManager->setIsActive (1);
-                $accountManager->setIsFirstLogin (1);
-                
-                $accountManager->save();
-            }
+            
             
             return $this->apiControllerHelper->formatOutput(array(
                 'success'               => true,
-                'success_title'     => 'Kundenbetreuer wurde erfolgreich gespeichert',
+                'success_title'     => 'Event wurde erfolgreich gespeichert',
                 'success_description'   => ''
             ));
         }
@@ -142,7 +132,7 @@ class ApiController extends Core_AbstractController
             
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Speichern des Kundenbetreuers',
+                'error_title'       => 'Fehler beim Speichern des Events',
                 'error_description' => ''
             ));
         }

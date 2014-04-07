@@ -25,7 +25,7 @@
 	    </div>
 	</div>
         
-    <form id="action_frm" action="events">
+    <form id="action_frm" action="event">
     	<input type="hidden" id="filter" name="filter" value="" />
         <div class="row-fluid">
 	        <div class="span12">
@@ -46,37 +46,20 @@
 						</tr>
 		           	</thead>
 		       		<tbody>
-		       			<tr class="user-row">
+		       			<?php foreach ($this->events as $event) { ?>
+                            
+                                <tr class="user-row">
                                     <td class="warning">
-                                        <i view-name="device" data-id="1" title="Endgerät bearbeiten" class="icon-edit"></i>&nbsp;
-                                        <i view-name="device" data-id="1" title="Endgerät deaktivieren" class="icon-ban-circle">
+                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event bearbeiten" class="icon-edit"></i>&nbsp;
+                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event deaktivieren" class="icon-ban-circle">
                                     </td>
-                                    <td>Event 1</td>
-                                    <td>01.04.2014</td>
-                                    <td>18.04.2014</td>
-                                    <td>Hier die Beschreibung zu Event 1</td>
+                                    <td><?= $event->getTitle (); ?></td>
+                                    <td><?= $event->getDateFrom (); ?></td>
+                                    <td><?= $event->getDateTo (); ?></td>
+                                    <td><?= $event->getDescription (); ?></td>
                                 </tr>
-                         <tr class="user-row">
-                                    <td class="warning">
-                                        <i view-name="device" data-id="1" title="Endgerät bearbeiten" class="icon-edit"></i>&nbsp;
-                                        <i view-name="device" data-id="1" title="Endgerät deaktivieren" class="icon-ban-circle">
-                                    </td>
-                                    <td>Event 2</td>
-                                    <td>07.04.2014</td>
-                                    <td>28.04.2014</td>
-                                    <td>Hier die Beschreibung zu Event 2</td>
-                                </tr>
-                         <tr class="user-row">
-                                    <td class="warning">
-                                        <i view-name="device" data-id="1" title="Endgerät bearbeiten" class="icon-edit"></i>&nbsp;
-                                        <i view-name="device" data-id="1" title="Endgerät deaktivieren" class="icon-ban-circle">
-                                    </td>
-                                    <td>Event 3</td>
-                                    <td>01.05.2014</td>
-                                    <td>12.05.2014</td>
-                                    <td>Hier die Beschreibung zu Event 3</td>
-                                </tr>
-                       
+                            
+           				<?php } ?>
 				    </tbody>
 				</table>
 			</div>

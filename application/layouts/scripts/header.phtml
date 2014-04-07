@@ -4,6 +4,8 @@
 	Andreas Ressmann
 	24.01.2014
  -->
+ <?php echo $this->partial('_partials/header/scripts.phtml'); ?>
+ 
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
@@ -13,13 +15,13 @@
 
             </a>
             <a class="brand" href="/index">
-				<img id="logo" title="Twitteranalyser Logo" src="/assets/img/logo.png" alt="Twitteranalyser Logo" />
+				<img id="logo" title="Twitteranalyser Logo" src="" alt="Twitteranalyser Logo" />
 			</a>
             <div class="nav-collapse collapse">
 				<p class="navbar-text pull-right">Sprache
-					<select name="multiling" size="1">
-						<option>Deutsch</option>
-						<option>Englisch</option>
+					<select id="lang_selector" name="lang_selector" size="1">
+						<option <?php echo ($this->lang == 'de') ? 'selected' : '' ?> value="de">Deutsch</option>
+						<option <?php echo ($this->lang == 'en') ? 'selected' : '' ?> value="en">Englisch</option>
 					</select>
 				</p>
                     

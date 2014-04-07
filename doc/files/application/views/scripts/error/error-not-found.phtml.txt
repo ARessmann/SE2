@@ -1,7 +1,0 @@
-<!-- 
-	will be displayed if a controller is not reachable
-	
-	Julius Wukoutz
-	24.01.2014
- -->
-ERROR 404 - NOT FOUND

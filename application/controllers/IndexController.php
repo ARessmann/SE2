@@ -1,8 +1,6 @@
 <?php
 /**
  * main controller for this application 
- * in this controller all views will be handled and the user role for
- * the current user will be checked in each function 
  *
  * @author Andreas Ressmann
  * 31.03.2014
@@ -17,6 +15,8 @@ class IndexController extends Core_AbstractController {
 		
 		parent::init();
 		$this->view->pageTitle = 'Twitteranalyser';
+		$this->view->lang = $this->session->lang;
+
 	}
     
 	/**
@@ -40,11 +40,11 @@ class IndexController extends Core_AbstractController {
             $this->_redirect($firstPoint);
         }
         
-        $this->view->menuOptions = $this->getMenu ();
+        $this->view->menuOptions = $menuOptions;
     }
     
 	/**
-	 * display the list of accountmanagers including a filter system 
+	 * display the list of events including a filter system 
 	 * and set the object to the view 
 	 */
     public function eventAction () {
@@ -58,10 +58,13 @@ class IndexController extends Core_AbstractController {
         
         $this->view->filter = $filter;
         $this->view->counter = count($events);
-        $this->view->accountmanagers = $events;
+        $this->view->events = $events;
         $this->view->menuOptions = $this->getMenu ();
     }
     
+    /*
+     * default method to search in a objectlist
+     */
     private function searchObjectList ($objectList, $filter) {
         $res = array ();
         
