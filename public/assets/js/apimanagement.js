@@ -37,6 +37,7 @@ function initTriggers() {
 	$('#search_btn').on('click', function(e) {
 		search($(this).attr('view-name'));
 	});
+	
 }
 
 /*
@@ -109,14 +110,12 @@ function _submitForm (delay) {
     }, delay);
 }
 
-//Event
 /*
  * main function to show a new Event or edit a persisted
  * the partial html will be rendered with EJS, if a persisted one was opend 
  * the data was set automatically
  */
 function editEvent (data_id, viewName) {
-
 	if (data_id == null) {
 		var data = {
 			id: '',
@@ -127,7 +126,6 @@ function editEvent (data_id, viewName) {
 			event_tw_count: '',
 			event_state: ''
 		};
-
 		modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 		_addModalHandle (modal, viewName);
 	}
@@ -138,7 +136,6 @@ function editEvent (data_id, viewName) {
 				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
 			},
 			success : function(data) {
-
 				modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
 				_addModalHandle (modal, viewName);
 			},

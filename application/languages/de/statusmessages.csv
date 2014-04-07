@@ -1,4 +1,46 @@
-ï»¿general_success;Erfolgreich gespeichert!
-general_remove_success;Erfolgreich gelÃ¶scht
-general_noentrysfound;Keine EintrÃ¤ge gefunden
-general_saving_error;Beim Speichern ist ein Fehler aufgetreten!
+general_success;;Erfolgreich gespeichert!
+general_remove_success;;Erfolgreich gelöscht
+general_noentrysfound;;Keine Einträge gefunden
+general_saving_error;;Beim Speichern ist ein Fehler aufgetreten!
+view_showEvent;;Alle Events anzeigen
+view_newEvent;;Neues Event anlegen
+"event_search	Suchen";;
+"event_title	Titel";;
+"event_from	Von";;
+"event_to	Bis";;
+event_description;;
+"menu_management	Verwaltung";;
+"menu_seeTweets	Tweets anschauen";;
+"menu_events	Veranstaltungen";;
+"event_save	Speichern";;
+"status_startCollection	Sammlung starten";;
+"status_endCollection	Sammlung beenden";;
+"status_collection_in_progress	Sammlung aktiv";;
+"status_analysis	Analyse";;
+"event_id	Event-Id";;
+"event_tw_count	Anzahl Tweets";;
+"event_state	Status";;
+"tag_id	Tag-Id";;
+"tag_name	Name";;
+"tweet_id	Tweet-Id";;
+"tw_text	Beschreibung";;
+"tw_creationdate	Tweet creation";;
+"tw_user	Tweet-User";;
+"tw_location	Tweet-Ort";;
+"tw_language	Tweet-Sprache";;
+"tw_deleted	Tweet gel_scht";;
+"filter_id	Filter-Id";;
+"fi_description	Filter-Beschreibung";;
+"fi_consider_tweet	Filter-Tweet »berpr»fen";;
+"ignore_tweet	Tweet ignorieren";;
+"time_start	Von";;
+"time_end	Bis";;
+"filt_ignore_tweet	Filter Tweet ignorieren";;
+"filt_ignore_id	Filter Id ignorieren";;
+"ignored_tweet	Tweet iignoriert";;
+"filt_consider_id	Filter »berpr»ft Id";;
+"consider_tweet	Tweet »berpr»fen";;
+"sent_id	Id senden";;
+"sent_text	Text senden";;
+"sent_weight	Alles senden";;
+"menu_help	Hilfe";;

@@ -149,6 +149,16 @@ abstract class Core_Model_Abstract {
 				$this->$key = $val;
 			}
 		}
-		
+	}
+	
+	/**
+	 * Execute a select statement with given tableName and where condition
+	 */
+	public function _selectFor($tableName, $idName, $id)
+	{
+		return $result =  $this->dbAdapter->select()->from($tableName)
+		->where($idName.' = ?', $id)
+		->query()
+		->fetchAll();
 	}
 }

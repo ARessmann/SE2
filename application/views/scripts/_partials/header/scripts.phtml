@@ -1,0 +1,12 @@
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		$('#lang_selector').change(function() {	
+			$.post('../../../../api/setlang', { lang: $(this).val() }, function( data ) {
+				$("form:first" ).submit();
+			  });		
+		});
+	
+	});
+</script>
