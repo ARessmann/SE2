@@ -147,7 +147,7 @@ function editEvent (data_id, viewName) {
 }
 
 /*
- * main function to persist the viewed AccountManager in the dialog
+ * main function to persist the viewed Event in the dialog
  * the form data will be posted by ajax after displaying the respone the 
  * form will be submitted
  */
