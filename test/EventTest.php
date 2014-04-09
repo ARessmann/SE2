@@ -31,8 +31,8 @@ class EventTest extends PHPUnit_Framework_TestCase
 
     	$event->setEventTitle("Test");
     	$event->setEventDescription("Test");
-    	$event->setEventFrom(01.01.2000);
-    	$event->setEventTo(02.02.2002);
+    	$event->setEventFrom("01.01.2000");
+    	$event->setEventTo("02.02.2002");
     	$event->setEventTwCount("1");
     	$event->setEventState("running");
     	$event->setEventTweetTags("TestTag");
@@ -41,10 +41,10 @@ class EventTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEqual($data['event_title'], "Test");
     	$this->assertEqual($data['event_description'], "Test");
-    	$this->assertEqual($data['event_from'], 01.01.2000);
-    	$this->assertEqual($data['event_to'], 02.02.2002);
-    	$this->assertEqual($data['event_state'], "running"];
-    	$this->assertEqual($data['event_tw_count'], "TestTag"];
+    	$this->assertEqual($data['event_from'], "01.01.2000");
+    	$this->assertEqual($data['event_to'], "02.02.2002");
+    	$this->assertEqual($data['event_state'], "running");
+    	$this->assertEqual($data['event_tw_count'], "TestTag");
     	
     }
     
@@ -71,18 +71,18 @@ class EventTest extends PHPUnit_Framework_TestCase
     {
     	$event = new Core_Model_Event();
     
-    	$event->setEventTo(01.01.2000);
+    	$event->setEventTo("01.01.2000");
     
-    	$this->assertEqual(01.01.2000, $event->getEventTo);
+    	$this->assertEqual("01.01.2000", $event->getEventTo);
     }
     
     public function testSetGetEventFrom()
     {
     	$event = new Core_Model_Event();
     
-    	$event->setEventFrom(01.01.2000);
+    	$event->setEventFrom("01.01.2000");
     
-    	$this->assertEqual(01.01.2000, $event->getEventFrom);
+    	$this->assertEqual("01.01.2000", $event->getEventFrom);
     }
     
     public function testSetGetEventTwCount()
