@@ -25,6 +25,24 @@ class EventTest extends PHPUnit_Framework_TestCase
     	$this->assertTrue(isset($id));
     }
     
+    public function testToArrayContainsAttributes() 
+    {
+    	$event = new Core_Model_Event();
+
+    	$event->setEventTitle("Test");
+    	$event->setEventDescription("Test");
+    	$event->setEventFrom("01.01.2000");
+    	$event->setEventTo("02.02.2002");
+    	$event->setEventTwCount("1");
+    	$event->setEventState("running");
+    	$event->setEventTweetTags("TestTag");
+    	
+    	$data = $event->toArray;
+    	
+    	$this->assertEqual($data['event_title', "Test"];
+    	
+    }
+    
     
     public function testSetGetEventTitle()
     {
