@@ -1,5 +1,7 @@
 <?php 
 
+//include_once('C:\xampp\htdocs\SE2\application\models\Event.php');
+
 class EventTest extends PHPUnit_Framework_TestCase
 {
 	
