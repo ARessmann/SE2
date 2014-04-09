@@ -31,15 +31,20 @@ class EventTest extends PHPUnit_Framework_TestCase
 
     	$event->setEventTitle("Test");
     	$event->setEventDescription("Test");
-    	$event->setEventFrom("01.01.2000");
-    	$event->setEventTo("02.02.2002");
+    	$event->setEventFrom(01.01.2000);
+    	$event->setEventTo(02.02.2002);
     	$event->setEventTwCount("1");
     	$event->setEventState("running");
     	$event->setEventTweetTags("TestTag");
     	
     	$data = $event->toArray;
     	
-    	$this->assertEqual($data['event_title', "Test"];
+    	$this->assertEqual($data['event_title'], "Test");
+    	$this->assertEqual($data['event_description'], "Test");
+    	$this->assertEqual($data['event_from'], 01.01.2000);
+    	$this->assertEqual($data['event_to'], 02.02.2002);
+    	$this->assertEqual($data['event_state'], "running"];
+    	$this->assertEqual($data['event_tw_count'], "TestTag"];
     	
     }
     
