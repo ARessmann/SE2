@@ -54,6 +54,9 @@
                                         <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event deaktivieren" class="icon-ban-circle">
                                     </td>
                                     <td><?= $event->getEventTitle (); ?></td>
+                                    <td><?= $event->getEventFrom (); ?></td>
+                                    <td><?= $event->getEventTo (); ?></td>
+                                    <td><?= $event->getEventDescription (); ?></td>
                                 </tr>
                             
            				<?php } ?>

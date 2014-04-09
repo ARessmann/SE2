@@ -12,18 +12,49 @@
   <div class="modal-body">
 
 	<form class="form-horizontal">
-        <div class="control-group">
-            <label class="control-label" for="event_description">description</label>
+		<div class="control-group">
+            <label class="control-label" for="event_title">Titel</label>
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-cog"></i></span>
-                    <input type="text" id="event_description" value="<%= event_description %>">
+                    <input type="text" id="event_title" value="<%= event_title %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event_from">Von</label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" class="input-small bt-datepicker" id="event_from" value="<%= event_from %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event_to">Bis</label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" class="input-small bt-datepicker" id="event_to" value="<%= event_to %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event_description">Beschreibung</label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <textarea id="event_description"><%= event_description %></textarea>
                 </div>
             </div>
         </div>
 	</form>
     
   </div>
+  
+  <input type="hidden" id="event_tw_count" value="0" />
+  <input type="hidden" id="event_state" value="0" />
+  
   <div class="modal-footer">
     <a href="#" class="btn btn-primary" data-id="<%= id %>" id="modal-submit"><i class="icon-ok icon-white"></i> Speichern</a>
     <a href="#" class="btn pull-left" data-dismiss="modal"><i class="icon-remove"></i> Abbrechen</a>
