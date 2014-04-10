@@ -76,6 +76,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headLink()->appendStylesheet('/assets/css/main.css?v=' . $v, 'all');
 		$view->headLink()->appendStylesheet('/assets/css/bootstrap.min.css?v=' . $v, 'all');
 		$view->headScript()->appendFile('/assets/js/jquery-1.10.2.min.js?v=' . $v);
+		$view->headScript()->appendFile('/assets/js/jquery-ui-1.10.4.custom.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/jquery.pnotify.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/bootstrap.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/ejs.js?v=' . $v);
