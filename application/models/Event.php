@@ -15,7 +15,7 @@ class Core_Model_Event extends Core_Model_Abstract {
     protected $event_to;
     protected $event_tw_count;
     protected $event_state;
-    protected $tweet_tags;
+    protected $event_tweet_tags;
     
     /* [CONSTRUCT] */
     /**
@@ -139,9 +139,9 @@ class Core_Model_Event extends Core_Model_Abstract {
 	/**
 	 * Get the tweet tags for the event
 	 */
-	public function getTweetTags()
+	public function getEventTweetTags()
 	{
-		return $this->tweet_tags;
+		return $this->event_tweet_tags;
 	}
 	
 	/**
@@ -149,9 +149,9 @@ class Core_Model_Event extends Core_Model_Abstract {
 	 * 
 	 * @param $tweetTags
 	 */
-	public function setTweetTags($tweetTags)
+	public function setEventTweetTags($tweetTags)
 	{
-		$this->tweet_tags = $tweetTags;
+		$this->event_tweet_tags = $tweetTags;
 	}
 	
 	/**
@@ -178,7 +178,8 @@ class Core_Model_Event extends Core_Model_Abstract {
 			'event_from'    		=> $this->event_from,
 			'event_to'    			=> $this->event_to,
 			'event_tw_count'	    => $this->event_tw_count,
-			'event_state'  			=> $this->event_state
+			'event_state'  			=> $this->event_state,
+			'event_tweet_tags'		=> $this->event_tweet_tags
 		);
 		
 		$this->data = $data;
@@ -214,14 +215,6 @@ class Core_Model_Event extends Core_Model_Abstract {
 	public function loadById ($id) {
 		$values = $this->_loadById($id);
 		$this->setValues ($values);
-		// read the tweet tags for the given event
-		$tweetTags = $this->_selectFor('TWEET_TAG', 'event_id', $id);
-		$tags = array();
-		foreach($tweetTags as $key=>$result) 
-		{
-			$tags[$key] = $tweetTags[$key]["tag_name"];
-		}
-		$this->setTweetTags($tags);
 		return $this->getData();
 	}
 	
