@@ -117,6 +117,8 @@ function _submitForm (delay) {
  */
 function editEvent (data_id, viewName) {
 	if (data_id == null) {
+		
+		
 		var data = {
 			id: '',
 			event_description: '',

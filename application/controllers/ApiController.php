@@ -34,6 +34,16 @@ class ApiController extends Core_AbstractController
 
     }
     
+    /**
+     * 
+     * Ajax function to retreive the descriptions for the given key
+     * 
+     * @param String $key name of the Dlg
+     */
+    public function getDescriptionForDlg ($key) {
+    	
+    }
+    
 	/**
 	 * getting an Event by Id and transform it to a json string
 	 *

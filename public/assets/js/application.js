@@ -21,7 +21,6 @@ $(document).ready(function()
 		$('#mainmenu a').addClass('btn-inverse');
 		$(this).removeClass('btn-inverse');
 	});
-	$("#notifications1").popover({ animation: true, title: 'title', content: "Popover ContentPopover ContentPopover ContentPopover ContentPopover Content", placement: 'bottom', trigger: 'hover' });
 });
 
 var Interface = {
@@ -101,7 +100,7 @@ var App = {
 	},
 	
 	notify : function(title, text, type) {
-		$.pnotify({ title: title, text: text, type: type, animation: 'show' });
+		$.pnotify({ title: title, text: text, type: type, animation: 'show', delay: 1500, insert_brs: true });
 	},
 	
 	toJSON : function(data) {

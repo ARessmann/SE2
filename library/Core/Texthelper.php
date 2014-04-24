@@ -26,4 +26,10 @@ class Core_Texthelper {
 		
 		return $translate->getAdapter()->translate($key);
 	}
+	
+	public function getTranslations ($key) {
+		
+		
+		
+	}
 }

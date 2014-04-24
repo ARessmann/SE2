@@ -42,21 +42,6 @@
 			
 		</div>
 		
-		<!-- "Messenger": allows to use pnotify also server side -->
-		<?php if($this->messenger === true): ?>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$.pnotify({
-				    title: '<?php echo $this->messenger_title; ?>',
-				    text: '<?php echo $this->messenger_text; ?>',
-				    type: '<?php echo $this->messenger_type; ?>',
-				    animation: 'show'
-				});
-			});
-			
-		</script>
-		<?php endif; ?>
-		
 		<div id="interface-lock" class="interface"></div>
 		<div id="interface-lock-status" class="interface-inner rounded-xl" style="display:none">
 		<img src="" style="margin-top: 5px" alt="Loading" /><br/><br/>DATEN WERDEN GELADEN
