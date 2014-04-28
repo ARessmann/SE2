@@ -21,7 +21,6 @@ class IndexController extends Core_AbstractController {
     
 	/**
 	 * main action for the controller 
-	 * handling the manu options and checking the current user role
 	 */
     public function indexAction() {
         
@@ -60,6 +59,10 @@ class IndexController extends Core_AbstractController {
         $this->view->counter = count($events);
         $this->view->events = $events;
         $this->view->menuOptions = $this->getMenu ();
+    }
+    
+    public function tweetsAction (){
+    	
     }
     
     /*
