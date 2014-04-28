@@ -1,1 +1,72 @@
-hy tweets
+<!--
+	show a list of tweets 
+
+	Johannes Kammel
+	28.9.2014
+ -->
+
+<div class="row-fluid">
+
+    <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
+
+	<div class="span9">
+		<h3><?= $this->translator->translate("tweet_entries"); ?></h3>
+		<br>
+		<div class="row-fluid">
+		    <div class="input-prepend pull-left">
+		    	<select name="choose_event" id="choose_event" size="1">
+		    		<option>Alle</option>
+		    		<?php foreach ($this->events as $event) { ?>
+	                	<option value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
+	           		<?php } ?>
+		    	</select>
+			</div>
+
+		    <div class="control-group pull-right">
+		    	<div class="input-prepend">
+		        	
+		        </div>
+		    </div>
+		</div>
+
+	    <form id="action_frm" action="event">
+	    	<input type="hidden" id="filter" name="filter" value="" />
+	        <div class="row-fluid">
+		        <div class="span12">
+
+			        <div class="grid-head">
+			        	<i class="icon-tasks"></i> Tweets
+			            <span class="label label-important pull-right"><?= $this->counter ?></span>
+			       	</div>
+
+			        <table class="table table-condensed table-bordered table-striped" id="event-table">
+						<thead>
+			            	<tr>
+			                	<th width="37px" class="grid-caption"></th>
+			                    <th class="grid-caption">Text</th>
+			                    <th class="grid-caption">Datum</th>
+			                    <th class="grid-caption">User</th>
+			                   	<th class="grid-caption">Ort</th>
+							</tr>
+			           	</thead>
+			       		<tbody>
+			       			<?php foreach ($this->tweets as $tweet) { ?>
+
+	                                <tr class="user-row">
+	                                    <td class="warning">
+	                                        
+	                                    </td>
+	                                    <td><?= $tweet->getTweetText (); ?></td>
+	                                    <td><?= $tweet->getCreationDate (); ?></td>
+	                                    <td><?= $tweet->getTweetUser (); ?></td>
+	                                    <td><?= $tweet->getLocation (); ?></td>
+	                                </tr>
+
+	           				<?php } ?>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -61,8 +61,26 @@ class IndexController extends Core_AbstractController {
         $this->view->menuOptions = $this->getMenu ();
     }
     
-    public function tweetsAction (){
-    	
+/**
+	 * display the list of tweets including a filter system 
+	 * and set the object to the view 
+	 */    
+     public function tweetsAction () {
+    	$tweetEntry = new Core_Model_TweetEntry ();
+    	$events = new Core_Model_Event();
+    	$event = $events->loadAll();
+        $filter = $this->_getParam('filter');
+
+        $tweets = $tweetEntry->loadAll ();
+
+        if (isset ($filter) && $filter != '')
+            $tweets = $this->searchObjectList($tweets, $filter);
+
+        $this->view->filter = $filter;
+        $this->view->counter = count($tweets);
+        $this->view->tweets = $tweets;
+        $this->view->menuOptions = $this->getMenu ();
+        $this->view->events = $event;
     }
     
     /*
