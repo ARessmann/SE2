@@ -25,6 +25,7 @@ class Core_AbstractController extends Zend_Controller_Action {
         $this->apiControllerHelper = new Core_ApiControllerHelper();
 		$this->session = new Zend_Session_Namespace('Core');
 		$this->version = Zend_Registry::get('version-app');
+		$this->translator = new Core_Texthelper();
 		self::setViewProperties();
 	}
 	
@@ -34,7 +35,7 @@ class Core_AbstractController extends Zend_Controller_Action {
 	public function setViewProperties() {
 		$this->view->controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
 		$this->view->action = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
-		$this->view->translator = new Core_Texthelper();
+		$this->view->translator = $this->translator;
 		$this->view->version = $this->config->app->version;
 	}
     

@@ -40,8 +40,21 @@ class ApiController extends Core_AbstractController
      * 
      * @param String $key name of the Dlg
      */
-    public function getDescriptionForDlg ($key) {
+    public function gettranslationsAction () {
     	
+    	$viewName 	= $this->_getParam('viewName');
+    	
+    	if (isset($viewName)) {
+    		$texts = $this->translator->getTranslations($viewName);
+    		
+    		return $this->apiControllerHelper->formatOutput($texts);
+    	}
+    	
+    	return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Laden der Übersetzungen!',
+                'error_description' => ''
+            ));
     }
     
 	/**
@@ -101,16 +114,23 @@ class ApiController extends Core_AbstractController
 	 */
     public function editeventAction () {
     	
+    	$validation = array ($this->translator->translate('event_title')  => 'event_title:X:string', 
+    						 $this->translator->translate('event_from') => 'event_from:X:date', 
+    						 $this->translator->translate('event_to') => 'event_to:X:date', 
+    					     $this->translator->translate('event_tweet_tags') => 'event_tweet_tags:X:string', 
+    						 $this->translator->translate('event_description') => 'event_description:N:string');
+    	
         $data = json_decode($_POST['data']);
         
         $id = $data->id;
-        $event_description = $data->event_description;
         
         $event_title = $data->event_title;
+        $event_description = $data->event_description;
         $event_from = $data->event_from;
         $event_to = $data->event_to;
         $event_tw_count = $data->event_tw_count;
         $event_state = $data->event_state;
+        $event_tweet_tags = $data->event_tweet_tags;
         
         try {
             
@@ -120,12 +140,23 @@ class ApiController extends Core_AbstractController
                 $event->loadById ($id);
             }
             
+            $validationResponse = Core_Validationhelper::validate ($validation, $data);
+            
+            if ($validationResponse != null) {
+            	return $this->apiControllerHelper->formatOutput(array(
+            			'error'             => true,
+            			'error_title'       => 'Eingabefehler',
+            			'error_description' => $validationResponse
+            	));
+            }
+            
             $event->setEventDescription ($event_description);
             $event->setEventTitle ($event_title);
             $event->setEventFrom ($event_from);
             $event->setEventTo ($event_to);
             $event->setEventTwCount ($event_tw_count);
             $event->setEventState ($event_state);
+            $event->setEventTweetTags($event_tweet_tags);
             
             if (isset ($id) && $id != '') {
                 $event->update ();
@@ -141,8 +172,6 @@ class ApiController extends Core_AbstractController
             ));
         }
         catch (Exception $e) {
-            echo var_dump($e);
-            
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
                 'error_title'       => 'Fehler beim Speichern des Events',

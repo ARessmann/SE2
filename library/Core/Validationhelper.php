@@ -23,31 +23,33 @@ class Core_Validationhelper {
             $allowNull      = ($validationItem[1] == 'N') ? true : false;
             $type           = $validationItem[2];
 
+            $linebr			= '<br>';
+            
             if (!$allowNull) {
                 switch ($type) {
                     case 'int':
                         if (!self::validateInt($data->$field)) {
-                           $ret .= $text . ': (z.B. 1)';
+                           $ret .= $text . ': (z.B. 1)' . $linebr;
                         }
                         break;
                     case 'mail':
                         if (!self::validateMail($data->$field)) {
-                            $ret .= ' ' . $text . ': (z.B. name@server.com)';
+                            $ret .= ' ' . $text . ': (z.B. name@server.com)' . $linebr;
                         }
                         break;
                     case 'double':
                         if (!self::validateDouble($data->$field)) {
-                            $ret .= ' ' . $text . ': (z.B. 1.1)';
+                            $ret .= ' ' . $text . ': (z.B. 1.1)' . $linebr;
                         }
                         break;
                     case 'string':
                         if (!self::validateString($data->$field)) {
-                            $ret .= ' ' . $text . ': (z.B. Text)' ;
+                            $ret .= ' ' . $text . ': (z.B. Text)' . $linebr;
                         }
                         break;
                    	case 'date':
                     	if (!self::validateDate($data->$field)) {
-                        	$ret .= ' ' . $text . ': (z.B. 01.01.2014)' ;
+                        	$ret .= ' ' . $text . ': (z.B. 01.01.2014)' . $linebr;
                         }
                         break;
                 }

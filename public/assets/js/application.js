@@ -100,7 +100,7 @@ var App = {
 	},
 	
 	notify : function(title, text, type) {
-		$.pnotify({ title: title, text: text, type: type, animation: 'show', delay: 1500, insert_brs: true });
+		$.pnotify({ title: title, text: text, type: type, animation: 'show', delay: 2500, insert_brs: true });
 	},
 	
 	toJSON : function(data) {

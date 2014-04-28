@@ -116,36 +116,43 @@ function _submitForm (delay) {
  * the data was set automatically
  */
 function editEvent (data_id, viewName) {
-	if (data_id == null) {
-		
-		
-		var data = {
-			id: '',
-			event_description: '',
-			event_title: '',
-			event_from: '',
-			event_to: '',
-			event_tw_count: '',
-			event_state: ''
-		};
+	
+	//get texts
+	$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
+		if (data_id == null) {
+			var data = {
+				translations: translations, //must have for each dlg
+				
+				id: '',
+				event_description: '',
+				event_title: '',
+				event_from: '',
+				event_to: '',
+				event_tw_count: '',
+				event_state: '',
+				event_tweet_tags: ''
+			};
 
-		modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
-		_addModalHandle (modal, viewName);
-	}
-	else {
-		$.ajax({
-			dataType : 'json',
-			error : function() {
-				App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-			},
-			success : function(data) {
-				modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
-				_addModalHandle (modal, viewName);
-			},
-			type : 'GET',
-			url : '/api/getevent/id/' + data_id
-		});
-	}
+			modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
+			_addModalHandle (modal, viewName);
+		}
+		else {
+			$.ajax({
+				dataType : 'json',
+				error : function() {
+					App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+				},
+				success : function(data) {
+					data['translations'] = translations;
+					
+					modal = new EJS({url: '/assets/tpl/modal_event_edit.ejs?v='+version_app}).render(data);
+					_addModalHandle (modal, viewName);
+				},
+				type : 'GET',
+				url : '/api/getevent/id/' + data_id
+			});
+		}
+	});
 }
 
 /*
@@ -161,7 +168,8 @@ function editEventSubmit () {
 		event_from: $('#event_from').val(),
 		event_to: $('#event_to').val(),
 		event_tw_count: $('#event_tw_count').val(),
-		event_state: $('#event_state').val()
+		event_state: $('#event_state').val(),
+		event_tweet_tags: $('#event_tweet_tags').val()
 	};
 
 	postData = App.toJSON(postData);
@@ -171,7 +179,7 @@ function editEventSubmit () {
 		data: { 'data': postData },
 		dataType: 'json',
 		error: function() {
-			App.notify('Unbekannter Fehler', 'Beim übertragen der Daten ist es zu einem Fehler gekommen', 'error');
+			App.notify('Unbekannter Fehler', 'Beim Übertragen der Daten ist es zu einem Fehler gekommen', 'error');
 		},
 		success: function(data) {
 
@@ -196,7 +204,7 @@ function deleteEvent (data_id) {
 	$.ajax({
 		dataType : 'json',
 		error : function() {
-			App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+			App.notify('Unbekannter Fehler', 'Beim Laden der Daten ist es zu einem Fehler gekommen', 'error');
 		},
 		success : function(data) {
 			if(data.error == true) {

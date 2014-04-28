@@ -11,7 +11,7 @@
     <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
     
 	<div class="span9">
-		<h3><?= $this->translator->translate("view_newEvent"); ?></h3>
+		<h3><?= $this->translator->translate("view_showEvent"); ?></h3>
 		<br>
 		<div class="row-fluid">
 		    <div class="input-prepend pull-left">
@@ -46,6 +46,8 @@
 			                    <th class="grid-caption">Von</th>
 			                    <th class="grid-caption">Bis</th>
 			                   	<th class="grid-caption">Beschreibung</th>
+			                   	<th class="grid-caption">Status</th>
+			                   	<th class="grid-caption">Tweets</th>
 							</tr>
 			           	</thead>
 			       		<tbody>
@@ -57,9 +59,11 @@
 	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event deaktivieren" class="icon-ban-circle">
 	                                    </td>
 	                                    <td><?= $event->getEventTitle (); ?></td>
-	                                    <td><?= $event->getEventFrom (); ?></td>
-	                                    <td><?= $event->getEventTo (); ?></td>
+	                                    <td><?= date_format (new DateTime($event->getEventFrom ()), 'd.m.Y'); ?></td>
+	                                    <td><?= date_format (new DateTime($event->getEventTo ()), 'd.m.Y'); ?></td>
 	                                    <td><?= $event->getEventDescription (); ?></td>
+	                                    <td><?= $event->getEventState (); ?></td>
+	                                    <td><?= $event->getEventTwCount (); ?></td>
 	                                </tr>
 	                            
 	           				<?php } ?>

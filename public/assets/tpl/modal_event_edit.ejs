@@ -7,13 +7,13 @@
 <div class="modal hide fade" id="modal-info">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Events</h3>
+    <h3>Event</h3>
   </div>
   <div class="modal-body">
 
 	<form class="form-horizontal">
 		<div class="control-group">
-            <label class="control-label" for="event_title">Titel</label>
+            <label class="control-label" for="event_title"><%= translations['event_title'] %></label>
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-cog"></i></span>
@@ -22,25 +22,34 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="event_from">Von</label>
+            <label class="control-label" for="event_from"><%= translations['event_from'] %></label>
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-cog"></i></span>
-                    <input type="text" class="input-small bt-datepicker" id="event_from" value="<%= event_from %>">
+                    <input type="date" id="event_from" value="<%= event_from %>">
                 </div>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="event_to">Bis</label>
+            <label class="control-label" for="event_to"><%= translations['event_to'] %></label>
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-cog"></i></span>
-                    <input type="text" class="input-small bt-datepicker" id="event_to" value="<%= event_to %>">
+                    <input type="date" id="event_to" value="<%= event_to %>">
                 </div>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="event_description">Beschreibung</label>
+            <label class="control-label" for="event_tweet_tags"><%= translations['event_tweet_tags'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" id="event_tweet_tags" value="<%= event_tweet_tags %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event_description"><%= translations['event_description'] %></label>
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-cog"></i></span>

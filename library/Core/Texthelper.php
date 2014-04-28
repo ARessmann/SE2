@@ -8,11 +8,27 @@
 class Core_Texthelper {
 
 	public function translate ($key) {
+		return $this->getTranslationAdapter()->translate($key);
+	}
+	
+	public function getTranslations ($tag) {
+		$texts = $this->getTranslationAdapter()->getMessages();
+		$ret = array ();
 		
+		foreach ($texts as $key => $val) {
+			if (strpos($key, $tag) !== false) {
+				$ret[$key] = $val;
+			}
+		}
+
+		return $ret;
+	}
+	
+	private function getTranslationAdapter () {
 		$session = new Zend_Session_Namespace('Core');
 		$lang = $session->lang;
 		
-		if (!isset($lang)) { 
+		if (!isset($lang)) {
 			$lang = 'de';
 		}
 		
@@ -24,12 +40,6 @@ class Core_Texthelper {
 				)
 		);
 		
-		return $translate->getAdapter()->translate($key);
-	}
-	
-	public function getTranslations ($key) {
-		
-		
-		
+		return $translate->getAdapter();
 	}
 }
