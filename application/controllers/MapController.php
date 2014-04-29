@@ -1,8 +1,7 @@
 <?php
 /**
- * main controller for this application 
- * in this controller all views will be handled and the user role for
- * the current user will be checked in each function 
+ * map controller for this application 
+ * controller for the map view 
  *
  * @author Andreas Ressmann
  * 31.03.2014

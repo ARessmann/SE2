@@ -1,7 +1,7 @@
 <?php
 /**
  * this class handle all ajax calls and includes also 
- * the main api calls like booking amount or getting the transaction file
+ * the main api calls like event, or tweets aswo
  *
  * @author Andreas Ressmann
  * 31.03.2014
