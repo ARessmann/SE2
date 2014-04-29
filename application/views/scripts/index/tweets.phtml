@@ -62,7 +62,7 @@
 	                                        
 	                                    </td>
 	                                    <td><?= $tweet->getTweetText (); ?></td>
-	                                    <td><?= $tweet->getCreationDate (); ?></td>
+	                                    <td><?= date_format (new DateTime($tweet->getCreationDate ()), 'd.m.Y'); ?></td>
 	                                    <td><?= $tweet->getTweetUser (); ?></td>
 	                                    <td><?= $tweet->getLocation (); ?></td>
 	                                </tr>
