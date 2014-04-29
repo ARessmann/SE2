@@ -250,8 +250,16 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 	 * @return Core_Model_TweetEntry 
 	 */
 	public function loadByEventId ($id) {
-		$values = $this->loadByProperty(event_id, $id);
-		$this->setValues ($values);
-		return $this->getData();
+		$results = $this->_loadByProperty('event_id', $id);
+		$ret 	 = array (); 
+		
+		foreach ($results as $result) {
+			$event = new Core_Model_TweetEntry ();
+			$event->setValues ($result);
+			
+			$ret[] = $event;
+		}
+		
+		return $ret;
 	}
 }

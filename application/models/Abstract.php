@@ -52,14 +52,19 @@ abstract class Core_Model_Abstract {
 	 * base function to load elements from the database by a given property with a value
 	 * it is also possible to order the result
 	 */
-	public function loadByProperty($propertyName, $propertyValue, $order = 'id') {
+	public function _loadByProperty($propertyName, $propertyValue, $order = 'id') {
 
-        $results =  $this->dbAdapter->select()->from($this->getTableName())
-                    ->where($propertyName . ' = ?', $propertyValue)
-                    ->order($order)
-                    ->query()
-                    ->fetchAll();
-                    
+		if (isset($propertyValue) && $propertyValue != 0 && $propertyValue != '0') {
+	        $results =  $this->dbAdapter->select()->from($this->getTableName())
+	                    ->where($propertyName . ' = ' . $propertyValue)
+	                    ->order($order)
+	                    ->query()
+	                    ->fetchAll();
+		}
+		else {
+			$results = $this->_loadAll();
+		}
+
         return $results;
 	}
 	

@@ -218,8 +218,3 @@ function deleteEvent (data_id) {
 		url : '/api/deleteevent/id/' + data_id
 	});
 }
-
-function chooseEvent (viewName) {
-	$('#filter').val($('#choose_event').val());
-	_submitForm(0);
-}

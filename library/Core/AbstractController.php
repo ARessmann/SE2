@@ -78,4 +78,43 @@ class Core_AbstractController extends Zend_Controller_Action {
 		$this->view->messenger_type = $type;
 		
 	}
+	
+	/*
+	 * default method to remove deleted elements from a list
+	*/
+	public function removeDeletedFromList ($objectList) {
+		$res = array ();
+		 
+		foreach ($objectList as $object) {
+			$objectData = $object->getData ();
+			$keys = array_keys($objectData);
+	
+			foreach ($keys as $key) {
+				if (strpos($key, 'deleted') !== false) {
+					if ($objectData[$key] != 1) {
+						$res[] = $object;
+					}
+				}
+			}
+		}
+		 
+		return $res;
+	}
+	
+	/*
+	 * default method to search in a objectlist
+	*/
+	public function searchObjectList ($objectList, $filter) {
+		$res = array ();
+	
+		foreach ($objectList as $object) {
+			$objectStr = strtolower (implode (array_values($object->getData ()), ' '));
+	
+			if (strpos($objectStr, $filter) !== false) {
+				$res[] = $object;
+			}
+		}
+	
+		return $res;
+	}
 }

@@ -24,6 +24,8 @@ event_state;Status
 tag_id;Tag-Id
 tag_name;Name
 tweet_id;Tweet-Id
+tweet_entries;Tweets
+tweet_choose_event;Eventauswahl
 tw_text;Beschreibung
 tw_creationdate;Tweet creation
 tw_user;Tweet-User

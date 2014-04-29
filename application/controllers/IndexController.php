@@ -70,9 +70,11 @@ class IndexController extends Core_AbstractController {
     	$events = new Core_Model_Event();
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
+		$selectedChooseEvent = $this->_getParam('choose_event');        
 
-        $tweets = $tweetEntry->loadAll ();
-
+        $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
+		$tweets = $this->removeDeletedFromList ($tweets);
+        
         if (isset ($filter) && $filter != '')
             $tweets = $this->searchObjectList($tweets, $filter);
 
@@ -81,23 +83,8 @@ class IndexController extends Core_AbstractController {
         $this->view->tweets = $tweets;
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
-    }
-    
-    /*
-     * default method to search in a objectlist
-     */
-    private function searchObjectList ($objectList, $filter) {
-        $res = array ();
         
-        foreach ($objectList as $object) {
-            $objectStr = strtolower (implode (array_values( ($object->getData ())), ' '));
-            
-            if (strpos($objectStr, $filter) !== false) {
-                $res[] = $object;
-            }
-        }
-        
-        return $res;
+        $this->view->selectedChooseEvent = $selectedChooseEvent;
     }
     
 }

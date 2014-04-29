@@ -5,6 +5,8 @@
 	28.9.2014
  -->
 
+<?php echo $this->partial('_partials/tweets/scripts.phtml', array()); ?>
+
 <div class="row-fluid">
 
     <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
@@ -12,28 +14,30 @@
 	<div class="span9">
 		<h3><?= $this->translator->translate("tweet_entries"); ?></h3>
 		<br>
-		<div class="row-fluid">
-		    <div class="input-prepend pull-left">
-		    	<select name="choose_event" id="choose_event" size="1" onchange="javascript: chooseEvent('tweets')">
-		    		<option  <?php echo ($this->lang == 'de') ? 'selected' : '' ?> >Alle</option>
-		    		<?php foreach ($this->events as $event) { ?>
-	                	<option  <?php echo ($this->lang == 'de') ? 'selected' : '' ?> value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
-	           		<?php } ?>
-		    	</select>
-			</div>
-
-		    <div class="control-group pull-right">
-		    	<div class="input-prepend">
-		        	
-		        </div>
-		    </div>
-		</div>
-
+		
 	    <form id="action_frm" action="tweets">
 	    	<input type="hidden" id="filter" name="filter" value="" />
 	        <div class="row-fluid">
 		        <div class="span12">
 
+		        	<div class="row-fluid">
+			        	<i class="icon-tasks"></i> <?= $this->translator->translate("tweet_choose_event"); ?><br>
+			        	<select name="choose_event" name="choose_event" id="choose_event" size="1">
+				    		<option value="0">Alle</option>
+				    		<?php foreach ($this->events as $event) { ?>
+			                	<option <?= ($event->getId() == $this->selectedChooseEvent) ? 'selected' : ''; ?> value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
+			           		<?php } ?>
+				    	</select>
+		        	
+					    <div class="control-group pull-right">
+					    	<div class="input-prepend">
+					        	<span class="add-on"><i class="icon-eye-open"></i></span>
+					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="alle Tweets anzeigen" />
+					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn">Suchen</a>
+					        </div>
+					    </div>
+					</div>
+		        
 			        <div class="grid-head">
 			        	<i class="icon-tasks"></i> Tweets
 			            <span class="label label-important pull-right"><?= $this->counter ?></span>
@@ -50,7 +54,8 @@
 							</tr>
 			           	</thead>
 			       		<tbody>
-			       			<?php foreach ($this->tweets as $tweet) { ?>
+			       			<?php foreach ($this->tweets as $tweet) {
+			       				?>
 
 	                                <tr class="user-row">
 	                                    <td class="warning">
