@@ -178,5 +178,24 @@ class ApiController extends Core_AbstractController
                 'error_description' => ''
             ));
         }
+    }
+    
+    	/**
+	 * getting Tweets by Event Id and transform it to a json string
+	 *
+	 * @return json string 
+	 */
+    public function gettweetsAction () {
+        $id = $this->_getParam('event_id');
+        
+        $tweet = new Core_Model_TweetEntry ();
+        
+        if (isset ($id)) {
+            $value = $tweet->loadByEventId ($id);
+            
+            if (isset ($value))  {
+                return $this->apiControllerHelper->formatOutput($value);
+            }
+        }
     } 
 }

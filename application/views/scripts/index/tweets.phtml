@@ -14,10 +14,10 @@
 		<br>
 		<div class="row-fluid">
 		    <div class="input-prepend pull-left">
-		    	<select name="choose_event" id="choose_event" size="1">
-		    		<option>Alle</option>
+		    	<select name="choose_event" id="choose_event" size="1" onchange="javascript: chooseEvent('tweets')">
+		    		<option  <?php echo ($this->lang == 'de') ? 'selected' : '' ?> >Alle</option>
 		    		<?php foreach ($this->events as $event) { ?>
-	                	<option value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
+	                	<option  <?php echo ($this->lang == 'de') ? 'selected' : '' ?> value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
 	           		<?php } ?>
 		    	</select>
 			</div>
@@ -29,7 +29,7 @@
 		    </div>
 		</div>
 
-	    <form id="action_frm" action="event">
+	    <form id="action_frm" action="tweets">
 	    	<input type="hidden" id="filter" name="filter" value="" />
 	        <div class="row-fluid">
 		        <div class="span12">

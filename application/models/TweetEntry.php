@@ -243,4 +243,15 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 	public function delete ($id) {
 		$this->_delete($id);
 	}
+	
+		/**
+	 * funtion to load a object of the current type
+	 * 
+	 * @return Core_Model_TweetEntry 
+	 */
+	public function loadByEventId ($id) {
+		$values = $this->loadByProperty(event_id, $id);
+		$this->setValues ($values);
+		return $this->getData();
+	}
 }
