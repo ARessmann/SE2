@@ -23,7 +23,7 @@
 		        	<div class="row-fluid">
 			        	<i class="icon-tasks"></i> <?= $this->translator->translate("tweet_choose_event"); ?><br>
 			        	<select name="choose_event" name="choose_event" id="choose_event" size="1">
-				    		<option value="0">Alle</option>
+				    		<option value="0"><?= $this->translator->translate("view_all"); ?></option>
 				    		<?php foreach ($this->events as $event) { ?>
 			                	<option <?= ($event->getId() == $this->selectedChooseEvent) ? 'selected' : ''; ?> value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
 			           		<?php } ?>
@@ -32,8 +32,8 @@
 					    <div class="control-group pull-right">
 					    	<div class="input-prepend">
 					        	<span class="add-on"><i class="icon-eye-open"></i></span>
-					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="alle Tweets anzeigen" />
-					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn">Suchen</a>
+					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="<?= $this->translator->translate("view_allTweets"); ?>" />
+					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn"><?= $this->translator->translate("event_search"); ?></a>
 					        </div>
 					    </div>
 					</div>
@@ -47,10 +47,10 @@
 						<thead>
 			            	<tr>
 			                	<th width="37px" class="grid-caption"></th>
-			                    <th class="grid-caption">Text</th>
-			                    <th class="grid-caption">Datum</th>
-			                    <th class="grid-caption">User</th>
-			                   	<th class="grid-caption">Ort</th>
+			                    <th class="grid-caption"><?= $this->translator->translate("tw_text"); ?></th>
+			                    <th class="grid-caption"><?= $this->translator->translate("tweet_date"); ?></th>
+			                    <th class="grid-caption"><?= $this->translator->translate("tw_user"); ?></th>
+			                   	<th class="grid-caption"><?= $this->translator->translate("tw_location"); ?></th>
 							</tr>
 			           	</thead>
 			       		<tbody>

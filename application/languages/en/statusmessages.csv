@@ -5,6 +5,8 @@ general_saving_error;There was an error during saving!
 view_language;Language
 view_showEvent;Show all events
 view_newEvent;Create new event
+view_all;All
+view_allTweets;view all tweets
 event_search;Search 
 event_title;Title
 event_from;From
@@ -48,3 +50,7 @@ sent_id;Sent Id
 sent_text;Sent text
 sent_weight;Sent weight
 menu_help;Help
+event_edit;edit event
+event_deactivate;deactivate event
+general_cancel;Cancel
+tweet_date;Date

@@ -22,14 +22,14 @@
 		        	<div class="row-fluid">
 					    <div class="input-prepend pull-left">
 					    	<span class="add-on"><i class="icon-plus-sign"></i></span>
-					        	<a id="event-add" href="#!" onclick="javascript:editModal(null, 'event');" class="btn">Neuen Event anlegen</a>
+					        	<a id="event-add" href="#!" onclick="javascript:editModal(null, 'event');" class="btn"><?= $this->translator->translate("view_newEvent"); ?></a>
 						</div>
 					            
 					    <div class="control-group pull-right">
 					    	<div class="input-prepend">
 					        	<span class="add-on"><i class="icon-eye-open"></i></span>
-					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="alle Events anzeigen" />
-					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn">Suchen</a>
+					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="<?= $this->translator->translate("view_showEvent"); ?>" />
+					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn"><?= $this->translator->translate("event_search"); ?></a>
 					        </div>
 					    </div>
 					</div>
@@ -43,12 +43,12 @@
 						<thead>
 			            	<tr>
 			                	<th width="37px" class="grid-caption"></th>
-			                    <th class="grid-caption">Titel</th>
-			                    <th class="grid-caption">Von</th>
-			                    <th class="grid-caption">Bis</th>
-			                   	<th class="grid-caption">Beschreibung</th>
-			                   	<th class="grid-caption">Status</th>
-			                   	<th class="grid-caption">Tweets</th>
+			                    <th class="grid-caption"><?= $this->translator->translate("event_title"); ?></th>
+			                    <th class="grid-caption"><?= $this->translator->translate("event_from"); ?></th>
+			                    <th class="grid-caption"><?= $this->translator->translate("event_to"); ?></th>
+			                   	<th class="grid-caption"><?= $this->translator->translate("event_description"); ?></th>
+			                   	<th class="grid-caption"><?= $this->translator->translate("event_state"); ?></th>
+			                   	<th class="grid-caption"><?= $this->translator->translate("tweet_entries"); ?></th>
 							</tr>
 			           	</thead>
 			       		<tbody>
@@ -56,8 +56,8 @@
 	                            
 	                                <tr class="user-row">
 	                                    <td class="warning">
-	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event bearbeiten" class="icon-edit"></i>&nbsp;
-	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="Event deaktivieren" class="icon-ban-circle">
+	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_edit"); ?>" class="icon-edit"></i>&nbsp;
+	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_deactivate"); ?>" class="icon-ban-circle">
 	                                    </td>
 	                                    <td><?= $event->getEventTitle (); ?></td>
 	                                    <td><?= date_format (new DateTime($event->getEventFrom ()), 'd.m.Y'); ?></td>
