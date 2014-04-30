@@ -6,7 +6,7 @@ view_language;Language
 view_showEvent;Show all events
 view_newEvent;Create new event
 event_search;Search 
-event_title;Ttle
+event_title;Title
 event_from;From
 event_to;To
 event_description;Description
