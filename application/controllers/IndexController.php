@@ -87,4 +87,26 @@ class IndexController extends Core_AbstractController {
         $this->view->selectedChooseEvent = $selectedChooseEvent;
     }
     
+    public function analysisAction () {
+    	$tweetEntry = new Core_Model_TweetEntry ();
+    	$events = new Core_Model_Event();
+    	$event = $events->loadAll();
+        $filter = $this->_getParam('filter');
+		$selectedChooseEvent = $this->_getParam('choose_event');        
+
+        $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
+		$tweets = $this->removeDeletedFromList ($tweets);
+        
+        if (isset ($filter) && $filter != '')
+            $tweets = $this->searchObjectList($tweets, $filter);
+
+        $this->view->filter = $filter;
+        $this->view->counter = count($tweets);
+        $this->view->tweets = $tweets;
+        $this->view->menuOptions = $this->getMenu ();
+        $this->view->events = $event;
+        
+        $this->view->selectedChooseEvent = $selectedChooseEvent;
+    }
+    
 }
