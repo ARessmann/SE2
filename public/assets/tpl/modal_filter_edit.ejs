@@ -1,0 +1,65 @@
+<!-- 
+	modal dialog for filter objects
+ -->
+<div class="modal hide fade" id="modal-info">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Filter</h3>
+  </div>
+  <div class="modal-body">
+
+	<form class="form-horizontal">
+		<div class="control-group">
+            <label class="control-label" for="filter_tags"><%= translations['filter_tags'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" id="filter_tags" value="<%= filter_tags %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="filter_from"><%= translations['filter_from'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="date" id="filter_from" value="<%= filter_from %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="filter_to"><%= translations['filter_to'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="date" id="filter_to" value="<%= filter_to %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="filter_location"><%= translations['filter_location'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" id="filter_location" value="<%= filter_location %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="filter_language"><%= translations['filter_language'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                   	<input type="text" id="filter_language" value="<%= filter_language %>">
+                </div>
+            </div>
+        </div>
+	</form>
+    
+  </div>
+  
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" data-id="<%= id %>" id="modal-submit"><i class="icon-ok icon-white"></i><%= translations['event_save'] %></a>
+    <a href="#" class="btn pull-left" data-dismiss="modal"><i class="icon-remove"></i><%= translations['general_cancel'] %></a>
+  </div>
+</div>
