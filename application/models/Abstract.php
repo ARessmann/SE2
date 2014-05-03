@@ -166,4 +166,44 @@ abstract class Core_Model_Abstract {
 		->query()
 		->fetchAll();
 	}
+	
+	/**
+	 * Fetch all entries from table with wherCondition = propertyName.
+	 * 
+	 * @param unknown $propertyLike all like conditions in the where clause
+	 * @param unknown $propertyEqual all equals (=) conditions in the where clause
+	 * @param string $order
+	 * @return unknown
+	 */
+	public function _loadAllByProperties($propertyLike, $propertyEqual, $order = 'id')
+	{	
+		if (isset($propertyLike) || isset($propertyEqual))
+		{
+			$whereCondition = null;
+			foreach ($propertyLike as $key => $val)
+			{
+				if($val != "" && $val != null)
+					$whereCondition .= $key . ' like \'%' . $val . '%\' AND ';
+			}
+			
+			foreach ($propertyEqual as $key => $val)
+			{
+				if($val != "" && $val != null)
+					$whereCondition .= $key . ' = ' . $val . ' AND ';
+			}
+			if($whereCondition != "")
+				$whereCondition = substr($whereCondition, 0, -5); // remove the AND
+			 
+			$results =  $this->dbAdapter->select()->from($this->getTableName())
+			->where($whereCondition)
+			->order($order)
+			->query()
+			->fetchAll();
+		}
+		else {
+			$results = $this->_loadAll();
+		}
+	
+		return $results;
+	}
 }

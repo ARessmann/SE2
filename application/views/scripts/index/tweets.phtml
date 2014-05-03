@@ -4,7 +4,6 @@
 	Johannes Kammel
 	28.9.2014
  -->
-
 <?php echo $this->partial('_partials/tweets/scripts.phtml', array()); ?>
 
 <div class="row-fluid">
@@ -19,25 +18,61 @@
 	    	<input type="hidden" id="filter" name="filter" value="" />
 	        <div class="row-fluid">
 		        <div class="span12">
-
 		        	<div class="row-fluid">
-			        	<i class="icon-tasks"></i> <?= $this->translator->translate("tweet_choose_event"); ?><br>
-			        	<select name="choose_event" name="choose_event" id="choose_event" size="1">
+		        	<table>
+		        	<colgroup>
+		        	<col style="width:30%"/>
+		        	<col style="width:30%"/>
+		        	<col style="width:30%"/>
+		        	<col style="width:30%"/>
+		        	</colgroup>
+	        		<tr>
+	        		<td>
+		        		<i class="icon-tasks"></i> <?= $this->translator->translate("tweet_choose_event"); ?>
+		        	</td>
+		        	<td>
+		        		<i class="icon-tasks"></i> Filter
+		        	</td>
+		        	<td></td>
+		        	<td></td>		        	
+		        	</tr>
+		        	
+		        	<tr>
+		        	<td>
+		        		<select name="choose_event" name="choose_event" id="choose_event" size="1">
 				    		<option value="0"><?= $this->translator->translate("view_all"); ?></option>
 				    		<?php foreach ($this->events as $event) { ?>
 			                	<option <?= ($event->getId() == $this->selectedChooseEvent) ? 'selected' : ''; ?> value="<?= $event->getId (); ?>"><?= $event->getEventTitle (); ?></option>
 			           		<?php } ?>
 				    	</select>
+		        	</td>
+		        	<td>
+		        		<div class="input-prepend">
+		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i></span>
+		        		<select name="choose_filter" name="choose_filter" id="choose_filter" size="1">
+		        			<option value="0"></option>
+				    		<?php foreach ($this->filterObject as $curObj) { ?>
+			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterTags(); ?></option>
+			           		<?php } ?>
+				    	</select>
+				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter');" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
+				    	<a id="useFilter" href="#!" onclick="javascript:search('event');" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
+				    	</div>
+		        	</td>
+		        	<td>
+		        	</td>
+		        	<td>
+				    	<div class="input-prepend">
+				        	<span class="add-on"><i class="icon-eye-open"></i></span>
+				            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="<?= $this->translator->translate("view_allTweets"); ?>" />
+				            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn"><?= $this->translator->translate("event_search"); ?></a>
+				        </div>
+		        	</td>
+		        	</tr>
 		        	
-					    <div class="control-group pull-right">
-					    	<div class="input-prepend">
-					        	<span class="add-on"><i class="icon-eye-open"></i></span>
-					            <input type="text" id="search_field" name="search_field" value="<?= $this->filter; ?>" placeholder="<?= $this->translator->translate("view_allTweets"); ?>" />
-					            <a id="search_btn" href="#!" onclick="javascript:search('event');" class="btn"><?= $this->translator->translate("event_search"); ?></a>
-					        </div>
-					    </div>
+		        	</table>
 					</div>
-		        
+					
 			        <div class="grid-head">
 			        	<i class="icon-tasks"></i> Tweets
 			            <span class="label label-important pull-right"><?= $this->counter ?></span>

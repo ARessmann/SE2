@@ -41,16 +41,20 @@ fi_consider_tweet;Filter-consider Tweet
 ignore_tweet;Ignore Tweet
 time_start;Time start
 time_end;Time end
-filt_ignore_tweet;Filter ignore Tweet
-filt_ignore_id;Filter ignore Id
-ignored_tweet;Ignored Tweet
-filt_consider_id;Filter consider Tweet
-consider_tweet;Consider Tweet
 sent_id;Sent Id
 sent_text;Sent text
 sent_weight;Sent weight
 menu_help;Help
+tweet_date;Date
+general_cancel;Cancel
 event_edit;edit event
 event_deactivate;deactivate event
-general_cancel;Cancel
-tweet_date;Date
+filter_tags;Tweet tags
+filter_from;Tweet from
+filter_to;Tweet to
+filter_location;Tweet location
+filter_language;Tweet language
+event_id;Event
+filter_edit;edit filter
+view_newFilter;New
+view_startAnalysis;Start analysis

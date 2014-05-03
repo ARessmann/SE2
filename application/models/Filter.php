@@ -52,8 +52,8 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $tags
 	 */
-	public function setEventDescription ($tags) {
-		$this->event_tags = $tags;
+	public function setFilterTags ($tags) {
+		$this->filter_tags = $tags;
 	}
 	
 	
@@ -69,14 +69,14 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $from
 	 */
-	public function setEventFrom ($from) {
+	public function setFilterFrom ($from) {
 		$this->filter_from = $from;
 	}
 	
 	/**
 	 * Get the filter end date (filter to)
 	 */
-	public function getfilterTo () {
+	public function getFilterTo () {
 		return $this->filter_to;
 	}
 	
@@ -85,7 +85,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $to
 	 */
-	public function setfilterTo ($to) {
+	public function setFilterTo ($to) {
 		$this->filter_to = $to;
 	}
 	
@@ -101,7 +101,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $location
 	 */
-	public function setFilterLocatio ($location) {
+	public function setFilterLocation ($location) {
 		$this->filter_location = $location;
 	}
 	
@@ -117,7 +117,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $lang
 	 */
-	public function setEventState ($lang) {
+	public function setFilterLanguage ($lang) {
 		$this->filter_language = $lang;
 	}
 	
@@ -244,5 +244,24 @@ class Core_Model_Filter extends Core_Model_Abstract {
 		}
 		
 		return $ret;
+	}
+	
+	/**
+	 * Load a filter object by an object id - return the real filter object
+	 * 
+	 * @param unknown $id
+	 * @return Core_Model_Filter
+	 */
+	public function loadFilterObjectById ($id)
+	{
+		$results = $this->_loadByProperty('id', $id);
+		$filter = new Core_Model_Filter ();
+	
+		foreach ($results as $result)
+		{
+			$filter->setValues ($result);
+		}
+	
+		return $filter;
 	}
 }

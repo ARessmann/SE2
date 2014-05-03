@@ -2,6 +2,7 @@ general_success;Erfolgreich gespeichert
 general_remove_success;Erfolgreich gelöscht
 general_noentrysfound;Keine Einträge gefunden
 general_saving_error;Beim Speichern ist ein Fehler aufgetreten!
+view_language;Sprache
 view_showEvent;Alle Events anzeigen
 view_newEvent;Neues Event anlegen
 view_all;Alle
@@ -40,14 +41,20 @@ fi_consider_tweet;Filter-Tweet überprüfen
 ignore_tweet;Tweet ignorieren
 time_start;Von
 time_end;Bis
-filt_ignore_tweet;Filter Tweet ignorieren
-filt_ignore_id;Filter Id ignorieren
-ignored_tweet;Tweet iignoriert
-filt_consider_id;Filter überprüft Id
-consider_tweet;Tweet überprüfen
 sent_id;Id senden
 sent_text;Text senden
 sent_weight;Alles senden
 menu_help;Hilfe
 tweet_date;Datum
 general_cancel;Abbrechen
+event_edit;Veranstaltung bearbeiten
+event_deactivate;Veranstaltung deaktivieren
+filter_tags;Tweet Tags
+filter_from;Tweet von
+filter_to;Tweet bis
+filter_location;Tweet Ort
+filter_language;Tweet Sprache
+event_id;Veranstaltung
+filter_edit;Filter bearbeiten
+view_newFilter;Neu
+view_startAnalysis;Start Analyse

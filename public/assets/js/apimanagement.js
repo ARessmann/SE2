@@ -21,6 +21,12 @@ function initTriggers() {
 		editModal($(this).attr('data-id'), $(this).attr('view-name'));
 	});
 	
+	// onclick event for the edit of a filter object (icon-briefcase)
+	$('.icon-briefcase').on('click', function(e) {
+		if($(this).attr('data-id') != '' && $(this).attr('data-id') != '0')
+			editModal($(this).attr('data-id'), $(this).attr('view-name'));
+	});	
+	
 	$('.icon-pencil').on('click', function(e) {
 		editModal($(this).attr('data-id'), $(this).attr('view-name'));
 	});
@@ -38,6 +44,17 @@ function initTriggers() {
 		search($(this).attr('view-name'));
 	});
 	
+	// function for filter-add button for correct disable/enable handling
+	$(function(){
+	      //Set button disabled
+	      $("#filter-add").attr("disabled", "disabled");
+	 
+          var selectedEventId = $("select#choose_event option:selected").val();
+          if(selectedEventId == 0)
+        	$("#filter-add").attr("disabled", "disabled");
+       	  else
+       		$("#filter-add").removeAttr("disabled");  
+	})
 }
 
 /*
@@ -57,6 +74,9 @@ function deleteItem(data_id, viewName) {
 		case 'event':
 			deleteEvent (data_id);
 			break;
+		case 'filter':
+			deleteFilter(data_id);
+			break;
 	}
 }
 
@@ -64,13 +84,17 @@ function deleteItem(data_id, viewName) {
  * choose the right way to edit the object by the given viewName
  */
 function editModal(data_id, viewName) {
-	//App.debug('editModal(' + data_id +', ' + viewName +')');
+	// App.debug('editModal(' + data_id +', ' + viewName +')');
 	
 	var modal 		= null;
 	
 	switch (viewName) {
 		case 'event':
 			editEvent (data_id, viewName);
+			break;
+		case 'filter':
+			if($("#filter-add").attr("disabled") != "disabled")
+				editFilter(data_id, viewName);
 			break;
 	}
 }
@@ -86,6 +110,9 @@ function submitModal(viewName) {
 	switch (viewName) {
 		case 'event':
 			editEventSubmit ();
+			break;
+		case 'filter':
+			editFilterSubmit();
 			break;
 	}
 }
@@ -216,5 +243,110 @@ function deleteEvent (data_id) {
 		},
 		type : 'GET',
 		url : '/api/deleteevent/id/' + data_id
+	});
+}
+
+/*
+ * main function to show a new Filter or edit a persisted
+ * the partial html will be rendered with EJS, if a persisted one was opend 
+ * the data was set automatically
+ */
+function editFilter (data_id, viewName)
+{	
+	//get texts
+	$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
+		if (data_id == null){
+			var data = {
+				translations: translations, //must have for each dlg
+				
+				id: '',
+				filter_tags: '',
+				filter_from: '',
+				filter_to: '',
+				filter_location: '',
+				filter_language: ''
+			};
+
+			modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
+			_addModalHandle (modal, viewName);
+		}
+		else {
+			$.ajax({
+				dataType : 'json',
+				error : function() {
+					App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+				},
+				success : function(data) {
+					data['translations'] = translations;
+
+					modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
+					_addModalHandle (modal, viewName);
+				},
+				type : 'GET',
+				url : '/api/getfilter/id/' + data_id
+			});
+		}
+	});
+}
+
+/*
+ * main function to persist the viewed filter in the dialog
+ * the form data will be posted by ajax after displaying the respone the 
+ * form will be submitted
+ */
+function editFilterSubmit ()
+{
+	var postData = {
+		id: $('#modal-submit').attr('data-id'),
+		filter_tags: $('#filter_tags').val(),
+		filter_from: $('#filter_from').val(),
+		filter_to: $('#filter_to').val(),
+		filter_location: $('#filter_location').val(),
+		filter_language: $('#filter_language').val(),
+	};
+	
+	postData = App.toJSON(postData);
+	App.debug('POST: ' + postData);
+
+	$.ajax({
+		data: { 'data': postData },
+		dataType: 'json',
+		error: function() {
+			App.notify('Unbekannter Fehler', 'Beim Übertragen der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success: function(data) {
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				$('#modal-info').modal('hide');
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type: 'POST',
+		url: '/api/editfilter/'
+	});
+}
+
+/*
+ * main funtion to delete an Filter 
+ * the form will be submitted after displaying the response
+ */
+function deleteFilter (data_id) {
+	$.ajax({
+		dataType : 'json',
+		error : function() {
+			App.notify('Unbekannter Fehler', 'Beim Laden der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success : function(data) {
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type : 'GET',
+		url : '/api/deletefilter/id/' + data_id
 	});
 }

@@ -68,13 +68,39 @@ class IndexController extends Core_AbstractController {
      public function tweetsAction () {
     	$tweetEntry = new Core_Model_TweetEntry ();
     	$events = new Core_Model_Event();
+    	$filterObject = new Core_Model_Filter(); // for filtering after tweets
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
 		$selectedChooseEvent = $this->_getParam('choose_event');        
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
-        
+		
+		$filters = null; // all filterObjects from the selected Event
+		if($selectedChooseEvent != null && $selectedChooseEvent != '0')
+			$filters = $filterObject->loadByEventId($selectedChooseEvent);
+		
+		// id of the selected filter object (listBox)
+		$selectedChooseFilter = $this->_getParam('choose_filter'); 
+		// if the filter is set - and is also selected, load the right tweets
+		if(isset($selectedChooseFilter) && $selectedChooseFilter != '' && $selectedChooseFilter != '0')
+		{
+			$currentSelectedFilter = new Core_Model_Filter();
+			$currentSelectedFilter = $filterObject->loadFilterObjectById($selectedChooseFilter);
+			/*
+			 * select * from tweet_entry where tw_text like '%selectedChooseFilter->getFilterTags()%'
+			 */
+			$whereLike = array(
+					'tw_text'    			=> $currentSelectedFilter->getFilterTags(),
+					'tw_language'    		=> $currentSelectedFilter->getFilterLanguage(),
+					'tw_location'	       	=> $currentSelectedFilter->getFilterLocation()
+			);
+			$whereEquals = array(
+					'event_id'    			=> $currentSelectedFilter->getEventId()
+			);
+			$tweets = $tweetEntry->loadAllByProperties($whereLike, $whereEquals, "id");
+		}		
+		
         if (isset ($filter) && $filter != '')
             $tweets = $this->searchObjectList($tweets, $filter);
 
@@ -83,8 +109,10 @@ class IndexController extends Core_AbstractController {
         $this->view->tweets = $tweets;
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
+        $this->view->filterObject = $filters;
         
         $this->view->selectedChooseEvent = $selectedChooseEvent;
+       	$this->view->selectedChooseFilter = $selectedChooseFilter;
     }
     
     public function analysisAction () {

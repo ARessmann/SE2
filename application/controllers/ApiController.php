@@ -197,5 +197,123 @@ class ApiController extends Core_AbstractController
                 return $this->apiControllerHelper->formatOutput($value);
             }
         }
-    } 
+    }
+
+    /**
+     * getting an Filter by Id and transform it to a json string
+     *
+     * @return json string
+     */
+    public function getfilterAction () {
+    	$id = $this->_getParam('id');
+    
+    	$filter = new Core_Model_Filter();
+
+    	if (isset ($id)) 
+    	{
+    		$value = $filter->loadById ($id);
+    
+    		if (isset ($value))  {
+    			return $this->apiControllerHelper->formatOutput($value);
+    		}
+    	}
+    }
+    
+    /**
+     * Function to delete a Filter by the given Id
+     *
+     * @return json success message or a error message
+     */
+    public function deletefilterAction () {
+    
+    	$id = $this->_getParam('id');
+    
+    	try {
+    		if (isset ($id)) {
+    			$filter = new Core_Model_Filter();
+    			$filter->delete ($id);
+    		}
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'success'               => true,
+    				'success_title'     => 'Filter wurde erfolgreich gelöscht',
+    				'success_description'   => ''
+    		));
+    	}
+    	catch (Exception $e) {
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'error'             => true,
+    				'error_title'       => 'Fehler beim Löschen des Filters',
+    				'error_description' => ''
+    		));
+    	}
+    }
+    
+    /**
+     * function to save or update a Filter object
+     * the validation array includes the pattern for the validator to validate the
+     * fields
+     *
+     * @return json success message or a error message
+     */
+    public function editfilterAction () {
+    	$validation = array ($this->translator->translate('filter_tags')  => 'filter_tags:N:string',
+    			$this->translator->translate('filter_from') => '$filter_from:X:date',
+    			$this->translator->translate('filter_to') => '$filter_to:X:date',
+    			$this->translator->translate('filter_location') => 'filter_location:X:string',
+    			$this->translator->translate('filter_language') => 'filter_language:X:string');
+    	 
+    	$data = json_decode($_POST['data']);
+    
+    	$id = $data->id;
+    	$filter_tags = $data->filter_tags;
+    	$filter_from = $data->filter_from;
+    	$filter_to = $data->filter_to;
+    	$filter_location = $data->filter_location;
+    	$filter_language = $data->filter_language;
+    
+    	try {
+    
+    		$filter = new Core_Model_Filter();
+
+    		if (isset ($id) && $id != '') {
+    			$filter->loadById ($id);
+    		}
+    		
+    		$validationResponse = Core_Validationhelper::validate ($validation, $data);
+    		
+    		if ($validationResponse != null) {
+    			return $this->apiControllerHelper->formatOutput(array(
+    					'error'             => true,
+    					'error_title'       => 'Eingabefehler',
+    					'error_description' => $validationResponse
+    			));
+    		}
+    
+    		$filter->setFilterTags($filter_tags);
+    		$filter->setFilterFrom($filter_from);
+    		$filter->setFilterTo($filter_to);
+    		$filter->setFilterLanguage($filter_language);
+    		$filter->setFilterLocation($filter_location);
+    		
+    		if (isset ($id) && $id != '') {
+    			$filter->update();
+    		}
+    		else {
+    			$filter->save();
+    		}
+    
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'success'               => true,
+    				'success_title'     => 'Filter wurde erfolgreich gespeichert',
+    				'success_description'   => ''
+    		));
+    	}
+    	catch (Exception $e) {
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'error'             => true,
+    				'error_title'       => 'Fehler beim Speichern des Filters',
+    				'error_description' => ''
+    		));
+    	}
+    }
 }

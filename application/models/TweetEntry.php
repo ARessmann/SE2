@@ -262,4 +262,26 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 		
 		return $ret;
 	}
+	
+	/**
+	 * Load all tweets by given properties
+	 * TODO This must be changed to handle a set of where conditions
+	 */
+	public function loadAllByProperties ($propertyLike, $propertyEqual, $id)
+	{
+		$results = $this->_loadAllByProperties($propertyLike, $propertyEqual, $id);
+		$ret 	 = array ();
+	
+		foreach ($results as $result)
+		{
+			$tw = new Core_Model_TweetEntry ();
+			$tw->setValues ($result);
+				
+			$ret[] = $tw;
+		}
+	
+		return $ret;
+	}
+	
+	
 }
