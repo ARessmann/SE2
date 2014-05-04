@@ -30,7 +30,7 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 	 * @return database tablename
 	 */
 	public function getTableName () {
-		return 'TWEET_ENTRY';
+		return 'tweet_entry';
 	}
 	/**
 	 * getting the class variables of the current class

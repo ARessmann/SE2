@@ -29,7 +29,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * @return database tablename
 	 */
 	public function getTableName () {
-		return 'FILTER';
+		return 'filter';
 	}
 	/**
 	 * getting the class variables of the current class

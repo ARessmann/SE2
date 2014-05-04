@@ -257,8 +257,8 @@ class ApiController extends Core_AbstractController
      */
     public function editfilterAction () {
     	$validation = array ($this->translator->translate('filter_tags')  => 'filter_tags:N:string',
-    			$this->translator->translate('filter_from') => '$filter_from:X:date',
-    			$this->translator->translate('filter_to') => '$filter_to:X:date',
+    			$this->translator->translate('filter_from') => 'filter_from:X:date',
+    			$this->translator->translate('filter_to') => 'filter_to:X:date',
     			$this->translator->translate('filter_location') => 'filter_location:X:string',
     			$this->translator->translate('filter_language') => 'filter_language:X:string');
     	 
@@ -309,6 +309,9 @@ class ApiController extends Core_AbstractController
     		));
     	}
     	catch (Exception $e) {
+    		
+    		echo $e->getMessage();die();
+    		
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
     				'error_title'       => 'Fehler beim Speichern des Filters',

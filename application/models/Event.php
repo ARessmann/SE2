@@ -30,7 +30,7 @@ class Core_Model_Event extends Core_Model_Abstract {
 	 * @return database tablename
 	 */
 	public function getTableName () {
-		return 'EVENT';
+		return 'event';
 	}
 	/**
 	 * getting the class variables of the current class
