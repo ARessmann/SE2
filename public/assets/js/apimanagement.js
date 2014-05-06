@@ -83,7 +83,7 @@ function deleteItem(data_id, viewName) {
 /*
  * choose the right way to edit the object by the given viewName
  */
-function editModal(data_id, viewName) {
+function editModal(data_id, viewName, event_id) {
 	// App.debug('editModal(' + data_id +', ' + viewName +')');
 	
 	var modal 		= null;
@@ -94,7 +94,7 @@ function editModal(data_id, viewName) {
 			break;
 		case 'filter':
 			if($("#filter-add").attr("disabled") != "disabled")
-				editFilter(data_id, viewName);
+				editFilter(data_id, viewName, event_id);
 			break;
 	}
 }
@@ -251,7 +251,7 @@ function deleteEvent (data_id) {
  * the partial html will be rendered with EJS, if a persisted one was opend 
  * the data was set automatically
  */
-function editFilter (data_id, viewName)
+function editFilter (data_id, viewName, event_id)
 {	
 	//get texts
 	$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
@@ -264,7 +264,8 @@ function editFilter (data_id, viewName)
 				filter_from: '',
 				filter_to: '',
 				filter_location: '',
-				filter_language: ''
+				filter_language: '',
+				event_id: event_id
 			};
 
 			modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
@@ -303,6 +304,7 @@ function editFilterSubmit ()
 		filter_to: $('#filter_to').val(),
 		filter_location: $('#filter_location').val(),
 		filter_language: $('#filter_language').val(),
+		event_id: $('#modal-submit').attr('event-id')
 	};
 	
 	postData = App.toJSON(postData);
