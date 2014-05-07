@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mai 2014 um 22:15
+-- Erstellungszeit: 07. Mai 2014 um 22:44
 -- Server Version: 5.5.32
 -- PHP-Version: 5.4.16
 
@@ -31,7 +31,7 @@ USE `twitteranalyser`;
 DROP TABLE IF EXISTS `analysis`;
 CREATE TABLE IF NOT EXISTS `analysis` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
+  `analysis_date` date NOT NULL,
   `event_id` int(4) NOT NULL,
   `filter_id` int(4) NOT NULL,
   PRIMARY KEY (`id`),
@@ -3151,8 +3151,8 @@ INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_lo
 -- Constraints der Tabelle `analysis`
 --
 ALTER TABLE `analysis`
-  ADD CONSTRAINT `analysis_ibfk_2` FOREIGN KEY (`filter_id`) REFERENCES `filter` (`id`),
-  ADD CONSTRAINT `analysis_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
+  ADD CONSTRAINT `analysis_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
+  ADD CONSTRAINT `analysis_ibfk_2` FOREIGN KEY (`filter_id`) REFERENCES `filter` (`id`);
 
 --
 -- Constraints der Tabelle `analysis_tweets`
