@@ -257,10 +257,10 @@ class ApiController extends Core_AbstractController
      */
     public function editfilterAction () {
     	$validation = array ($this->translator->translate('filter_tags')  => 'filter_tags:N:string',
-    			$this->translator->translate('filter_from') => 'filter_from:X:date',
-    			$this->translator->translate('filter_to') => 'filter_to:X:date',
-    			$this->translator->translate('filter_location') => 'filter_location:X:string',
-    			$this->translator->translate('filter_language') => 'filter_language:X:string');
+    			$this->translator->translate('filter_from') => 'filter_from:N:date',
+    			$this->translator->translate('filter_to') => 'filter_to:N:date',
+    			$this->translator->translate('filter_location') => 'filter_location:N:string',
+    			$this->translator->translate('filter_language') => 'filter_language:N:string');
     	 
     	$data = json_decode($_POST['data']);
     
@@ -270,6 +270,7 @@ class ApiController extends Core_AbstractController
     	$filter_to = $data->filter_to;
     	$filter_location = $data->filter_location;
     	$filter_language = $data->filter_language;
+		$event_id = $data->event_id;
     
     	try {
     
@@ -294,6 +295,7 @@ class ApiController extends Core_AbstractController
     		$filter->setFilterTo($filter_to);
     		$filter->setFilterLanguage($filter_language);
     		$filter->setFilterLocation($filter_location);
+			$filter->setEventId($event_id);
     		
     		if (isset ($id) && $id != '') {
     			$filter->update();
