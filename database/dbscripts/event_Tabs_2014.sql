@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2014 at 07:04 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Erstellungszeit: 07. Mai 2014 um 22:15
+-- Server Version: 5.5.32
+-- PHP-Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,49 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `twitteranalyser`
+-- Datenbank: `twitteranalyser`
 --
+CREATE DATABASE IF NOT EXISTS `twitteranalyser` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `twitteranalyser`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Tabellenstruktur für Tabelle `analysis`
+--
+
+DROP TABLE IF EXISTS `analysis`;
+CREATE TABLE IF NOT EXISTS `analysis` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `event_id` int(4) NOT NULL,
+  `filter_id` int(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  KEY `filter_id` (`filter_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `analysis_tweets`
+--
+
+DROP TABLE IF EXISTS `analysis_tweets`;
+CREATE TABLE IF NOT EXISTS `analysis_tweets` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `analysis_id` int(4) NOT NULL,
+  `tweet_id` bigint(20) NOT NULL,
+  `value` int(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `analysis_id` (`analysis_id`),
+  KEY `tweet_id` (`tweet_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `event`
 --
 
 DROP TABLE IF EXISTS `event`;
@@ -40,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `event`
+-- Daten für Tabelle `event`
 --
 
 INSERT INTO `event` (`id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`, `event_state`, `event_tweet_tags`) VALUES
@@ -51,7 +87,7 @@ INSERT INTO `event` (`id`, `event_title`, `event_description`, `event_from`, `ev
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter`
+-- Tabellenstruktur für Tabelle `filter`
 --
 
 DROP TABLE IF EXISTS `filter`;
@@ -68,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `filter` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `filter`
+-- Daten für Tabelle `filter`
 --
 
 INSERT INTO `filter` (`id`, `filter_tags`, `filter_from`, `filter_to`, `filter_location`, `filter_language`, `event_id`) VALUES
@@ -81,7 +117,7 @@ INSERT INTO `filter` (`id`, `filter_tags`, `filter_from`, `filter_to`, `filter_l
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sentiment`
+-- Tabellenstruktur für Tabelle `sentiment`
 --
 
 DROP TABLE IF EXISTS `sentiment`;
@@ -93,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `sentiment` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4096 ;
 
 --
--- Dumping data for table `sentiment`
+-- Daten für Tabelle `sentiment`
 --
 
 INSERT INTO `sentiment` (`id`, `sent_text`, `sent_weight`) VALUES
@@ -2579,7 +2615,7 @@ INSERT INTO `sentiment` (`id`, `sent_text`, `sent_weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tweet_entry`
+-- Tabellenstruktur für Tabelle `tweet_entry`
 --
 
 DROP TABLE IF EXISTS `tweet_entry`;
@@ -2597,7 +2633,7 @@ CREATE TABLE IF NOT EXISTS `tweet_entry` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=462231128376885249 ;
 
 --
--- Dumping data for table `tweet_entry`
+-- Daten für Tabelle `tweet_entry`
 --
 
 INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_location`, `tw_language`, `tw_deleted`, `event_id`) VALUES
@@ -3108,17 +3144,31 @@ INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_lo
 (462231128376885248, 'http://t.co/XQM6XszA8P', '2014-05-02', 'ATLETAS DE FUTEBOL  ', 'RIO DE JANEIRO - BRASIL', 'pt', '0', 3);
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `filter`
+-- Constraints der Tabelle `analysis`
+--
+ALTER TABLE `analysis`
+  ADD CONSTRAINT `analysis_ibfk_2` FOREIGN KEY (`filter_id`) REFERENCES `filter` (`id`),
+  ADD CONSTRAINT `analysis_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
+
+--
+-- Constraints der Tabelle `analysis_tweets`
+--
+ALTER TABLE `analysis_tweets`
+  ADD CONSTRAINT `analysis_tweets_ibfk_2` FOREIGN KEY (`tweet_id`) REFERENCES `tweet_entry` (`id`),
+  ADD CONSTRAINT `analysis_tweets_ibfk_1` FOREIGN KEY (`analysis_id`) REFERENCES `analysis` (`id`);
+
+--
+-- Constraints der Tabelle `filter`
 --
 ALTER TABLE `filter`
   ADD CONSTRAINT `filter_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
 
 --
--- Constraints for table `tweet_entry`
+-- Constraints der Tabelle `tweet_entry`
 --
 ALTER TABLE `tweet_entry`
   ADD CONSTRAINT `tweet_entry_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
