@@ -3,7 +3,7 @@
 //include_once('C:\xampp\htdocs\SE2\application\models\Event.php');
 
 require_once 'init.php';
-
+ 
 class EventTest extends PHPUnit_Framework_TestCase
 {
 	
