@@ -134,7 +134,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 * 
 	 * @param $eventId
 	 */
-	public function setEventId($eventId)
+	public function setEventId($event_id)
 	{
 		$this->event_id = $event_id;
 	}
