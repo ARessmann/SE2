@@ -137,6 +137,24 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 		$this->tw_location = $location;
 	}
 	
+	
+		/**
+	 * Get the current tweet entry weight
+	 */
+	public function getWeight() {
+		return $this->tw_weight;
+	}
+	
+	/**
+	 * Set the current tweet entry weight
+	 * 
+	 * @param $location
+	 */
+	public function setWeight ($weight) {
+		$this->tw_weight = $weight;
+	}
+	
+	
 	/**
 	 * Get the linked (parent) event identifier
 	 */
@@ -180,6 +198,7 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 			'tw_location'    	=> $this->tw_location,
 			'tw_language'	    => $this->tw_language,
 			'tw_deleted'  		=> $this->tw_deleted,
+			'tw_weight'			=> $this->tw_weight,
 			'event_id'			=> $this->event_id
 		);
 		

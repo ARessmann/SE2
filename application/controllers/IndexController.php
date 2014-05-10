@@ -83,7 +83,7 @@ class IndexController extends Core_AbstractController {
 		// id of the selected filter object (listBox)
 		$selectedChooseFilter = $this->_getParam('choose_filter'); 
 		// if the filter is set - and is also selected, load the right tweets
-		if(isset($selectedChooseFilter) && $selectedChooseFilter != '' && $selectedChooseFilter != '0')
+		if(isset($selectedChooseFilter) && $selectedChooseFilter != '' && $selectedChooseFilter != '0' && $selectedChooseEvent != '0')
 		{
 			$currentSelectedFilter = new Core_Model_Filter();
 			$currentSelectedFilter = $filterObject->loadFilterObjectById($selectedChooseFilter);

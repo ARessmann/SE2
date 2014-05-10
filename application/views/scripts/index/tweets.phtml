@@ -49,15 +49,34 @@
 		        	</td>
 		        	<td>
 		        		<div class="input-prepend">
-		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i></span>
+		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $this->selectedChooseEvent; ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i></span>
 		        		<select name="choose_filter" name="choose_filter" id="choose_filter" size="1">
 		        			<option value="0"></option>
-				    		<?php foreach ($this->filterObject as $curObj) { ?>
+				    		<?php if($this->selectedChooseEvent)
+				    				foreach ($this->filterObject as $curObj) { ?>
 			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterTags(); ?></option>
 			           		<?php } ?>
 				    	</select>
+				    	<?php 
+				    	$i = 0; 
+				    	foreach ($this->tweets as $tweet) {
+			       				
+			       				$tweetId[$i] = $tweet->getId();
+			       				$i++;
+			       			
+				    	}
+				    	?>
+				    	<?php 
+				    	$comma_separated = implode("','", $tweetId);
+				    	?>
+				    	<script type="text/javascript">
+							var daten = new Array(<?= "'".$comma_separated."'" ?>);
+							console.log(daten);
+						</script>
+			       		
+				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
-				    	<a id="useFilter" href="#!" onclick="javascript:search('event');" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
+				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit(daten);" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
 				    	</div>
 		        	</td>
 		        	<td>
@@ -90,8 +109,7 @@
 							</tr>
 			           	</thead>
 			       		<tbody>
-			       			<?php foreach ($this->tweets as $tweet) {
-			       				?>
+			       			<?php foreach ($this->tweets as $tweet) { ?>
 
 	                                <tr class="user-row">
 	                                    <td class="warning">

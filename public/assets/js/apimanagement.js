@@ -352,3 +352,40 @@ function deleteFilter (data_id) {
 		url : '/api/deletefilter/id/' + data_id
 	});
 }
+
+
+/*
+ * function to save a new Analysis 
+ */
+function saveAnalysisSumbit (daten) 
+{
+	
+	var postData = {
+		
+		event_id: $('#event_id').val(),
+		filter_id: $('#filter_id').val(),
+		tweet_id: daten
+	};
+	
+	
+	postData = App.toJSON(postData);
+	App.debug('POST: ' + postData);
+
+	$.ajax({
+		data: { 'data': postData },
+		dataType: 'json',
+		error: function() {
+			App.notify('Unbekannter Fehler', 'Beim Übertragen der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success: function(data) {
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type: 'POST',
+		url: '/api/saveanalysis/'
+	});
+}

@@ -112,7 +112,7 @@ class Core_Model_Analysis extends Core_Model_Abstract {
 			'id'    				=> $this->id,
 			'analysis_date'    		=> $this->analysis_date,
 			'event_id'	       		=> $this->event_id,
-			'filter_id'    			=> $this->filter_id,
+			'filter_id'    			=> $this->filter_id
 		);
 		
 		$this->data = $data;

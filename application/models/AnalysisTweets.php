@@ -86,7 +86,7 @@ class Core_Model_AnalysisTweets extends Core_Model_Abstract {
 	 * 
 	 * @param $value
 	 */
-	public function setFilterId($value)
+	public function setValue($value)
 	{
 		$this->value = $value;
 	}

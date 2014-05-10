@@ -321,4 +321,66 @@ class ApiController extends Core_AbstractController
     		));
     	}
     }
+    
+    
+     /**
+     * function to save an analysis object
+     * 
+     *
+     * @return json success message or a error message
+     */
+    public function saveanalysisAction () {
+    	 
+    	$data = json_decode($_POST['data']);
+  
+    	$analysis_date = date("Y.m.d");
+    	$event_id = $data->event_id;
+    	$filter_id = $data->filter_id;
+    	$tweets = $data->tweet_id;
+
+
+    	if($filter_id === '0')
+    		$filter_id = null;
+    
+    	try {
+    
+    		$analysis = new Core_Model_Analysis();
+
+    		$analysis->setAnalysisDate($analysis_date);
+    		$analysis->setEventId($event_id);
+    		$analysis->setFilterId($filter_id);
+    		
+    		$analysisId = $analysis->save();
+    		
+    		
+    		
+    		foreach($tweets as $entry){
+    			$tweetEntry = new Core_Model_TweetEntry();
+    			$tweetEntry = $tweetEntry->loadById($entry);
+    			
+    			$analysisTweets = new Core_Model_AnalysisTweets();
+    			    			
+    			$analysisTweets->setAnalysisId($analysisId);
+    			$analysisTweets->setTweetId($entry);
+    			$analysisTweets->setValue($tweetEntry['tw_weight']);
+    			$analysisTweets->save();
+    		}
+    
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'success'               => true,
+    				'success_title'     => 'Analyse wurde erfolgreich gespeichert',
+    				'success_description'   => ''
+    		));
+    	}
+    	catch (Exception $e) {
+    		
+    		echo $e->getMessage();die();
+    		
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'error'             => true,
+    				'error_title'       => 'Fehler beim Speichern der Analyse',
+    				'error_description' => ''
+    		));
+    	}
+    }
 }

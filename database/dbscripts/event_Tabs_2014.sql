@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2014 at 08:11 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Erstellungszeit: 10. Mai 2014 um 19:13
+-- Server Version: 5.5.32
+-- PHP-Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `twitteranalyser`
+-- Datenbank: `twitteranalyser`
 --
 CREATE DATABASE IF NOT EXISTS `twitteranalyser` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `twitteranalyser`;
@@ -25,7 +25,7 @@ USE `twitteranalyser`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `analysis`
+-- Tabellenstruktur für Tabelle `analysis`
 --
 
 DROP TABLE IF EXISTS `analysis`;
@@ -33,16 +33,16 @@ CREATE TABLE IF NOT EXISTS `analysis` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `analysis_date` date NOT NULL,
   `event_id` int(4) NOT NULL,
-  `filter_id` int(4) NOT NULL,
+  `filter_id` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `filter_id` (`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `analysis_tweets`
+-- Tabellenstruktur für Tabelle `analysis_tweets`
 --
 
 DROP TABLE IF EXISTS `analysis_tweets`;
@@ -50,16 +50,16 @@ CREATE TABLE IF NOT EXISTS `analysis_tweets` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `analysis_id` int(4) NOT NULL,
   `tweet_id` bigint(20) NOT NULL,
-  `value` int(1) NOT NULL,
+  `value` int(2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `analysis_id` (`analysis_id`),
   KEY `tweet_id` (`tweet_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Tabellenstruktur für Tabelle `event`
 --
 
 DROP TABLE IF EXISTS `event`;
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `event`
+-- Daten für Tabelle `event`
 --
 
 INSERT INTO `event` (`id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`, `event_state`, `event_tweet_tags`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `event` (`id`, `event_title`, `event_description`, `event_from`, `ev
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter`
+-- Tabellenstruktur für Tabelle `filter`
 --
 
 DROP TABLE IF EXISTS `filter`;
@@ -104,10 +104,10 @@ CREATE TABLE IF NOT EXISTS `filter` (
   `event_id` int(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `filter`
+-- Daten für Tabelle `filter`
 --
 
 INSERT INTO `filter` (`id`, `filter_tags`, `filter_from`, `filter_to`, `filter_location`, `filter_language`, `event_id`) VALUES
@@ -115,12 +115,16 @@ INSERT INTO `filter` (`id`, `filter_tags`, `filter_from`, `filter_to`, `filter_l
 (2, 'Pele', NULL, NULL, NULL, NULL, 3),
 (3, 'Fußball', '0000-00-00', '0000-00-00', 'Deutschland', '', 3),
 (4, 'Portugal', NULL, NULL, NULL, NULL, 3),
-(5, 'Vettel', '0000-00-00', '0000-00-00', '', '', 1);
+(5, 'Vettel', '0000-00-00', '0000-00-00', '', '', 1),
+(6, 'steven', '0000-00-00', '0000-00-00', '', '', 2),
+(7, 'steven', '0000-00-00', '0000-00-00', '', '', 1),
+(8, 'euro', '0000-00-00', '0000-00-00', '', '', 1),
+(9, '', '0000-00-00', '0000-00-00', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sentiment`
+-- Tabellenstruktur für Tabelle `sentiment`
 --
 
 DROP TABLE IF EXISTS `sentiment`;
@@ -132,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `sentiment` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2478 ;
 
 --
--- Dumping data for table `sentiment`
+-- Daten für Tabelle `sentiment`
 --
 
 INSERT INTO `sentiment` (`id`, `sent_text`, `sent_weight`) VALUES
@@ -2618,7 +2622,7 @@ INSERT INTO `sentiment` (`id`, `sent_text`, `sent_weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tweet_entry`
+-- Tabellenstruktur für Tabelle `tweet_entry`
 --
 
 DROP TABLE IF EXISTS `tweet_entry`;
@@ -2637,7 +2641,7 @@ CREATE TABLE IF NOT EXISTS `tweet_entry` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=464464810495995905 ;
 
 --
--- Dumping data for table `tweet_entry`
+-- Daten für Tabelle `tweet_entry`
 --
 
 INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_location`, `tw_language`, `tw_deleted`, `tw_weight`, `event_id`) VALUES
@@ -3133,7 +3137,7 @@ INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_lo
 (462169359809777664, 'Bloginho - unser Blog rund um die #WM in #Brasilien. Zum Start etwas, das gesagt werden musste... @NZZ http://t.co/83rgh6vRFx', '2014-05-02', 'Tjerk Brühwiller', 'São Paulo, Brasil', 'de', '0', -3, 3),
 (462169511756439552, 'Panini WM 2014 Brasilien - 50 Bilder aussuchen -:  EUR 1,00 (0 Gebote)Angebotsende: Samstag Mai-3-2014 11:54:4... http://t.co/4pfqOboO85', '2014-05-02', 'Quickberater', 'Germany', 'de', '0', 0, 3),
 (462170719443382272, 'Rio de Janeiro: Zwei Polizisten in Favela angeschossen: WM 2014: In Brasilien herrscht weiterhin Unruhe© SID-I... http://t.co/l0lo6GCzzo', '2014-05-02', 'derGator', '', 'it', '0', 0, 3),
-(462178551559897089, 'Formel 1: Studie: 74,5 Millionen Euro fließen nach Spielberg > Kleine Zeitung http://t.co/wYl40w2qiD #f1', '2014-05-02', 'Gerhard W. Loub', 'Vienna', 'de', '0', 0, 1),
+(462178551559897089, 'Formel 1: Studie: 74,5 Millionen Euro fließen nach Spielberg > Kleine Zeitung http://t.co/wYl40w2qiD #f1', '2014-05-02', 'Gerhard W. Loub', 'Vienna', 'de', '0', -5, 1),
 (462179132789772288, 'RT @Svejk: Formel 1: Studie: 74,5 Millionen Euro fließen nach Spielberg > Kleine Zeitung http://t.co/wYl40w2qiD #f1', '2014-05-02', 'Bernhard Karnthaler', 'Lanzenkirchen', 'de', '0', 0, 1),
 (462190067235037186, 'Panini WM 2014 Brasilien - 50 Bilder aussuchen -:  EUR 1,00 (0 Gebote)Angebotsende: Samstag Mai-3-2014 13:10:0... http://t.co/NZU9pmcDJm', '2014-05-02', 'Quickberater', 'Germany', 'de', '0', 0, 3),
 (462190351995129856, '#DVDKRITIK_News WM Songs 2014: Pitbull, Melanie und Avicii ? Der Soundtrack für Brasilien http://t.co/vVrT8trZTa', '2014-05-02', 'Lauro. ', 'Haan, Germany ', 'de', '0', 0, 3),
@@ -6319,31 +6323,31 @@ INSERT INTO `tweet_entry` (`id`, `tw_text`, `tw_creationdate`, `tw_user`, `tw_lo
 (464464810495995904, 'RT @F00TYBattles: RT For UEFA Champions League\nFav For Barclays Premier League. http://t.co/mjHwC0vZqa', '2014-05-08', '? [ Jake Hicks  ] ?', '', 'en', '0', 0, 6);
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `analysis`
+-- Constraints der Tabelle `analysis`
 --
 ALTER TABLE `analysis`
   ADD CONSTRAINT `analysis_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
   ADD CONSTRAINT `analysis_ibfk_2` FOREIGN KEY (`filter_id`) REFERENCES `filter` (`id`);
 
 --
--- Constraints for table `analysis_tweets`
+-- Constraints der Tabelle `analysis_tweets`
 --
 ALTER TABLE `analysis_tweets`
-  ADD CONSTRAINT `analysis_tweets_ibfk_2` FOREIGN KEY (`tweet_id`) REFERENCES `tweet_entry` (`id`),
-  ADD CONSTRAINT `analysis_tweets_ibfk_1` FOREIGN KEY (`analysis_id`) REFERENCES `analysis` (`id`);
+  ADD CONSTRAINT `analysis_tweets_ibfk_1` FOREIGN KEY (`analysis_id`) REFERENCES `analysis` (`id`),
+  ADD CONSTRAINT `analysis_tweets_ibfk_2` FOREIGN KEY (`tweet_id`) REFERENCES `tweet_entry` (`id`);
 
 --
--- Constraints for table `filter`
+-- Constraints der Tabelle `filter`
 --
 ALTER TABLE `filter`
   ADD CONSTRAINT `filter_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
 
 --
--- Constraints for table `tweet_entry`
+-- Constraints der Tabelle `tweet_entry`
 --
 ALTER TABLE `tweet_entry`
   ADD CONSTRAINT `tweet_entry_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
