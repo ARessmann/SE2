@@ -49,6 +49,9 @@ class IndexController extends Core_AbstractController {
     public function eventAction () {
     	$event = new Core_Model_Event ();
         $filter = $this->_getParam('filter');
+        $pagination = $this->_getParam('pagination');
+        
+        $pagination = (!isset($pagination) || $pagination == 0) ? 1 : $pagination;
         
         $events = $event->loadAll ();
         
@@ -57,8 +60,11 @@ class IndexController extends Core_AbstractController {
         
         $this->view->filter = $filter;
         $this->view->counter = count($events);
-        $this->view->events = $events;
         $this->view->menuOptions = $this->getMenu ();
+        
+        $this->view->page = $pagination;
+        $this->view->total = count($events);
+        $this->view->events = array_slice($events, ($pagination - 1) * 25, 25);
     }
     
 /**

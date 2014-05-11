@@ -1,0 +1,43 @@
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$('.paginate_button').bind( 'click', function() {
+		    
+		    var id = $(this).attr ('id');
+		    
+		    if (id == 'next_') {
+		        $('#pagination').val('<?= ($this->page + 1) ?>');
+		    }
+		    else if (id == 'first_')  {
+		        $('#pagination').val('<?= ($this->page - 1) ?>');
+		    }
+		    else if (id == 'dofirst_')  {
+		        $('#pagination').val('<?= (1) ?>');
+		    }
+		    else if (id == 'dolast_')  {
+		        $('#pagination').val('<?= $this->max; ?>');
+		    }
+		    else {
+		        $('#pagination').val($(this).html());
+		    }
+			
+			$("#action_frm").submit();
+		});
+
+		<?php 
+			$tillAmount = 0;
+			if($this->total < $this->page * 25){
+				$tillAmount = $this->total;	
+			}else{
+				$tillAmount = $this->page * 25;
+			}
+		?>
+		
+		$('#info').html("Zeige <?= (($this->page - 1)*25 + 1) ?> bis <?= $tillAmount ?> von <?= $this->total ?> Eintr&auml;gen");
+		$('#first_').attr("tabindex",'<?= ($this->page - 1) ?>');
+		$('#next_').attr("tabindex",'<?= ($this->page + 1) ?>');			
+		$('#paginate').remove();
+	});
+
+</script>
