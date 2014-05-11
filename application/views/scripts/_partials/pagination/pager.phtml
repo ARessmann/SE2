@@ -13,9 +13,9 @@
 	    
 	    for($i = max(1, $this->page - 10); $i <= min($this->page + 10, $max); $i++) {
 			if($i == $this->page){
-				?> <a class="paginate_active" tabindex="0"><?= $i?> </a> <?php
+				?> <a class="paginate_active" tabindex="0"><?= $i; ?></a> <?php
 			}else{
-				?> <a class="paginate_button" tabindex="0"><?= $i?> </a> <?php
+				?> <a class="paginate_button" tabindex="0"><?= $i; ?></a> <?php
 			}
 		}
 	?>
