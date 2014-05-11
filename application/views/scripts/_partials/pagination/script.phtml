@@ -33,8 +33,8 @@
 				$tillAmount = $this->page * 25;
 			}
 		?>
-		
-		$('#info').html("Zeige <?= (($this->page - 1)*25 + 1) ?> bis <?= $tillAmount ?> von <?= $this->total ?> Eintr&auml;gen");
+
+		$('#info').html("Zeige <?= ($tillAmount > 0 ? (($this->page - 1) * 25 + 1) : 0) ?> bis <?= $tillAmount ?> von <?= $this->total ?> Eintr&auml;gen");
 		$('#first_').attr("tabindex",'<?= ($this->page - 1) ?>');
 		$('#next_').attr("tabindex",'<?= ($this->page + 1) ?>');			
 		$('#paginate').remove();

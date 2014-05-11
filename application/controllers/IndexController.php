@@ -67,7 +67,7 @@ class IndexController extends Core_AbstractController {
         $this->view->events = array_slice($events, ($pagination - 1) * 25, 25);
     }
     
-/**
+	/**
 	 * display the list of tweets including a filter system 
 	 * and set the object to the view 
 	 */    
@@ -124,7 +124,7 @@ class IndexController extends Core_AbstractController {
        	
        	$this->view->page = $pagination;
        	$this->view->total = count($tweets);
-       	$this->view->events = array_slice($tweets, ($pagination - 1) * 25, 25);
+       	$this->view->tweets = array_slice($tweets, ($pagination - 1) * 25, 25);
     }
     
     public function analysisAction () {
@@ -152,7 +152,7 @@ class IndexController extends Core_AbstractController {
         
         $this->view->page = $pagination;
         $this->view->total = count($tweets);
-        $this->view->events = array_slice($tweets, ($pagination - 1) * 25, 25);
+        $this->view->tweets = array_slice($tweets, ($pagination - 1) * 25, 25);
     }
     
 }
