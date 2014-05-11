@@ -49,9 +49,6 @@ class IndexController extends Core_AbstractController {
     public function eventAction () {
     	$event = new Core_Model_Event ();
         $filter = $this->_getParam('filter');
-        $pagination = $this->_getParam('pagination');
-        
-        $pagination = (!isset($pagination) || $pagination == 0) ? 1 : $pagination;
         
         $events = $event->loadAll ();
         
@@ -62,9 +59,7 @@ class IndexController extends Core_AbstractController {
         $this->view->counter = count($events);
         $this->view->menuOptions = $this->getMenu ();
         
-        $this->view->page = $pagination;
-        $this->view->total = count($events);
-        $this->view->events = array_slice($events, ($pagination - 1) * 25, 25);
+        $this->view->events = $this->getPagedElements($events);
     }
     
 	/**
@@ -78,9 +73,6 @@ class IndexController extends Core_AbstractController {
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
 		$selectedChooseEvent = $this->_getParam('choose_event');     
-		$pagination = $this->_getParam('pagination');
-		
-		$pagination = (!isset($pagination) || $pagination == 0) ? 1 : $pagination;
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
@@ -122,9 +114,7 @@ class IndexController extends Core_AbstractController {
         $this->view->selectedChooseEvent = $selectedChooseEvent;
        	$this->view->selectedChooseFilter = $selectedChooseFilter;
        	
-       	$this->view->page = $pagination;
-       	$this->view->total = count($tweets);
-       	$this->view->tweets = array_slice($tweets, ($pagination - 1) * 25, 25);
+       	$this->view->tweets = $this->getPagedElements($tweets);
     }
     
     public function analysisAction () {
@@ -133,9 +123,6 @@ class IndexController extends Core_AbstractController {
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
 		$selectedChooseEvent = $this->_getParam('choose_event'); 
-		$pagination = $this->_getParam('pagination');
-		
-		$pagination = (!isset($pagination) || $pagination == 0) ? 1 : $pagination;
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
@@ -150,9 +137,6 @@ class IndexController extends Core_AbstractController {
         
         $this->view->selectedChooseEvent = $selectedChooseEvent;
         
-        $this->view->page = $pagination;
-        $this->view->total = count($tweets);
-        $this->view->tweets = array_slice($tweets, ($pagination - 1) * 25, 25);
+        $this->view->tweets = $this->getPagedElements($tweets);
     }
-    
 }
