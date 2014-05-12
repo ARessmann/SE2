@@ -118,4 +118,18 @@ class Core_AbstractController extends Zend_Controller_Action {
 	
 		return $res;
 	}
+	
+	/*
+	 * function to add pagination to a list
+	 */
+	public function getPagedElements ($elements) {
+		$pagination = $this->_getParam('pagination');
+		
+		$pagination = (!isset($pagination) || $pagination == 0) ? 1 : $pagination;
+		
+		$this->view->page = $pagination;
+		$this->view->total = count($elements);
+		
+		return array_slice($elements, ($pagination - 1) * 25, 25);
+	}
 }

@@ -1,0 +1,33 @@
+.paging_full_numbers {
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.paging_full_numbers a:active {
+	outline: none
+}
+
+.paging_full_numbers a:hover {
+	color: #E2001A;
+}
+
+.paging_full_numbers a.paginate_button,
+.paging_full_numbers a.paginate_active {
+	padding: 0px 1px;
+	margin: 0 3px;
+	cursor: pointer;	
+}
+
+.paging_full_numbers a {	
+	color: #003064;		
+}
+
+.paging_full_numbers a.paginate_button:hover {
+	text-decoration: none !important;
+}
+
+.paging_full_numbers a.paginate_active {
+	color: #E2001A;
+}

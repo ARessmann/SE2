@@ -1,0 +1,28 @@
+<input type="hidden" name="pagination" id="pagination" value="0" />
+<div class="info" id="info"></div>
+
+<div class="dataTables_paginate paging_full_numbers" id="elements_paginate">
+	<?php if($this->page != 1) { ?>
+		<a class="paginate_button" tabindex="0" id="dofirst_">&lt;&lt;</a>
+		<a class="paginate_button" tabindex="0" id="first_">&lt;</a>
+	<?php } ?>
+	
+	<span> 
+	<?php
+	    $max = ceil ($this->total / 25);
+	    
+	    for($i = max(1, $this->page - 10); $i <= min($this->page + 10, $max); $i++) {
+			if($i == $this->page){
+				?> <a class="paginate_active" tabindex="0"><?= $i; ?></a> <?php
+			}else{
+				?> <a class="paginate_button" tabindex="0"><?= $i; ?></a> <?php
+			}
+		}
+	?>
+	</span>
+	<?php if($this->total >= ($this->page) * 25){?>
+		<a class="next paginate_button" tabindex="0" id="next_">&gt;</a>
+		<a class="next paginate_button" tabindex="0" id="dolast_">&gt;&gt;</a>
+	<?php } ?>
+</div>
+<?php echo $this->partial('_partials/pagination/script.phtml', array('total' => $this->total, 'page' => $this->page, 'max' => $max)); ?>

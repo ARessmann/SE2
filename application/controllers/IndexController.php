@@ -57,11 +57,12 @@ class IndexController extends Core_AbstractController {
         
         $this->view->filter = $filter;
         $this->view->counter = count($events);
-        $this->view->events = $events;
         $this->view->menuOptions = $this->getMenu ();
+        
+        $this->view->events = $this->getPagedElements($events);
     }
     
-/**
+	/**
 	 * display the list of tweets including a filter system 
 	 * and set the object to the view 
 	 */    
@@ -71,7 +72,7 @@ class IndexController extends Core_AbstractController {
     	$filterObject = new Core_Model_Filter(); // for filtering after tweets
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
-		$selectedChooseEvent = $this->_getParam('choose_event');        
+		$selectedChooseEvent = $this->_getParam('choose_event');     
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
@@ -106,13 +107,14 @@ class IndexController extends Core_AbstractController {
 
         $this->view->filter = $filter;
         $this->view->counter = count($tweets);
-        $this->view->tweets = $tweets;
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
         $this->view->filterObject = $filters;
         
         $this->view->selectedChooseEvent = $selectedChooseEvent;
        	$this->view->selectedChooseFilter = $selectedChooseFilter;
+       	
+       	$this->view->tweets = $this->getPagedElements($tweets);
     }
     
     public function analysisAction () {
@@ -120,7 +122,7 @@ class IndexController extends Core_AbstractController {
     	$events = new Core_Model_Event();
     	$event = $events->loadAll();
         $filter = $this->_getParam('filter');
-		$selectedChooseEvent = $this->_getParam('choose_event');        
+		$selectedChooseEvent = $this->_getParam('choose_event'); 
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
@@ -130,11 +132,11 @@ class IndexController extends Core_AbstractController {
 
         $this->view->filter = $filter;
         $this->view->counter = count($tweets);
-        $this->view->tweets = $tweets;
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
         
         $this->view->selectedChooseEvent = $selectedChooseEvent;
+        
+        $this->view->tweets = $this->getPagedElements($tweets);
     }
-    
 }
