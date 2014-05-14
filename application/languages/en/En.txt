@@ -1,20 +1,20 @@
-general_success	Successfully saved!
-general_remove_success	Successfully deleted
-general_noentrysfound	No Entrys found
-general_saving_error	There was an error during saving!
-view_language	Language
-view_showEvent	Show all events
-view_newEvent	Create new event
-event_search	Search 
-event_title	Title
-event_from	From
-event_to	To
-event_description	Description
-menu_management	Management
-menu_seeTweets	See Tweets
-menu_events	Events
-event_save	Save
-status_startCollection	Collection started
+general_success;	Successfully saved!
+general_remove_success;	Successfully deleted
+general_noentrysfound;	No Entrys found
+general_saving_error;	There was an error during saving!
+view_language;	Language
+view_showEvent;	Show all events
+view_newEvent;	Create new event
+event_search;	Search 
+event_title;	Title
+event_from;	From
+event_to;	To
+event_description;	Description
+menu_management;	Management
+menu_seeTweets;	See Tweets
+menu_events;	Events
+event_save;	Save
+status_startCollection;	Collection started
 status_endCollection;	Collection finished
 status_collection_in_progress;	Collection in progress
 status_analysis;	Analysis
