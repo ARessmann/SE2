@@ -46,6 +46,7 @@
 			           		<?php } ?>
 				    	</select>
 				    	<input type="hidden" id="event_id" value="<?= $this->selectedChooseEvent; ?>" />
+				    	<input type="hidden" id="tw_min" value="<?= $this->twMin['event_tw_count']; ?>" />
 		        	</td>
 		        	<td>
 		        		<div class="input-prepend">
@@ -67,13 +68,16 @@
 				    	}
 				    	?>
 				    	<?php 
+				    	if(!empty($tweetId)){
 				    	$comma_separated = implode("','", $tweetId);
 				    	?>
 				    	<script type="text/javascript">
 							var daten = new Array(<?= "'".$comma_separated."'" ?>);
-							console.log(daten);
+							
 						</script>
-			       		
+			       		<?php 
+				    	}
+				    	?>
 				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
 				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit(daten);" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
@@ -95,7 +99,7 @@
 					
 			        <div class="grid-head">
 			        	<i class="icon-tasks"></i> Tweets
-			            <span class="label label-important pull-right"><?= $this->counter ?></span>
+			            <span class="label label-important pull-right" id="counter"><?= $this->counter ?></span>
 			       	</div>
 
 			        <table class="table table-condensed table-bordered table-striped" id="event-table">

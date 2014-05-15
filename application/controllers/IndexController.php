@@ -80,6 +80,11 @@ class IndexController extends Core_AbstractController {
 		$filters = null; // all filterObjects from the selected Event
 		if($selectedChooseEvent != null && $selectedChooseEvent != '0')
 			$filters = $filterObject->loadByEventId($selectedChooseEvent);
+			
+		$twMin = null; // min Tweets from the selected Event
+		if($selectedChooseEvent != null && $selectedChooseEvent != '0')
+			$twMin = $events->loadById($selectedChooseEvent);
+		
 		
 		// id of the selected filter object (listBox)
 		$selectedChooseFilter = $this->_getParam('choose_filter'); 
@@ -110,6 +115,7 @@ class IndexController extends Core_AbstractController {
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
         $this->view->filterObject = $filters;
+        $this->view->twMin = $twMin;
         
         $this->view->selectedChooseEvent = $selectedChooseEvent;
        	$this->view->selectedChooseFilter = $selectedChooseFilter;

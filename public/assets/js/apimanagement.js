@@ -55,6 +55,24 @@ function initTriggers() {
        	  else
        		$("#filter-add").removeAttr("disabled");  
 	})
+	
+	// function for start analysis button for correct disable/enable handling
+	$(function(){
+	      //Set button disabled
+	      $("#useFilter").attr("disabled", "disabled");
+	      
+          var minTweets = parseInt($("#tw_min").val());console.log(minTweets);
+          var countTweets = parseInt($("#counter").text());console.log(countTweets);
+          
+          if(minTweets > countTweets || isNaN(minTweets)){
+        	$("#useFilter").attr("disabled", "disabled");
+        	$("#useFilter").removeAttr("onclick");
+          }
+       	  else {
+       		$("#useFilter").removeAttr("disabled");
+       		$("#useFilter").attr("onclick", "javascript:saveAnalysisSumbit(daten);");
+       	  }
+	})
 }
 
 /*
