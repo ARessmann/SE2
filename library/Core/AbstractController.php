@@ -49,6 +49,7 @@ class Core_AbstractController extends Zend_Controller_Action {
             array('Veranstaltung anlegen', 'event'),
         	array('Tweets ansehen', 'tweets'),
         	array('Sentiment Analyse', 'analysis'),
+        	array('Sentiment Wartung', 'sentiment')
         );
         
         return $menuOptions;
