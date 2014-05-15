@@ -139,4 +139,19 @@ class IndexController extends Core_AbstractController {
         
         $this->view->tweets = $this->getPagedElements($tweets);
     }
+    
+    /**
+     * display the list of sentiments
+     * and set the object to the view
+     */
+    public function sentimentAction () {
+    	$sentiment = new Core_Model_Sentiment();
+    
+    	$sentiments = $sentiment->loadAll ();
+        	
+    	$this->view->counter = count($sentiments);
+    	$this->view->menuOptions = $this->getMenu ();
+    
+    	$this->view->sentiments = $this->getPagedElements($sentiments);
+    }
 }
