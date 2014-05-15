@@ -1,12 +1,20 @@
+page_title;Event Analyse
 general_success;Erfolgreich gespeichert
-general_remove_success;Erfolgreich gel”scht
-general_noentrysfound;Keine Eintr„ge gefunden
+general_remove_success;Erfolgreich gelï¿½scht
+general_noentrysfound;Keine Eintrï¿½ge gefunden
 general_saving_error;Beim Speichern ist ein Fehler aufgetreten!
 view_language;Sprache
 view_showEvent;Alle Events anzeigen
 view_newEvent;Neues Event anlegen
 view_all;Alle
 view_allTweets;alle Tweets anzeigen
+view_showSentiment;Alle StimmungswÃ¶rter
+view_newSentiment;Neues Wort anlegen
+sentiment_lang;Sprache
+sentiment_word;Wort
+sentiment_weight;Gewichtung
+sentiment_edit;Wort bearbeiten
+sentiment_delete;Wort lÃ¶schen
 event_search;Suchen
 event_title;Titel
 event_from;Von
@@ -34,10 +42,10 @@ tw_creationdate;Tweet creation
 tw_user;Tweet-User
 tw_location;Tweet-Ort
 tw_language;Tweet-Sprache
-tw_deleted;Tweet gel”scht
+tw_deleted;Tweet gelï¿½scht
 filter_id;Filter-Id
 fi_description;Filter-Beschreibung
-fi_consider_tweet;Filter-Tweet berprfen
+fi_consider_tweet;Filter-Tweet ï¿½berprï¿½fen
 ignore_tweet;Tweet ignorieren
 time_start;Von
 time_end;Bis
@@ -58,3 +66,10 @@ event_id;Veranstaltung
 filter_edit;Filter bearbeiten
 view_newFilter;Neu
 view_startAnalysis;Start Analyse
+lang_de;Deutsch
+lang_en;Englisch
+lang_dn;DÃ¤nisch
+lang_es;Spanisch
+lang_fr;FranzÃ¶sisch
+lang_it;Italienisch
+lang_sv;Schwedisch
