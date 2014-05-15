@@ -1,3 +1,4 @@
+page_title;Event analysis
 general_success;Successfully saved!
 general_remove_success;Successfully deleted
 general_noentrysfound;No Entries found
@@ -7,6 +8,13 @@ view_showEvent;Show all events
 view_newEvent;Create new event
 view_all;All
 view_allTweets;view all tweets
+view_showSentiment;All sentiment words
+view_newSentiment;Create new word
+sentiment_lang;Language
+sentiment_word;Word
+sentiment_weight;Weight
+sentiment_edit;Edit word
+sentiment_delete;Delete word
 event_search;Search 
 event_title;Title
 event_from;From
@@ -58,3 +66,10 @@ event_id;Event
 filter_edit;edit filter
 view_newFilter;New
 view_startAnalysis;Start analysis
+lang_de;Germany
+lang_en;English
+lang_dn;Danish
+lang_es;Spanish
+lang_fr;French
+lang_it;Italian
+lang_sv;Swedish
