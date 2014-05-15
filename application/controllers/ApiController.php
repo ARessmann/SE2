@@ -383,4 +383,115 @@ class ApiController extends Core_AbstractController
     		));
     	}
     }
+    /**
+     * getting an sentiment by Id and transform it to a json string
+     *
+     * @return json string
+     */
+    public function getsentimentAction () {
+    	$id = $this->_getParam('id');
+    
+    	$sentiment = new Core_Model_Sentiment();
+    
+    	if (isset ($id)) {
+    		$sentiment = $sentiment->loadById ($id);
+    
+    		if (isset ($value))  {
+    			return $this->apiControllerHelper->formatOutput($value);
+    		}
+    	}
+    }
+    
+    /**
+     * Function to delete a sentiment by the given Id
+     *
+     * @return json success message or a error message
+     */
+    public function deletesentimentAction () {
+    
+    	$id = $this->_getParam('id');
+    
+    	try {
+    		if (isset ($id)) {
+    			$sentiment = new Core_Model_Sentiment();
+    			$sentiment->delete ($id);
+    		}
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'success'               => true,
+    				'success_title'     => 'Sentiment wurde erfolgreich gelöscht',
+    				'success_description'   => ''
+    		));
+    	}
+    	catch (Exception $e) {
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'error'             => true,
+    				'error_title'       => 'Fehler beim Löschen des Sentiment',
+    				'error_description' => ''
+    		));
+    	}
+    }
+    /**
+     * function to save or update a sentiment object
+     * the validation array includes the pattern for the validator to validate the
+     * fields
+     *
+     * @return json success message or a error message
+     */
+    public function editsentimentAction () {
+    	 
+    	$validation = array ($this->translator->translate('sentiment_lang')  => 'sent_language:X:string',
+    			$this->translator->translate('sentiment_word') => 'sent_word:X:string',
+    			$this->translator->translate('sentiment_weight') => 'sent_weight:X:string');
+    	 
+    	$data = json_decode($_POST['data']);
+    
+    	$id = $data->id;
+    
+    	$sent_language = $data->sent_language;
+    	$sent_word = $data->sent_word;
+    	$sent_weight = $data->sent_weight;
+    
+    	try {
+    
+    		$sentiment = new Core_Model_Sentiment();
+    
+    		if (isset ($id) && $id != '') {
+    			$sentiment->loadById ($id);
+    		}
+    
+    		$validationResponse = Core_Validationhelper::validate ($validation, $data);
+    
+    		if ($validationResponse != null) {
+    			return $this->apiControllerHelper->formatOutput(array(
+    					'error'             => true,
+    					'error_title'       => 'Eingabefehler',
+    					'error_description' => $validationResponse
+    			));
+    		}
+    
+    		$sentiment->setSentimentLanguage($sent_language);
+    		$sentiment->setSentimentWord($sent_word);
+    		$sentiment->setSentimentWeight($sent_weight);
+    
+    		if (isset ($id) && $id != '') {
+    			$sentiment->update ();
+    		}
+    		else {
+    			$sentiment->save();
+    		}
+    
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'success'               => true,
+    				'success_title'     => 'Sentiment wurde erfolgreich gespeichert',
+    				'success_description'   => ''
+    		));
+    	}
+    	catch (Exception $e) {
+    		return $this->apiControllerHelper->formatOutput(array(
+    				'error'             => true,
+    				'error_title'       => 'Fehler beim Speichern des Sentiment',
+    				'error_description' => ''
+    		));
+    	}
+    }
 }
