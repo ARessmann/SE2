@@ -206,4 +206,17 @@ abstract class Core_Model_Abstract {
 	
 		return $results;
 	}
+	
+	/**
+	 * base function to load elements from the database with a order by clause
+	 */
+	public function _loadAllOrderBy($order) {
+	
+		$results =  $this->dbAdapter->select()->from($this->getTableName ())
+		->order($order)
+		->query()
+		->fetchAll();
+		
+		return $results;
+	}
 }
