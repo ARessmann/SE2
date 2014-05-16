@@ -27,6 +27,16 @@ function initTriggers() {
 			editModal($(this).attr('data-id'), $(this).attr('view-name'));
 	});	
 	
+	// onclick event for the delete of a filter object (icon-briefcase)
+	$('.icon-delete-filter').on('click', function(e) {
+		if($(this).attr('data-id') != '' && $(this).attr('data-id') != '0'){
+			var info = confirm("Wollen Sie diesen Eintrag wirklich löschen?");
+			if(info == true){
+				deleteItem($(this).attr('data-id'), $(this).attr('view-name'));
+			}
+		}
+	});	
+	
 	$('.icon-pencil').on('click', function(e) {
 		editModal($(this).attr('data-id'), $(this).attr('view-name'));
 	});
@@ -61,8 +71,8 @@ function initTriggers() {
 	      //Set button disabled
 	      $("#useFilter").attr("disabled", "disabled");
 	      
-          var minTweets = parseInt($("#tw_min").val());console.log(minTweets);
-          var countTweets = parseInt($("#counter").text());console.log(countTweets);
+          var minTweets = parseInt($("#tw_min").val());
+          var countTweets = parseInt($("#counter").text());
           
           if(minTweets > countTweets || isNaN(minTweets)){
         	$("#useFilter").attr("disabled", "disabled");
@@ -278,6 +288,7 @@ function editFilter (data_id, viewName, event_id)
 				translations: translations, //must have for each dlg
 				
 				id: '',
+				filter_name: '',
 				filter_tags: '',
 				filter_from: '',
 				filter_to: '',
@@ -317,6 +328,7 @@ function editFilterSubmit ()
 {
 	var postData = {
 		id: $('#modal-submit').attr('data-id'),
+		filter_name: $('#filter_name').val(),
 		filter_tags: $('#filter_tags').val(),
 		filter_from: $('#filter_from').val(),
 		filter_to: $('#filter_to').val(),
@@ -362,6 +374,7 @@ function deleteFilter (data_id) {
 			if(data.error == true) {
 				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
 			} else {
+				$('#choose_filter').val('0');
 				App.notify(data['success_title'], data['success_description'], 'success');
 				_submitForm (1000);
 			}

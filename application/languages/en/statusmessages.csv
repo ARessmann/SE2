@@ -62,6 +62,7 @@ filter_from;Tweet from
 filter_to;Tweet to
 filter_location;Tweet location
 filter_language;Tweet language
+filter_name;Name
 event_id;Event
 filter_edit;edit filter
 view_newFilter;New

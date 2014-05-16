@@ -50,12 +50,13 @@
 		        	</td>
 		        	<td>
 		        		<div class="input-prepend">
-		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $this->selectedChooseEvent; ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i></span>
+		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $this->selectedChooseEvent; ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i>
+		        		<i view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" title="<?= $this->translator->translate("filter_delete"); ?>" class="icon-delete-filter"></i></span>
 		        		<select name="choose_filter" name="choose_filter" id="choose_filter" size="1">
 		        			<option value="0"></option>
 				    		<?php if($this->selectedChooseEvent)
 				    				foreach ($this->filterObject as $curObj) { ?>
-			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterTags(); ?></option>
+			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterName(); ?></option>
 			           		<?php } ?>
 				    	</select>
 				    	<?php 
