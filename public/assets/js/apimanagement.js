@@ -77,6 +77,9 @@ function deleteItem(data_id, viewName) {
 		case 'filter':
 			deleteFilter(data_id);
 			break;
+		case 'sentiment':
+			deleteSentiment(data_id);
+			break;
 	}
 }
 
@@ -86,8 +89,8 @@ function deleteItem(data_id, viewName) {
 function editModal(data_id, viewName, event_id) {
 	// App.debug('editModal(' + data_id +', ' + viewName +')');
 	
-	var modal 		= null;
-	
+	var modal = null;
+
 	switch (viewName) {
 		case 'event':
 			editEvent (data_id, viewName);
@@ -95,6 +98,9 @@ function editModal(data_id, viewName, event_id) {
 		case 'filter':
 			if($("#filter-add").attr("disabled") != "disabled")
 				editFilter(data_id, viewName, event_id);
+			break;
+		case 'sentiment':
+			editSentiment(data_id, viewName);
 			break;
 	}
 }
@@ -105,7 +111,7 @@ function editModal(data_id, viewName, event_id) {
 function submitModal(viewName) {
 	//App.debug('editModal(' + data_id +', ' + viewName +')');
 	
-	var modal 		= null;
+	var modal = null;
 	
 	switch (viewName) {
 		case 'event':
@@ -113,6 +119,9 @@ function submitModal(viewName) {
 			break;
 		case 'filter':
 			editFilterSubmit();
+			break;
+		case 'sentiment':
+			editSentimentSubmit ();
 			break;
 	}
 }
@@ -359,14 +368,11 @@ function deleteFilter (data_id) {
  */
 function saveAnalysisSumbit (daten) 
 {
-	
 	var postData = {
-		
 		event_id: $('#event_id').val(),
 		filter_id: $('#filter_id').val(),
 		tweet_id: daten
 	};
-	
 	
 	postData = App.toJSON(postData);
 	App.debug('POST: ' + postData);
@@ -387,5 +393,124 @@ function saveAnalysisSumbit (daten)
 		},
 		type: 'POST',
 		url: '/api/saveanalysis/'
+	});
+}
+/*
+ * main function to show a new Sentiment word or edit a persisted
+ * the partial html will be rendered with EJS, if a persisted one was opend 
+ * the data was set automatically
+ */
+function editSentiment(data_id, viewName) 
+{
+	var languages;
+	var lang_trans;
+	
+	// make 3 requests afterwarth.. First get out the available languages (de,at,en,us,etc)
+	// then the translations of the languages are needed. so make a translation request.
+	// after this, the general modal handling is done via ajax call.
+	$.get('/api/getlanguages', null,  function( data ) {
+		languages = data;
+		$.get('/api/gettranslations', {viewName: 'lang_'}, function (data){
+			lang_trans = data;
+			$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
+				if (data_id == null) 
+				{
+
+					if(typeof(languages) == 'undefineed')
+						setTimeout(300);
+					
+					var data =
+					{
+						translations: translations, //must have for each dlg
+						lang_trans: lang_trans,
+						languages: languages,
+						id: '',
+						sent_language: '',
+						sent_word: '',
+						sent_weight: ''
+					};
+
+					modal = new EJS({url: '/assets/tpl/modal_sentiment_edit.ejs?v='+version_app}).render(data);
+					_addModalHandle (modal, viewName);
+				}
+				else {
+					$.ajax({
+						dataType : 'json',
+						error : function() {
+							App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+						},
+						success : function(data) {
+							data['translations'] = translations;
+							data['lang_trans'] = lang_trans;
+							data['languages'] = languages;
+							modal = new EJS({url: '/assets/tpl/modal_sentiment_edit.ejs?v='+version_app}).render(data);
+							_addModalHandle (modal, viewName);
+						},
+						type : 'GET',
+						url : '/api/getsentiment/id/' + data_id
+					});
+				}
+			});
+		});
+	});
+}
+
+/*
+ * main function to persist the viewed sentiment word in the dialog
+ * the form data will be posted by ajax after displaying the respone the 
+ * form will be submitted
+ */
+function editSentimentSubmit() {
+	var postData = {
+		id: $('#modal-submit').attr('data-id'),
+		sent_language: $('#sent_language').val(),
+		sent_word: $('#sent_word').val(),
+		sent_weight: $('#sent_weight').val()
+	};
+
+	postData = App.toJSON(postData);
+	App.debug('POST: ' + postData);
+
+	$.ajax({
+		data: { 'data': postData },
+		dataType: 'json',
+		error: function() {
+			App.notify('Unbekannter Fehler', 'Beim Übertragen der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success: function(data) {
+
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				$('#modal-info').modal('hide');
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type: 'POST',
+		url: '/api/editsentiment/'
+	});
+}
+
+/*
+ * main funtion to delete an sentiment 
+ * the form will be submitted after displaying the response
+ */
+function deleteSentiment(data_id) {
+	$.ajax({
+		dataType : 'json',
+		error : function() {
+			App.notify('Unbekannter Fehler', 'Beim Laden der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success : function(data) {
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type : 'GET',
+		url : '/api/deletesentiment/id/' + data_id
 	});
 }
