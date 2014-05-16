@@ -1,0 +1,60 @@
+<!-- 
+	modal dialog for sentiment maintenance objects
+ -->
+<div class="modal hide fade" id="modal-info">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3><%= translations['sentiment_modal'] %></h3>
+  </div>
+  <div class="modal-body">
+
+	<form class="form-horizontal">
+		<div class="control-group">
+            <label class="control-label" for="sent_language"><%= translations['sentiment_lang'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <select name="sent_language" id="sent_language" size="1">
+                    	<option value="0"></option>
+				    	<% debugger; for(var i=0; i<languages.length; i++) {
+				    		var selected = false;
+				    		debugger;
+				    		if (typeof(sent_language) != 'undefined' || sent_language != null)
+				    			selected = (languages[i]['language_code']) == sent_language;
+				    			
+				    		if(selected){%>
+				    		<option selected value="<%=languages[i]['language_code']%>"><%=lang_trans['lang_'+languages[i]['language_code']]%></option>
+				    		<% } else { %>
+   							<option value="<%=languages[i]['language_code']%>"><%=lang_trans['lang_'+languages[i]['language_code']]%></option>
+   							<% } %>
+						<% } %>
+			    	</select>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sent_word"><%= translations['sentiment_word'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" id="sent_word" value="<%= sent_word %>">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="sent_weight"><%= translations['sentiment_weight'] %></label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-cog"></i></span>
+                    <input type="text" id="sent_weight" value="<%= sent_weight %>">
+                </div>
+            </div>
+        </div>
+	</form>
+  </div>
+  
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" data-id="<%= id %>" id="modal-submit"><i class="icon-ok icon-white"></i><%= translations['event_save'] %></a>
+    <a href="#" class="btn pull-left" data-dismiss="modal"><i class="icon-remove"></i><%= translations['general_cancel'] %></a>
+  </div>
+</div>
