@@ -152,9 +152,9 @@ class Core_Model_Sentiment extends Core_Model_Abstract {
 			$sentiment->setValues ($result);
 			foreach ($languages as $test)
 			{
-				if($test->getLanguageCode() == $sentiment->getSentimentLanguage())
+				if($test['language_code'] == $sentiment->getSentimentLanguage())
 				{
-					$sentiment->setLangTxt($test->getLanguageText());
+					$sentiment->setLangTxt("lang_".$test['language_code']);
 					break;
 				}
 			}
