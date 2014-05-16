@@ -133,13 +133,13 @@ CREATE TABLE IF NOT EXISTS `language_definition` (
 --
 
 INSERT INTO `language_definition` (`language_code`, `language_text`) VALUES
-('da', 'lang_da'),
-('de', 'lang_de'),
-('en', 'lang_en'),
-('es', 'lang_es'),
-('fr', 'lang_fr'),
-('it', 'lang_it'),
-('sv', 'lang_sv');
+('da'),
+('de'),
+('en'),
+('es'),
+('fr'),
+('it'),
+('sv');
 
 -- --------------------------------------------------------
 
