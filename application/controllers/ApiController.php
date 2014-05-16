@@ -46,7 +46,7 @@ class ApiController extends Core_AbstractController
     	
     	if (isset($viewName)) {
     		$texts = $this->translator->getTranslations($viewName);
-    		
+    	
     		return $this->apiControllerHelper->formatOutput($texts);
     	}
     	
@@ -55,6 +55,15 @@ class ApiController extends Core_AbstractController
                 'error_title'       => 'Fehler beim Laden der Übersetzungen!',
                 'error_description' => ''
             ));
+    }
+    
+    public function getlanguagesAction ()
+    {
+    	$language = new Core_Model_Language();
+    	// read all languages and set it later to the sentiment object as language text
+    	$result = $language->loadAll();
+    	
+    	return $this->apiControllerHelper->formatOutput($result);
     }
     
 	/**
@@ -227,12 +236,13 @@ class ApiController extends Core_AbstractController
     public function deletefilterAction () {
     
     	$id = $this->_getParam('id');
-    
+    	
     	try {
     		if (isset ($id)) {
     			$filter = new Core_Model_Filter();
     			$filter->delete ($id);
     		}
+    		
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
     				'success_title'     => 'Filter wurde erfolgreich gelöscht',
@@ -256,7 +266,8 @@ class ApiController extends Core_AbstractController
      * @return json success message or a error message
      */
     public function editfilterAction () {
-    	$validation = array ($this->translator->translate('filter_tags')  => 'filter_tags:N:string',
+    	$validation = array ($this->translator->translate('filter_name')  => 'filter_name:N:string',
+    			$this->translator->translate('filter_tags')  => 'filter_tags:N:string',
     			$this->translator->translate('filter_from') => 'filter_from:N:date',
     			$this->translator->translate('filter_to') => 'filter_to:N:date',
     			$this->translator->translate('filter_location') => 'filter_location:N:string',
@@ -265,6 +276,7 @@ class ApiController extends Core_AbstractController
     	$data = json_decode($_POST['data']);
     
     	$id = $data->id;
+    	$filter_name = $data->filter_name;
     	$filter_tags = $data->filter_tags;
     	$filter_from = $data->filter_from;
     	$filter_to = $data->filter_to;
@@ -290,6 +302,7 @@ class ApiController extends Core_AbstractController
     			));
     		}
     
+    		$filter->setFilterName($filter_name);
     		$filter->setFilterTags($filter_tags);
     		$filter->setFilterFrom($filter_from);
     		$filter->setFilterTo($filter_to);
@@ -390,14 +403,15 @@ class ApiController extends Core_AbstractController
      */
     public function getsentimentAction () {
     	$id = $this->_getParam('id');
-    
+
     	$sentiment = new Core_Model_Sentiment();
     
-    	if (isset ($id)) {
+    	if (isset ($id))
+    	{
     		$sentiment = $sentiment->loadById ($id);
-    
-    		if (isset ($value))  {
-    			return $this->apiControllerHelper->formatOutput($value);
+    		
+    		if (isset ($sentiment))  {
+    			return $this->apiControllerHelper->formatOutput($sentiment);
     		}
     	}
     }
@@ -438,11 +452,11 @@ class ApiController extends Core_AbstractController
      * @return json success message or a error message
      */
     public function editsentimentAction () {
-    	 
+
     	$validation = array ($this->translator->translate('sentiment_lang')  => 'sent_language:X:string',
     			$this->translator->translate('sentiment_word') => 'sent_word:X:string',
     			$this->translator->translate('sentiment_weight') => 'sent_weight:X:string');
-    	 
+    
     	$data = json_decode($_POST['data']);
     
     	$id = $data->id;
