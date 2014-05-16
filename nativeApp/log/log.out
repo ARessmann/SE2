@@ -1,0 +1,456 @@
+2014-05-04 07:37:18--INFO -com.triplex.tweet.TweetLoader:DB-Connection successfully established
+2014-05-04 07:37:18--INFO -com.triplex.tweet.TweetLoader:Events read into system. Count: 3
+2014-05-04 07:37:18--INFO -com.triplex.tweet.TweetLoader:Event (1) successfully updated: 1
+2014-05-04 07:37:19--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462930095880298496| User: Kurt-Peter Jermann - 04-05-2014
+2014-05-04 07:37:19--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462648118476288000| User: Jordi Talens #F1 - 03-05-2014
+2014-05-04 07:37:19--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462643613701509120| User: Juan Sánchez - 03-05-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462179132789772288| User: Bernhard Karnthaler - 02-05-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462178551559897089| User: Gerhard W. Loub - 02-05-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462158101278646272| User: Moritz Müller - 02-05-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461409218193817600| User: Elton Lam #79 - 30-04-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461209105466933250| User: Rev. Adam - 29-04-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461181017974657024| User: Maria Reyer - 29-04-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460730924204699649| User: Go_Green - 28-04-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460465821203324928| User: Tonda - 27-04-2014
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Event (1) successfully updated: 2
+2014-05-04 07:37:20--INFO -com.triplex.tweet.TweetLoader:Event (2) successfully updated: 1
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462974409075339265| User: ???? ??????? - 04-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462971063656529920| User: Karloff Esa-Gótica - 04-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462968600673153025| User:  - 04-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462577686812954626| User: Sarah Haertl - 03-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462376095409795072| User: caitlin - 03-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462318687417274370| User: Adri - 02-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462316811212447745| User: Kieran - 02-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461983519133433856| User: Movies TV Shows - 01-05-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461615670271422468| User: Roksana Król - 30-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461414052586328064| User: Movies TV Shows - 30-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461198304693743616| User: Rory McDermott - 29-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460883324438069249| User: Ebba Månsson - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460691111682801664| User: poprockmemorabilia - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460620483160178688| User: Cat Wells - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460595365813977089| User: Simba - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460552540623360000| User: Hatter Asphyxiation - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460539583684292608| User: Anna - 28-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460510058636259328| User: bethy california ? - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460492065730990080| User: Hannah Masterson - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460478504682131456| User: Louise Bullen - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460420700999008256| User: Laura Maguire - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460418356529491968| User: queen of sass - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460409580716318720| User: teen wolf  - 27-04-2014
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Event (2) successfully updated: 2
+2014-05-04 07:37:21--INFO -com.triplex.tweet.TweetLoader:Event (3) successfully updated: 1
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462988547226886144| User: matahari_klon - 04-05-2014
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462988441014509568| User: ulla ebner - 04-05-2014
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462961597313724416| User: Georg Grund - 04-05-2014
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462960738017898496| User: Marcus Eschborn - 04-05-2014
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462960274447015936| User: ödp Würzburg - 04-05-2014
+2014-05-04 07:37:24--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462936108846682112| User: David Gohla - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462935649365291008| User: Franz Alt - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462928387443392512| User: Martin Bartsch - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462891171271168000| User: WM 2014 - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462868285554307073| User: wm2014-brasilien.net - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462866865434275841| User: Brasilienfreunde - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462851348254687232| User: fremdsprachelernen24 - 04-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462712103561084928| User: Geschenkideen 2013 - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462696907228577792| User: ?Fussball Bundesliga - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462693817003417600| User: #bit #cas #firemind - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462691752676438016| User: Sebastian S. - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462681839619293186| User: Handyverträge - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462675358492274688| User: Zweierkette - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462666702707494913| User: Firsthandy Webradio - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462652597808021504| User: Tobias Zwior - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462652167044608001| User: ecke:sócrates - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462651589715849216| User: Modeshop - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462637497923559424| User: Eduard Blossfeld - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462636524744769536| User: Geschenkideen 2013 - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462621395500158976| User: ?Fussball Bundesliga - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462618293656760320| User: Fränki läuft - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462606364372897792| User: Handyverträge - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462604030061985792| User: RSS Sammeldienst - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462603048699703296| User: Eugene Elkin - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462591426979979264| User: Marcel Voigt - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462591204736380928| User: Firsthandy Webradio - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462576119498412032| User: Urlaubsschnäppchen - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462575792757563392| User: Coco Colo - 03-05-2014
+2014-05-04 07:37:25--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462566364889509888| User: Inffox.com - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462561039465578496| User: KfW Studienkredit? - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462558754832392192| User: Michael Alexandrovic - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462545937337167872| User: Modeshop - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462538348545200128| User: Andrea Hirter - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462537099187470336| User: ?Fussball Bundesliga - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462535399081250816| User: WM 2014 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462534685311373312| User: MovieFreak Dave - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462532996139323392| User: WM 2014 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462532802844434432| User: Okru News #10 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462532565513940992| User: Brasilienfreunde - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462531630939136000| User: WM 2014 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462530792741412864| User: Gewinnspiele GRATIS - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462529550753488896| User: 5 Freunde im Abseits - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462526259788935169| User: mz-web.de - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462525406990827520| User: WM 2014 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462524316601839617| User: WM 2014 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462515731264176128| User: Geschenkideen 2013 - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462508200177053696| User: Kazi Media Germany™ - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462500646768623616| User: ?Fussball Bundesliga - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462496801200025600| User: stern.de Feed - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462496793813848064| User: stern.de Sport - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462485553234337792| User: Handyverträge - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462475897925165057| User: The Deals Planet - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462475895886725122| User: The Deals Planet - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462472156375310338| User: wm2014-brasilien.net - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462356752625704960| User: overnight-europe - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462356749823913984| User: overnight - 03-05-2014
+2014-05-04 07:37:26--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462353975228891136| User: overnight - 03-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462329592993153024| User: The Deals Planet - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462329591609061376| User: The Deals Planet - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462322287489056768| User: Dieter Hochhausen - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462283006179168256| User: Quickberater - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462265069791752192| User: Quickberater - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462245466407968768| User: Cloud Viewer - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462245329640128512| User: Cloud Viewer - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462233832675368960| User: Thomas Verna - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462232075060641792| User: ATLETAS DE FUTEBOL   - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462231128376885248| User: ATLETAS DE FUTEBOL   - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462209584673742848| User: Quickberater - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462208218328887296| User: DailyDosisSatire - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462208195952250881| User: DailyDosisSatire - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462205755542605824| User: Fussball News - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462202663128805376| User: topscorer? - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462201647683600386| User: SPOX Redaktion - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462195276305149952| User: Bundesliga Live - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462193684012736513| User: campustravel.de  - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462190351995129856| User: Lauro.  - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462190067235037186| User: Quickberater - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462170719443382272| User: derGator - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462169511756439552| User: Quickberater - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462169359809777664| User: Tjerk Brühwiller - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462167686424702976| User: DekoWoerner  - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462161221664243712| User: Carsten Mellwig - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462160320774291456| User: ZDF heute - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462159642697535488| User: The Deals Planet - 02-05-2014
+2014-05-04 07:37:27--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462158043765956608| User: Fussball News - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462143542509719552| User: PSV Hannover - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462142691602468864| User: Promi24 - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462113473707507713| User: wm2014-brasilien.net - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462111040042700800| User: derplapperblog - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 462096705761333249| User: Zara Sunrise - 02-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461981128140677120| User: Sebastian Roessiger - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461975307851816960| User: Quickberater - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461975306438336512| User: Quickberater - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461974706950660097| User: News 24h Ger - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461958876783329280| User: Oliver - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461955734637248512| User: Brasilienfreunde - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461945768925220864| User: Marco Fisch - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461938270943723520| User: Quickberater - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461923329398816768| User: Weltreisejournal - 01-05-2014
+2014-05-04 07:37:28--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461919277235195904| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461901154268368896| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461893463038902272| User: Brasilienfreunde - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461891847737339904| User: FFFF EED - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461855711266623490| User: Georg Ulrich - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461853315102691328| User: Klaas Pals - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461851625267527681| User: Kevin Reichmann - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461846520145248259| User: Brasilienfreunde - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461846098794254336| User: Gamesmotion - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461846055554797570| User: Dietmar Lang - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461846040283316225| User: IAP PortalNetwork - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461844622306598912| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461840040780259328| User: agência latinapress - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461836905324482560| User: Sonja Peteranderl - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461835854668103681| User: agência latinapress - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461826118736023554| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461807919072149505| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461807918451392512| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461807298894393344| User: MOTIP DUPLI GmbH - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461806885965168640| User: Count Cunt - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461789981170618368| User: Quickberater - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461784811389333504| User: Chris - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461774253868994560| User: roland dreix - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461763444740349952| User: The Deals Planet - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461751041470775296| User: wm2014-brasilien.net - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461750103410085888| User: Smart PR - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461747338302988288| User: Original News - 01-05-2014
+2014-05-04 07:37:29--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461720237063565312| User: Originalnews.uk - 01-05-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461661467251449856| User: themenportal - 01-05-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461660291848105984| User: Brasilienfreunde - 01-05-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461644700512841728| User: Brasilienfreunde - 01-05-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461641040277950464| User: The News - 01-05-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461618293334233088| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461594844561813504| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461594843643248640| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461573139437064192| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461572694669283328| User: ichbinBW // Oliver - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461560796309254145| User: Lukas Mäder - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461556257267019776| User: bazar.at NÖ - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461556165328265216| User: mike mathias - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461552178990022656| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461551343639863296| User: Brasilienfreunde - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461550440392323072| User: bazar.at Freizeit - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461548294871609344| User: Politik-Feed - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461546460270452736| User: Sven  - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461542543935553537| User: IAP PortalNetwork - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461537371595743232| User: Patrick Gorska - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461536061592596480| User: ZockerDudes - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461530081018789888| User: Israel Batista - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461529414744805376| User: Quickberater - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461528020990193664| User: Brasilienfreunde - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461526332589883393| User: DeutschsprachigeInBR - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461523968168820736| User: BrasilienTraumUrlaub - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461520526251671552| User: Fussball Guru - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461517675186102273| User: Stadt Ludwigshafen - 30-04-2014
+2014-05-04 07:37:30--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461516127999631360| User: Bar?? Marquez - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461515795055775744| User: ReporterohneGrenzen - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461514735301963776| User: FC Bayern News - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461512477168394240| User: UmweltDialog - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461511157342154752| User: Fritz Schattauer - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461509772282695682| User: Monika Lazar - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461509594167013376| User: Quickberater - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461506788546736129| User: Mynewsdesk - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461505309001805824| User: Dietmar Lang - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461505308511068160| User: IAP PortalNetwork - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461504240394207232| User: BÜNDNIS90/DIE GRÜNEN - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461504025955799040| User: Dietmar Lang - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461503919760211970| User: BrasilienReise - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461501220558225408| User: MisterX™ - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461501017960742912| User: Jon@h Wedekind - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461500983411879936| User: Dietmar Lang - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461500870052442112| User: MES Marketingservice - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461500777857839104| User: HeinrichBöllStiftung - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461497280429031425| User: MCMLXXI - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461493768102100992| User: Kloesschen-Hamburg - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461492928058519552| User: Jojo Liebnau - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461492108809863169| User: Promi24 - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461491145546407937| User: Detlef Alsbach - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461490569898762241| User: FC Bayern Net - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461489716630548481| User: Quickberater - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461489517568864256| User: The Deals Planet - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461486632848613376| User: Ruth Hecker - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461483706805649408| User: AmnestyStudentanHSG - 30-04-2014
+2014-05-04 07:37:31--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461482541405319170| User: Kazi Media Germany™ - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461481862951866368| User: Der Maschinist - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461479606294302721| User: Okru News #02 - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461478916067045376| User: SN Infofiles 1 - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461474472629784576| User: Sven Walther - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461474470159335424| User: Deutsche Presse - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461473999005163520| User: NEWS - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461473316151504896| User: Andrea Hirter - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461472934729895936| User: Daniel Werkmeister - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461472683515838464| User: Sonja Peteranderl - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461472029565149186| User: Ma maison Mon jardin - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461472014042017792| User: Karl Heinz - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461471993091477505| User: TimsDailyNews - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461471986875527169| User: bashir al walid - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461471978050682880| User: Deutsche Presse - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461470507720642560| User: Quickberater - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461470506906943488| User: Quickberater - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461470506235863040| User: Quickberater - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461469576434565120| User: Patrick Gorska - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461469067325353984| User: Eistee.x33 - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461468627980808192| User: Spam - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467943239307264| User: Tom Corner - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467537272610817| User: plaudertaschePI - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467536169508864| User: SPIEGEL ONLINE Top - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467518360485888| User: SPIEGEL 24 Stunden - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467504515485697| User: Andy Bauer - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461467303435976705| User: DJ Telmi - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461465429744312320| User: SPIEGEL Sport - 30-04-2014
+2014-05-04 07:37:32--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461465429735911425| User: SPIEGEL ONLINE alles - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461465304376168450| User: Alsino GmbH u.Co.KG - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461465040127033344| User: prettyfancytrendy - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461460039933239296| User: Urlaubshighlights - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461459846852657152| User: Gerstl Weinselektion - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461450680264568832| User: Schmitz' Bookmarks - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461434905885286400| User: Hans Gernemann - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461434901766475776| User: Republikaner Jugend - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461431331767865344| User: Promi24 - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461430714391486464| User: höflich Cule - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461414869091500032| User: Quickberater - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461412490963066880| User: Maria Rosenau - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461405425884467200| User: Frida Thurm - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461405276110069760| User: UB HSU Hamburg - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461404567041617920| User: Kazi Media Germany™ - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461403401189064704| User: Elio - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461403294863081472| User: The Deals Planet - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461402628547956736| User: Open Languages - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461401952317083648| User: Heinrich Freer - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461400922602897408| User: Spam - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461397408002236417| User: WOLL-Biggesee - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461397023950770176| User: Räubertochter - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461396915717156864| User: Horst Müller - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461395946736455680| User: Katha  - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461394545955987456| User: Marius Eyesfeld - 30-04-2014
+2014-05-04 07:37:33--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461393774980395008| User: Pádua GuaraniKaiowá - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461392574780301312| User: The Israel Company - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461392478445531136| User: Bairisch Koenig - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461391898490728448| User: NEWS - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461391627375099904| User: Nachrichtenfunker - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461391442662129664| User: demo alsubaiey - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461391188302782464| User: ZEIT ONLINE - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461387644006436864| User: The News Selector - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461387641821220864| User: DTN Germany - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461387639199764480| User: Zeit_RSS - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461385215105982465| User: The Deals Planet - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461366352234565633| User: The Deals Planet - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461346317642387456| User: The Deals Planet - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461317216429146112| User: Nachrichtenportal - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461301497469218816| User: Brasilienfreunde - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461293637582598144| User: Brasilienfreunde - 30-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461262566660927489| User: Brasilienfreunde - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461249855613329411| User: Marc Meschenmoser - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461247362334076928| User: Quickberater - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461234631937773568| User: The Deals Planet - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461229524684771328| User: Quickberater - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461229524017885185| User: Quickberater - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461217138070810625| User: Michael Krueger - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461216268071092225| User: DE-football - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461216118321840128| User: Brasilienfreunde - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461213803279941632| User: World Cup Camping - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461211984814698499| User: CARTINGO - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461209672653877249| User: Foot+ - 29-04-2014
+2014-05-04 07:37:34--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461208220422266880| User: Brasilienfreunde - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461193289824075777| User: Quickberater - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461191236440064002| User: fnasigoreng30 - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461173505589911552| User: Quickberater - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461173504826548226| User: Quickberater - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461168037224513536| User: newscomm - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461164023224885248| User: Thomas Schlechter - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461161827683299329| User: Weltreisejournal - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461161701468303360| User: WM 2014 in Brasilien - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461153023830409217| User: #bit #cas #firemind - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461151937191477248| User: fair-NEWS Consulting - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461151223144783872| User: DNVerteiler - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461144288886157312| User: Harriet Fernandes - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461141742906273793| User: Arthur Landwehr - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461134909139353600| User: Gil Pfitzenmaier - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461132456759152640| User: Wilfried DL2LK - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461128254934769664| User: Michael Krueger - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461120390715023361| User: The Deals Planet - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461114489174110210| User: #bit #cas #firemind - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461113998776467456| User: DocMorris - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461093135301361665| User: Quickberater - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461093134605103105| User: Quickberater - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461089997739675648| User: Fantasticsportswear - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461077265996980224| User: eduardde - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461075451113259008| User: Brasilienfreunde - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461057469184495616| User: SWRinfo - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461055394857500672| User: Magdeburger Sonntag - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461055241257877504| User: News 24h Ger - 29-04-2014
+2014-05-04 07:37:35--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461052528239464448| User: Quickberater - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461016732275335168| User: Jörg Baldin - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461008742817873920| User: Mynewsdesk - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 461008741370851328| User: Mynewsdesk - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460998875361210368| User: The Deals Planet - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460935879914442752| User: Bookmarking Software - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460906022039998464| User: Martina Kupper - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460905770306252800| User: Jürgen Kalwa - 29-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460899243503648769| User: Giuseppe Di Marco - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460890038595633153| User: Quickberater - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460888610661605377| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460872866490105856| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460872355116765186| User: mediareloaded - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460871849455284224| User: GO! Portugal - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460869490993950720| User: Quickberater - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460865074135969792| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460864910877294592| User: WM 2014 Infos - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460851364936314880| User: Gerhard Otto - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460847824813301761| User: Quickberater - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460841672817926145| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460840545058029568| User: TimjoLP - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460837328882126848| User: IOFF Medienforum - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460832733996929024| User: Code5 Games - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460831868125208578| User: Tamara Schmid - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460826694249496576| User: Quickberater - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460825341792387073| User: Chris Brey - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460824874442035200| User: WM 2014 - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460798680162111488| User: WM 2014 in Brasilien - 28-04-2014
+2014-05-04 07:37:36--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460793691813072896| User: Jero Power - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460793050726686720| User: GER_Zombies - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460790608907354114| User: wm2014-brasilien.net - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460787793976098816| User: turi2 - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460786841524776960| User: wm2014-brasilien.net - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460785634492563456| User: Engagement Global - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460784523303596032| User: Quickberater - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460781462388604928| User: OnlineWelten - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460779274501230593| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460778261707227136| User: watchSea24.com - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460777083158142976| User: watchSea24.com - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460775638350049281| User: vacilar - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460773228437569536| User: bab.la - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460764536233267200| User: Webradio.Land - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460764209937387520| User: comunioblog - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460763096588378112| User: Quickberater - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460762320885403650| User: Webradio.Land - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460742676791308288| User: Quickberater - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460740247366561795| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460739798190129152| User: IAP PortalNetwork - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460732175831146496| User: IAP PortalNetwork - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460732170777014272| User: Dietmar Lang - 28-04-2014
+2014-05-04 07:37:37--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460731944066908160| User: PwC Österreich - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460728459107385344| User: agência latinapress - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460728204387295232| User: agência latinapress - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460728007309926400| User: ERFOLGSZIEL - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460727555432402944| User: whateveryoulike - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460726607729029121| User: Hispaniola News - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460724681306148865| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460721995324203008| User: Quickberater - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460716721846767616| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460712602080141312| User: Sportschau - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460704790260252672| User: Zauberer Fidibus - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460704176402886656| User: Kinderzauberclub - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460703864858353664| User: Markus heinzelmann - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460702540502687744| User: Oliver Page - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460701375928598528| User: Quickberater - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460701375337218048| User: Quickberater - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460690364513665024| User: Sports Insider - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460689613632192512| User: The Deals Planet - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460682665986113536| User: David Theis - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460675196400451585| User: Digitales Treibgut - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460673749562695681| User: Hermann-J. Tenhagen - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460662564410884096| User: Goldbach Group - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460649159616233473| User: The Deals Planet - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460628614174613504| User: The Deals Planet - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460576681128783873| User: Brasilienfreunde - 28-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460536986281840640| User: Quickberater - 27-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460536985472356352| User: Quickberater - 27-04-2014
+2014-05-04 07:37:38--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460519735092723713| User: Sport - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460514374755446785| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460511458011664384| User: Deniz Kökden - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460506485995229185| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460490232471638016| User: Quickberater - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460487577607233537| User: IAP PortalNetwork - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460487570619510784| User: Dietmar Lang - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460487387643392001| User: marion heine - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460487038387499008| User: IAP PortalNetwork - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460485738832740352| User: Andreas - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460482957493293056| User: Live Tickets - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460481598366814208| User: eBooks kostenlos - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460475262845480960| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460463457188315138| User: DJ Telmi - 27-04-2014
+2014-05-04 07:37:39--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460462131633471489| User: Tippspiel-Colditz.de - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460440325119811584| User: Mary Poppins - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460429728747618304| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460426506875834370| User: Quickberater - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460421896325332992| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460414603311476736| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460407470460907522| User: spielwelt.de - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460406819488534528| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460399505398329344| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460397507273449472| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460391727527133184| User: Dag-Detlef Reinert - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460378267892342784| User: MyAssIsFamous - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460363489387614208| User: Júlio Daldon - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460363393119956993| User: Quickberater - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460363392474025984| User: Quickberater - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460362516787253248| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460349468374614017| User: The Deals Planet - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460344930049994753| User: Wolfgang Bogler - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460343129032257536| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460341522484191232| User: MrEmanuelPlays - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460333073994088448| User: Harald von der Ems - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460322245076713472| User: Quickberater - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460321323773067264| User: Fussball Guru - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460318663900680192| User: Birte Förster - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460304483570827265| User: DKultur - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460296181185138689| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460249863809024000| User: Brasilienfreunde - 27-04-2014
+2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Event (3) successfully updated: 2

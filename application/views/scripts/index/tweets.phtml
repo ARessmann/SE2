@@ -46,15 +46,17 @@
 			           		<?php } ?>
 				    	</select>
 				    	<input type="hidden" id="event_id" value="<?= $this->selectedChooseEvent; ?>" />
+				    	<input type="hidden" id="tw_min" value="<?= $this->twMin['event_tw_count']; ?>" />
 		        	</td>
 		        	<td>
 		        		<div class="input-prepend">
-		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $this->selectedChooseEvent; ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i></span>
+		        		<span class="add-on"><i class="icon-briefcase" view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" event-id="<?= $this->selectedChooseEvent; ?>" title="<?= $this->translator->translate("filter_edit"); ?>"></i>
+		        		<i view-name="filter" data-id="<?= $this->selectedChooseFilter ?>" title="<?= $this->translator->translate("filter_delete"); ?>" class="icon-delete-filter"></i></span>
 		        		<select name="choose_filter" name="choose_filter" id="choose_filter" size="1">
 		        			<option value="0"></option>
 				    		<?php if($this->selectedChooseEvent)
 				    				foreach ($this->filterObject as $curObj) { ?>
-			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterTags(); ?></option>
+			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterName(); ?></option>
 			           		<?php } ?>
 				    	</select>
 				    	<?php 
@@ -67,13 +69,16 @@
 				    	}
 				    	?>
 				    	<?php 
+				    	if(!empty($tweetId)){
 				    	$comma_separated = implode("','", $tweetId);
 				    	?>
 				    	<script type="text/javascript">
 							var daten = new Array(<?= "'".$comma_separated."'" ?>);
-							console.log(daten);
+							
 						</script>
-			       		
+			       		<?php 
+				    	}
+				    	?>
 				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
 				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit(daten);" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
@@ -95,7 +100,7 @@
 					
 			        <div class="grid-head">
 			        	<i class="icon-tasks"></i> Tweets
-			            <span class="label label-important pull-right"><?= $this->counter ?></span>
+			            <span class="label label-important pull-right" id="counter"><?= $this->counter ?></span>
 			       	</div>
 
 			        <table class="table table-condensed table-bordered table-striped" id="event-table">

@@ -9,6 +9,7 @@
 class Core_Model_Filter extends Core_Model_Abstract {
 	
 	/* [PROPERTIES] */
+    protected $filter_name;
     protected $filter_tags;
     protected $filter_from;
     protected $filter_to;
@@ -38,6 +39,22 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 */
 	public function getProperties () {
 		return get_class_vars('Core_Model_Filter');
+	}
+	
+	/**
+	 *  * Get the filter name
+	 */
+	public function getFilterName () {
+		return $this->filter_name;
+	}
+	
+	/**
+	 * Set the filter name
+	 * 
+	 * @param $tags
+	 */
+	public function setFilterName ($name) {
+		$this->filter_name = $name;
 	}
 	
 	/**
@@ -158,6 +175,7 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	
 		$data = array(
 			'id'    				=> $this->id,
+			'filter_name'    		=> $this->filter_name,
 			'filter_tags'    		=> $this->filter_tags,
 			'filter_from'	       	=> $this->filter_from,
 			'filter_to'    			=> $this->filter_to,
