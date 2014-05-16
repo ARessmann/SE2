@@ -15,6 +15,7 @@ sentiment_word;Wort
 sentiment_weight;Gewichtung
 sentiment_edit;Wort bearbeiten
 sentiment_delete;Wort löschen
+sentiment_modal;Stimmungswort
 event_search;Suchen
 event_title;Titel
 event_from;Von
@@ -29,7 +30,7 @@ status_endCollection;Sammlung beenden
 status_collection_in_progress;Sammlung aktiv
 status_analysis;Analyse
 event_id;Event-Id
-event_tw_count;Anzahl Tweets
+event_tw_count;Mindestanzahl Tweets
 event_tweet_tags;Tags
 event_state;Status
 tag_id;Tag-Id
@@ -62,6 +63,7 @@ filter_from;Tweet von
 filter_to;Tweet bis
 filter_location;Tweet Ort
 filter_language;Tweet Sprache
+filter_name;Name
 event_id;Veranstaltung
 filter_edit;Filter bearbeiten
 view_newFilter;Neu

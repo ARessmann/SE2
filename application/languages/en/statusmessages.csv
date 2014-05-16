@@ -15,6 +15,7 @@ sentiment_word;Word
 sentiment_weight;Weight
 sentiment_edit;Edit word
 sentiment_delete;Delete word
+sentiment_modal;Sentiment word
 event_search;Search 
 event_title;Title
 event_from;From
@@ -29,7 +30,7 @@ status_endCollection;Collection finished
 status_collection_in_progress;Collection in progress
 status_analysis;Analysis
 event_id;Event-Id
-event_tw_count;Tweet counts
+event_tw_count;Minimum number of tweets
 event_tweet_tags;Tags
 event_state;Status
 tag_id;Status-Id
@@ -62,6 +63,7 @@ filter_from;Tweet from
 filter_to;Tweet to
 filter_location;Tweet location
 filter_language;Tweet language
+filter_name;Name
 event_id;Event
 filter_edit;edit filter
 view_newFilter;New
