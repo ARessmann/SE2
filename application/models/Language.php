@@ -10,7 +10,6 @@ class Core_Model_Language extends Core_Model_Abstract {
 	
 	/* [PROPERTIES] */
     protected $language_code;
-    protected $language_text;
     
     /* [CONSTRUCT] */
     /**
@@ -53,22 +52,6 @@ class Core_Model_Language extends Core_Model_Abstract {
 	}
 	
 	/**
-	 * Get the language text
-	 */
-	public function getLanguageText() {
-		return $this->language_text;
-	}
-	
-	/**
-	 * Set the language text
-	 * @param $text
-	 */
-	public function setSentimentWord($text) {
-		$this->language_text = $text;
-	}
-	
-	
-	/**
 	 * getting attributes of this class as array
 	 *
 	 * @return array with attributes
@@ -86,8 +69,7 @@ class Core_Model_Language extends Core_Model_Abstract {
 	public function toArray() {
 		
 		$data = array(
-			'language_code'    	=> $this->language_code,
-			'language_text'	    => $this->language_text
+			'language_code'    	=> $this->language_code
 		);
 		
 		$this->data = $data;
@@ -103,14 +85,13 @@ class Core_Model_Language extends Core_Model_Abstract {
 	public function loadAll () {
 		
 		$results = $this->_loadAll ();
-		$ret 	 = array (); 
+		$ret 	 = array(); 
 		
 		foreach ($results as $result)
 		{
 			$lang = new Core_Model_Language();
 			$lang->setValues ($result);
-			
-			$ret[] = $lang;
+			$ret[] = $lang->getData();
 		}
 		
 		return $ret;
