@@ -1,4 +1,4 @@
-page_title;Event Analyse
+﻿page_title;Event Analyse
 general_success;Erfolgreich gespeichert
 general_remove_success;Erfolgreich gel�scht
 general_noentrysfound;Keine Eintr�ge gefunden
@@ -29,7 +29,7 @@ status_endCollection;Sammlung beenden
 status_collection_in_progress;Sammlung aktiv
 status_analysis;Analyse
 event_id;Event-Id
-event_tw_count;Anzahl Tweets
+event_tw_count;Mindestanzahl Tweets
 event_tweet_tags;Tags
 event_state;Status
 tag_id;Tag-Id

@@ -29,7 +29,7 @@ status_endCollection;Collection finished
 status_collection_in_progress;Collection in progress
 status_analysis;Analysis
 event_id;Event-Id
-event_tw_count;Tweet counts
+event_tw_count;Minimum number of tweets
 event_tweet_tags;Tags
 event_state;Status
 tag_id;Status-Id
