@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `language_definition` (
 -- Dumping data for table `language_definition`
 --
 
-INSERT INTO `language_definition` (`language_code`, `language_text`) VALUES
+INSERT INTO `language_definition` (`language_code`) VALUES
 ('da'),
 ('de'),
 ('en'),
