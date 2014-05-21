@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Mai 2014 um 18:47
+-- Erstellungszeit: 21. Mai 2014 um 21:20
 -- Server Version: 5.5.32
 -- PHP-Version: 5.4.16
 
@@ -33,11 +33,19 @@ CREATE TABLE IF NOT EXISTS `analysis` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `analysis_date` date NOT NULL,
   `event_id` int(4) NOT NULL,
-  `filter_id` int(4) NOT NULL,
+  `filter_id` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `filter_id` (`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Daten für Tabelle `analysis`
+--
+
+INSERT INTO `analysis` (`id`, `analysis_date`, `event_id`, `filter_id`) VALUES
+(28, '2014-05-21', 3, 7),
+(29, '2014-05-21', 3, 7);
 
 -- --------------------------------------------------------
 
@@ -50,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `analysis_tweets` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `analysis_id` int(4) NOT NULL,
   `tweet_id` bigint(20) NOT NULL,
-  `value` int(1) NOT NULL,
+  `value` int(2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `analysis_id` (`analysis_id`),
   KEY `tweet_id` (`tweet_id`)
@@ -73,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `event_state` char(1) CHARACTER SET latin1 DEFAULT '0',
   `event_tweet_tags` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Daten für Tabelle `event`
@@ -82,10 +90,12 @@ CREATE TABLE IF NOT EXISTS `event` (
 INSERT INTO `event` (`id`, `event_title`, `event_description`, `event_from`, `event_to`, `event_tw_count`, `event_state`, `event_tweet_tags`) VALUES
 (1, 'Spielberg 2014', 'Eine kurze Beschreibung zum Spielberg Event', '2014-04-20', '2014-07-01', 100, '2', 'Spielberg,F1'),
 (2, 'Theater Mamma Mia 2014', 'Eine kurze Beschreibung zum MAMA MIA Event', '2014-04-01', '2014-12-24', 10, '2', 'Mamma Mia,Pierce Brosnan'),
-(3, 'Fu?ball WM 2014 Brasil', 'WM 2014', '2014-04-01', '2014-07-01', 1000, '2', 'WM,2014,Brasilien'),
+(3, 'Fu?ball WM 2014 Brasil', 'WM 2014', '2014-04-01', '2014-07-01', 100, '0', 'WM,2014,Brasilien'),
 (4, 'Spring Break 2014', 'Spring break is coming back each year', '2014-04-01', '2014-09-01', 0, '1', 'Club,Love'),
 (5, 'Blade Night', '', '2014-04-01', '2014-05-20', 0, '1', 'Blade Night,Skater'),
-(6, 'UEFA Champions League', 'Real Madrid - Athletico', '2014-05-01', '2014-05-31', 0, '1', 'UEFA,Champions League');
+(6, 'UEFA Champions League', 'Real Madrid - Athletico', '2014-05-01', '2014-05-31', 0, '1', 'UEFA,Champions League'),
+(7, 'test', '', '2014-05-22', '2014-05-16', 0, '0', 'test'),
+(8, 'fußball', 'österreich\n', '2014-05-23', '2014-05-24', 0, '0', 'österreich');
 
 -- --------------------------------------------------------
 
@@ -105,18 +115,15 @@ CREATE TABLE IF NOT EXISTS `filter` (
   `event_id` int(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Daten für Tabelle `filter`
 --
 
 INSERT INTO `filter` (`id`, `filter_name`, `filter_tags`, `filter_from`, `filter_to`, `filter_location`, `filter_language`, `event_id`) VALUES
-(1, '', 'Ronaldo', NULL, NULL, NULL, '', 3),
-(2, '', 'Pele', NULL, NULL, NULL, NULL, 3),
-(3, '', 'Fußball', '0000-00-00', '0000-00-00', 'Deutschland', '', 3),
-(4, '', 'Portugal', NULL, NULL, NULL, NULL, 3),
-(5, '', 'Vettel', '0000-00-00', '0000-00-00', '', '', 1);
+(5, '', 'Vettel', '0000-00-00', '0000-00-00', '', '', 1),
+(7, 'fifa', 'FIFA', '0000-00-00', '0000-00-00', '', '', 3);
 
 -- --------------------------------------------------------
 

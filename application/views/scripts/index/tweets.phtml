@@ -59,29 +59,13 @@
 			                	<option <?= ($curObj->getId() == $this->selectedChooseFilter) ? 'selected' : ''; ?> value="<?= $curObj->getId (); ?>"><?= $curObj->getFilterName(); ?></option>
 			           		<?php } ?>
 				    	</select>
-				    	<?php 
-				    	$i = 0; 
-				    	foreach ($this->tweets as $tweet) {
-			       				
-			       				$tweetId[$i] = $tweet->getId();
-			       				$i++;
-			       			
-				    	}
-				    	?>
-				    	<?php 
-				    	if(!empty($tweetId)){
-				    	$comma_separated = implode("','", $tweetId);
-				    	?>
-				    	<script type="text/javascript">
-							var daten = new Array(<?= "'".$comma_separated."'" ?>);
-							
-						</script>
-			       		<?php 
-				    	}
-				    	?>
+				    	
+				    	
+				    	
+			       		
 				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
-				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit(daten);" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
+				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit();" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
 				    	</div>
 		        	</td>
 		        	<td>

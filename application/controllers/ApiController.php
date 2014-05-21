@@ -349,7 +349,42 @@ class ApiController extends Core_AbstractController
     	$analysis_date = date("Y.m.d");
     	$event_id = $data->event_id;
     	$filter_id = $data->filter_id;
-    	$tweets = $data->tweet_id;
+    	
+    	
+    	$tweetEntry = new Core_Model_TweetEntry ();
+    	$events = new Core_Model_Event();
+    	$filterObject = new Core_Model_Filter(); // for filtering after tweets
+    	$event = $events->loadAll();
+		$selectedChooseEvent = $event_id;     
+
+        $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
+		$tweets = $this->removeDeletedFromList ($tweets);
+		
+		
+		
+		// id of the selected filter object (listBox)
+		$selectedChooseFilter = $filter_id; 
+		// if the filter is set - and is also selected, load the right tweets
+		if(isset($selectedChooseFilter) && $selectedChooseFilter != '' && $selectedChooseFilter != '0')
+		{
+			$currentSelectedFilter = new Core_Model_Filter();
+			$currentSelectedFilter = $filterObject->loadFilterObjectById($selectedChooseFilter);
+			/*
+			 * select * from tweet_entry where tw_text like '%selectedChooseFilter->getFilterTags()%'
+			 */
+			$whereLike = array(
+					'tw_text'    			=> $currentSelectedFilter->getFilterTags(),
+					'tw_language'    		=> $currentSelectedFilter->getFilterLanguage(),
+					'tw_location'	       	=> $currentSelectedFilter->getFilterLocation()
+			);
+			$whereEquals = array(
+					'event_id'    			=> $currentSelectedFilter->getEventId()
+			);
+			$tweets = $tweetEntry->loadAllByProperties($whereLike, $whereEquals, "id");
+		}		
+		
+        if (isset ($filter) && $filter != '')
+            $tweets = $this->searchObjectList($tweets, $filter);
 
 
     	if($filter_id === '0')
@@ -368,13 +403,15 @@ class ApiController extends Core_AbstractController
     		
     		
     		foreach($tweets as $entry){
+    			
+    			
     			$tweetEntry = new Core_Model_TweetEntry();
-    			$tweetEntry = $tweetEntry->loadById($entry);
+    			$tweetEntry = $tweetEntry->loadById($entry->getId());
     			
     			$analysisTweets = new Core_Model_AnalysisTweets();
     			    			
     			$analysisTweets->setAnalysisId($analysisId);
-    			$analysisTweets->setTweetId($entry);
+    			$analysisTweets->setTweetId($tweetEntry['id']);
     			$analysisTweets->setValue($tweetEntry['tw_weight']);
     			$analysisTweets->save();
     		}

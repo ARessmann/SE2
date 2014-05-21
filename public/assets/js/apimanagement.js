@@ -92,7 +92,7 @@ function initTriggers() {
           }
        	  else {
        		$("#useFilter").removeAttr("disabled");
-       		$("#useFilter").attr("onclick", "javascript:saveAnalysisSumbit(daten);");
+       		$("#useFilter").attr("onclick", "javascript:saveAnalysisSumbit();");
        	  }
 	})
 }
@@ -409,12 +409,11 @@ function deleteFilter (data_id) {
 /*
  * function to save a new Analysis 
  */
-function saveAnalysisSumbit (daten) 
+function saveAnalysisSumbit () 
 {
 	var postData = {
 		event_id: $('#event_id').val(),
 		filter_id: $('#filter_id').val(),
-		tweet_id: daten
 	};
 	
 	postData = App.toJSON(postData);
