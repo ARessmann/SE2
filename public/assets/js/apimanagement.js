@@ -71,7 +71,7 @@ function initTriggers() {
 	      //Set button disabled
 	      $("#choose_filter").attr("disabled", "disabled");
 	 
-          var hasFilter = $("select#choose_filter").find("option").length;console.log(hasFilter);
+          var hasFilter = $("select#choose_filter").find("option").length;
           if(hasFilter < 2)
         	$("#choose_filter").attr("disabled", "disabled");
        	  else
@@ -95,6 +95,38 @@ function initTriggers() {
        		$("#useFilter").attr("onclick", "javascript:saveAnalysisSumbit();");
        	  }
 	})
+	
+}
+
+/*
+ * select/deselect all checkboxes 
+ */
+
+function select_all(){
+	
+	for ( var i = 0; i < $(".tweet_delete").length; i++ )
+    {
+    	if(!$(".tweet_delete")[i].checked)
+    		var check = true;
+    	
+    }
+	if(check){
+		for ( i = 0; i <= document.getElementsByName("tweet_delete").length; i++ )
+	    {
+	    	$(".tweet_delete").prop("checked", true);
+	    	
+	    }
+		
+	}
+	else
+	{
+		for ( i = 0; i <= document.getElementsByName("tweet_delete").length; i++ )
+	    {
+	    	$(".tweet_delete").prop("checked", false);
+	    	check = false;
+	    }
+	}
+	console.log(check);
 }
 
 /*

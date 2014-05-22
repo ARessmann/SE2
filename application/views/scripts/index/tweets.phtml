@@ -90,7 +90,7 @@
 			        <table class="table table-condensed table-bordered table-striped" id="event-table">
 						<thead>
 			            	<tr>
-			                	<th width="37px" class="grid-caption"></th>
+			                	<th width="37px" class="grid-caption"><input type="checkbox" name="tweet_delete_all" onclick="javascript:select_all();" value=""></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tw_text"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tweet_date"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tw_user"); ?></th>
@@ -102,7 +102,7 @@
 
 	                                <tr class="user-row">
 	                                    <td class="warning">
-	                                        
+	                                    <input type="checkbox" name="tweet_delete" class="tweet_delete" value="<?= $tweet->getId (); ?>">    
 	                                    </td>
 	                                    <td><?= $tweet->getTweetText (); ?></td>
 	                                    <td><?= date_format (new DateTime($tweet->getCreationDate ()), 'd.m.Y'); ?></td>

@@ -400,22 +400,22 @@ class ApiController extends Core_AbstractController
     		
     		$analysisId = $analysis->save();
     		
-    		
+    		$tweetEntry = new Core_Model_TweetEntry();
+    		$tweetEntrys = $tweetEntry->loadAll();
     		
     		foreach($tweets as $entry){
     			
-    			
-    			$tweetEntry = new Core_Model_TweetEntry();
-    			$tweetEntry = $tweetEntry->loadById($entry->getId());
-    			
     			$analysisTweets = new Core_Model_AnalysisTweets();
-    			    			
-    			$analysisTweets->setAnalysisId($analysisId);
-    			$analysisTweets->setTweetId($tweetEntry['id']);
-    			$analysisTweets->setValue($tweetEntry['tw_weight']);
-    			$analysisTweets->save();
+				$tweetEntry = $this->getTweetEntryById ($tweetEntrys, $entry->getId ());
+    			
+    			if (isset ($tweetEntry)) {    			
+	    			$analysisTweets->setAnalysisId($analysisId);
+	    			$analysisTweets->setTweetId($tweetEntry->getId());
+	    			$analysisTweets->setValue($tweetEntry->getWeight());
+	    			$analysisTweets->save();
+    			}
     		}
-    
+    		
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
     				'success_title'     => 'Analyse wurde erfolgreich gespeichert',
@@ -433,6 +433,15 @@ class ApiController extends Core_AbstractController
     		));
     	}
     }
+    
+    private function getTweetEntryById ($tweetEntrys, $id) {
+    	foreach ($tweetEntrys as $tweetEntry) {
+    		if ($tweetEntry->getId () == $id)
+    			return $tweetEntry;
+    	}
+    	return null;
+    }
+    
     /**
      * getting an sentiment by Id and transform it to a json string
      *
@@ -474,6 +483,7 @@ class ApiController extends Core_AbstractController
     		));
     	}
     	catch (Exception $e) {
+    		
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
     				'error_title'       => 'Fehler beim Löschen des Sentiment',
