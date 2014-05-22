@@ -92,7 +92,7 @@ function initTriggers() {
           }
        	  else {
        		$("#useFilter").removeAttr("disabled");
-       		$("#useFilter").attr("onclick", "javascript:saveAnalysisSumbit();");
+       		$("#useFilter").attr("onclick", "javascript:saveAnalysisSubmit();");
        	  }
 	})
 	
@@ -108,25 +108,15 @@ function select_all(){
     {
     	if(!$(".tweet_delete")[i].checked)
     		var check = true;
-    	
     }
 	if(check){
-		for ( i = 0; i <= document.getElementsByName("tweet_delete").length; i++ )
-	    {
-	    	$(".tweet_delete").prop("checked", true);
-	    	
-	    }
-		
+	    	$(".tweet_delete").prop("checked", true);	
 	}
 	else
 	{
-		for ( i = 0; i <= document.getElementsByName("tweet_delete").length; i++ )
-	    {
 	    	$(".tweet_delete").prop("checked", false);
 	    	check = false;
-	    }
 	}
-	console.log(check);
 }
 
 /*
@@ -441,7 +431,7 @@ function deleteFilter (data_id) {
 /*
  * function to save a new Analysis 
  */
-function saveAnalysisSumbit () 
+function saveAnalysisSubmit () 
 {
 	var postData = {
 		event_id: $('#event_id').val(),
@@ -586,5 +576,35 @@ function deleteSentiment(data_id) {
 		},
 		type : 'GET',
 		url : '/api/deletesentiment/id/' + data_id
+	});
+}
+
+/*
+ * main funtion to delete Tweets 
+ * the form will be submitted after displaying the response
+ */
+function deleteTweets () {
+	var data_id = new Array();
+	for ( var i = 0; i < $(".tweet_delete").length; i++ )
+    {
+    	if($(".tweet_delete")[i].checked)
+    		data_id[i] = $(".tweet_delete")[i].value;
+    	
+    }
+	$.ajax({
+		dataType : 'json',
+		error : function() {
+			App.notify('Unbekannter Fehler', 'Beim Laden der Daten ist es zu einem Fehler gekommen', 'error');
+		},
+		success : function(data) {
+			if(data.error == true) {
+				App.notify('Fehler: '+data['error_title'], data['error_description'], 'error');
+			} else {
+				App.notify(data['success_title'], data['success_description'], 'success');
+				_submitForm (1000);
+			}
+		},
+		type : 'GET',
+		url : '/api/deletetweets/id/' + data_id
 	});
 }

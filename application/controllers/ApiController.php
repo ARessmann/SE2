@@ -555,4 +555,42 @@ class ApiController extends Core_AbstractController
     		));
     	}
     }
+    
+     /** Function to delete a Tweet by the given Id
+	 *
+	 * @return json success message or a error message
+	 */
+    public function deletetweetsAction () {
+        
+        $id = $this->_getParam('id');
+  
+        $id = explode(",", $id);
+        
+        try {
+            if (isset ($id)) {
+            	foreach($id as $tweet){
+            		if($tweet != ""){
+            			$tweetEntry = new Core_Model_TweetEntry ();
+            			$tweetEntries = $tweetEntry->loadAll();
+            			$tweetEntry = $this->getTweetEntryById($tweetEntries, $tweet);
+                		$tweetEntry->setDeletedState ('1');
+                		$tweetEntry->update();
+            		}	
+            	}
+                
+            }
+            return $this->apiControllerHelper->formatOutput(array(
+                'success'               => true,
+                'success_title'     => 'Tweets wurden erfolgreich gelöscht',
+                'success_description'   => ''
+            ));
+        }
+        catch (Exception $e) {
+            return $this->apiControllerHelper->formatOutput(array(
+                'error'             => true,
+                'error_title'       => 'Fehler beim Löschen der Tweets',
+                'error_description' => ''
+            ));
+        }
+    }
 }

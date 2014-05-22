@@ -65,7 +65,7 @@
 			       		
 				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
-				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSumbit();" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
+				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSubmit();" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
 				    	</div>
 		        	</td>
 		        	<td>
@@ -113,6 +113,7 @@
 	           				<?php } ?>
 					    </tbody>
 					</table>
+					<a id="delete_tweets" href="#!" onclick="javascript:deleteTweets();" class="btn"><?=$this->translator->translate("view_deleteTweets");?></a><br /><br />
 					<?php echo $this->partial('_partials/pagination/pager.phtml', array('total' => $this->total, 'page' => $this->page)); ?>
 				</div>
 			</div>
