@@ -80,6 +80,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headScript()->appendFile('/assets/js/jquery-ui-1.10.4.custom.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/jquery.pnotify.min.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/bootstrap.min.js?v=' . $v);
+		$view->headScript()->appendFile('/assets/js/bootstrap-datepicker.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/ejs.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/view.js?v=' . $v);
 		$view->headScript()->appendFile('/assets/js/json2.js?v=' . $v);
