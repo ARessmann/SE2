@@ -75,7 +75,7 @@ class IndexController extends Core_AbstractController {
 		$selectedChooseEvent = $this->_getParam('choose_event');     
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
-		$tweets = $this->removeDeletedFromList ($tweets);
+		
 		
 		$filters = null; // all filterObjects from the selected Event
 		if($selectedChooseEvent != null && $selectedChooseEvent != '0')
@@ -109,7 +109,9 @@ class IndexController extends Core_AbstractController {
 		
         if (isset ($filter) && $filter != '')
             $tweets = $this->searchObjectList($tweets, $filter);
-
+		
+		$tweets = $this->removeDeletedFromList ($tweets);
+		
         $this->view->filter = $filter;
         $this->view->counter = count($tweets);
         $this->view->menuOptions = $this->getMenu ();
@@ -122,6 +124,7 @@ class IndexController extends Core_AbstractController {
        	
        	$this->view->tweets = $this->getPagedElements($tweets);
     }
+    
     
     public function analysisAction () {
     	$tweetEntry = new Core_Model_TweetEntry ();
