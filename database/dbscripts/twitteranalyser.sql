@@ -5053,6 +5053,8 @@ CREATE TABLE IF NOT EXISTS `tweet_entry` (
   `tw_deleted` char(1) CHARACTER SET latin1 DEFAULT '0',
   `tw_weight` int(2) NOT NULL DEFAULT '0',
   `event_id` int(4) DEFAULT NULL,
+  `tw_longitude` double DEFAULT NULL,
+  `tw_latitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=466963767096381441 ;
