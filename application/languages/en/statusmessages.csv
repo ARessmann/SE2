@@ -76,3 +76,6 @@ lang_fr;French
 lang_it;Italian
 lang_sv;Swedish
 view_deleteTweets;delete Tweets
+view_event_initalized;initialized
+view_event_collection;collection running
+view_event_collected;collection finished
