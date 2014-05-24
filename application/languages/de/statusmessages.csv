@@ -76,3 +76,6 @@ lang_fr;Französisch
 lang_it;Italienisch
 lang_sv;Schwedisch
 view_deleteTweets;Tweets löschen
+view_event_initalized;initialisiert
+view_event_collection;Sammlung läuft
+view_event_collected;Sammlung beendet
