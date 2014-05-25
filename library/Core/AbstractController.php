@@ -133,4 +133,5 @@ class Core_AbstractController extends Zend_Controller_Action {
 		
 		return array_slice($elements, ($pagination - 1) * 25, 25);
 	}
+	
 }

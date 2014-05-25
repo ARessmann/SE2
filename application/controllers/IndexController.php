@@ -16,7 +16,7 @@ class IndexController extends Core_AbstractController {
 		parent::init();
 		$this->view->pageTitle = 'Twitteranalyser';
 		$this->view->lang = $this->session->lang;
-
+		
 	}
     
 	/**

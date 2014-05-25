@@ -3,7 +3,7 @@
 echo '<div class="span3">';
 echo '<div class="well sidebar-nav">';
 echo '<ul class="nav nav-list">';
-echo '<li class="nav-header"><?= $this->translator->translate("view_showEvent"); ?></li>';
+echo '<li class="nav-header">' . $this->translator->translate("view_showEvent") . '</li>';
 
 foreach($this->menuOptions as $m) {
 	$activeClass = ($m[1] == $this->action) ? 'active' : '';

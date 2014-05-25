@@ -34,6 +34,20 @@ class ApiController extends Core_AbstractController
 
     }
     
+    /*
+     * function to add a analyse Ignore
+     */
+    public function addAnalyseIgnore () {
+    	
+    }
+    
+    /*
+     * function to remove the analyse Ignore
+     */
+    public function deleteAnalyseIgnore () {
+    	
+    }
+    
     /**
      * 
      * Ajax function to retreive the descriptions for the given key
@@ -343,13 +357,13 @@ class ApiController extends Core_AbstractController
      * @return json success message or a error message
      */
     public function saveanalysisAction () {
+    	set_time_limit (300); //overwrite 30sec timeout optimizable -> persist asynchronly
     	 
     	$data = json_decode($_POST['data']);
   
     	$analysis_date = date("Y.m.d");
     	$event_id = $data->event_id;
     	$filter_id = $data->filter_id;
-    	
     	
     	$tweetEntry = new Core_Model_TweetEntry ();
     	$events = new Core_Model_Event();
@@ -359,8 +373,6 @@ class ApiController extends Core_AbstractController
 
         $tweets = $tweetEntry->loadByEventId ($selectedChooseEvent);
 		$tweets = $this->removeDeletedFromList ($tweets);
-		
-		
 		
 		// id of the selected filter object (listBox)
 		$selectedChooseFilter = $filter_id; 
@@ -406,7 +418,7 @@ class ApiController extends Core_AbstractController
     		foreach($tweets as $entry){
     			
     			$analysisTweets = new Core_Model_AnalysisTweets();
-				$tweetEntry = $this->getTweetEntryById ($tweetEntrys, $entry->getId ());
+				$tweetEntry = Core_Listhelper::getModelById($tweetEntrys, $entry->getId ());
     			
     			if (isset ($tweetEntry)) {    			
 	    			$analysisTweets->setAnalysisId($analysisId);
@@ -432,14 +444,6 @@ class ApiController extends Core_AbstractController
     				'error_description' => ''
     		));
     	}
-    }
-    
-    private function getTweetEntryById ($tweetEntrys, $id) {
-    	foreach ($tweetEntrys as $tweetEntry) {
-    		if ($tweetEntry->getId () == $id)
-    			return $tweetEntry;
-    	}
-    	return null;
     }
     
     /**

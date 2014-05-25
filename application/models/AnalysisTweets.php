@@ -181,7 +181,7 @@ class Core_Model_AnalysisTweets extends Core_Model_Abstract {
 	 * 
 	 * @return Core_Model_AnalysisTweets 
 	 */
-	public function loadByEventId ($id) {
+	public function loadByAnalysisId ($id) {
 		$results = $this->_loadByProperty('analysis_id', $id);
 		$ret 	 = array (); 
 		
@@ -200,7 +200,7 @@ class Core_Model_AnalysisTweets extends Core_Model_Abstract {
 	 * 
 	 * @return Core_Model_AnalysisTweets 
 	 */
-	public function loadByFilterId ($id) {
+	public function loadByTweetId ($id) {
 		$results = $this->_loadByProperty('tweet_id', $id);
 		$ret 	 = array (); 
 		

@@ -8,7 +8,7 @@
 
 <div class="row-fluid">
 
-    <?php echo $this->partial('_partials/adminmenu.phtml', array('action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
+    <?php echo $this->partial('_partials/adminmenu.phtml', array('translator' => $this->translator, 'action' => $this->action,'menuOptions' => $this->menuOptions)); ?>
 
 	<div class="span9">
 		<h3><?= $this->translator->translate("tweet_entries"); ?></h3>
@@ -60,9 +60,6 @@
 			           		<?php } ?>
 				    	</select>
 				    	
-				    	
-				    	
-			       		
 				    	<input type="hidden" id="filter_id" value="<?= ($this->selectedChooseEvent == '0') ? '0' : $this->selectedChooseFilter; ?>" />
 				    	<a id="filter-add" href="#!" onclick="javascript:editModal(null, 'filter', <?= $this->selectedChooseEvent; ?> );" class="btn"><?=$this->translator->translate("view_newFilter");?></a>
 				    	<a id="useFilter" href="#!" onclick="javascript:saveAnalysisSubmit();" class="btn"><?=$this->translator->translate("view_startAnalysis");?></a>
@@ -87,10 +84,11 @@
 			            <span class="label label-important pull-right" id="counter"><?= $this->counter ?></span>
 			       	</div>
 
-			        <table class="table table-condensed table-bordered table-striped" id="event-table">
+			       	<input type="hidden" id="ignore_tweets" value=""/>
+			        <table class="table table-condensed table-bordered table-striped" id="tweet-table">
 						<thead>
 			            	<tr>
-			                	<th width="37px" class="grid-caption"><input type="checkbox" name="tweet_delete_all" onclick="javascript:select_all();" value=""></th>
+			                	<th width="40px" class="grid-caption"><input type="checkbox" name="tweet_delete_all" onclick="javascript:select_all();" value=""></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tw_text"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tweet_date"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tw_user"); ?></th>
@@ -102,7 +100,8 @@
 
 	                                <tr class="user-row">
 	                                    <td class="warning">
-	                                    <input type="checkbox" name="tweet_delete" class="tweet_delete" value="<?= $tweet->getId (); ?>">    
+	                                    <input type="checkbox" name="tweet_delete" title="delete" class="tweet_delete" value="<?= $tweet->getId (); ?>">
+	                                    <button type="button" class="btn btn-mini" title="ignore" data-toggle="button">-</button>    
 	                                    </td>
 	                                    <td><?= $tweet->getTweetText (); ?></td>
 	                                    <td><?= date_format (new DateTime($tweet->getCreationDate ()), 'd.m.Y'); ?></td>
