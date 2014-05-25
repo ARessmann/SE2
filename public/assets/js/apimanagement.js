@@ -269,7 +269,7 @@ function editEventSubmit () {
 		event_state: $('#event_state').val(),
 		event_tweet_tags: $('#event_tweet_tags').val()
 	};
-
+	console.log($('#event_from').val());
 	postData = App.toJSON(postData);
 	App.debug('POST: ' + postData);
 
