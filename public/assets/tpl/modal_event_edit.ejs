@@ -8,6 +8,7 @@
  $(function() {
     $( "#pic_from" ).datepicker();
     $( "#pic_to" ).datepicker();
+ });
 </script> 
 <div class="modal hide fade" id="modal-info">
   <div class="modal-header">
@@ -85,7 +86,7 @@
   <input type="hidden" id="event_state" value="0" />
   
   <div class="modal-footer">
-    <a href="#" class="btn btn-primary" data-id="<%= id %>" id="modal-submit"><i class="icon-ok icon-white"></i><%= translations['event_save'] %></a>
-    <a href="#" class="btn pull-left" data-dismiss="modal"><i class="icon-remove"></i><%= translations['general_cancel'] %></a>
+    <a href="#" class="btn btn-primary" data-id="<%= id %>" id="modal-submit"><i class="icon-ok icon-white"></i></a>
+    <a href="#" class="btn pull-left" data-dismiss="modal"><i class="icon-remove"></i></a>
   </div>
 </div>
