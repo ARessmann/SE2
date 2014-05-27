@@ -56,7 +56,7 @@ abstract class Core_Model_Abstract {
 
 		if (isset($propertyValue) && $propertyValue != 0 && $propertyValue != '0') {
 	        $results =  $this->dbAdapter->select()->from($this->getTableName())
-	                    ->where($propertyName . ' = ' . $propertyValue)
+	                    ->where($propertyName . (isset ($propertyValue) ? ' = ' . $propertyValue : 'is null'))
 	                    ->order($order)
 	                    ->query()
 	                    ->fetchAll();
@@ -66,6 +66,28 @@ abstract class Core_Model_Abstract {
 		}
 
         return $results;
+	}
+	
+	/*
+	 * base funtion to load elements by given properties
+	 */
+	public function _loadByIdProperties ($properties, $order = 'id') {
+		
+		$result = null;
+		
+		if (count($properties) > 0) {
+			$select =  $this->dbAdapter->select()->from($this->getTableName());
+			
+			foreach ($properties as $propertyName => $propertyValue)
+				$select->where($propertyName . (isset ($propertyValue) ? ' = ' . $propertyValue : '= 0'));
+				
+			$select->order($order);
+			
+			$result = $select->query()->fetch();			
+		}
+		
+		return $result;
+		
 	}
 	
 	/**
@@ -148,10 +170,12 @@ abstract class Core_Model_Abstract {
 	 * setting class attributes by a given array
 	 */
 	public function setValues ($properties) {
-		
-		foreach ($properties as $key => $val) {
-			if (isset($key)) {
-				$this->$key = $val;
+
+		if (is_array($properties)) {
+			foreach ($properties as $key => $val) {
+				if (isset($key)) {
+					$this->$key = $val;
+				}
 			}
 		}
 	}

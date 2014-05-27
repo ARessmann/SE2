@@ -34,18 +34,29 @@ class ApiController extends Core_AbstractController
 
     }
     
-    /*
-     * function to add a analyse Ignore
-     */
-    public function addAnalyseIgnore () {
+    public function setincludeAction () {
+    	$filterId = $this->_getParam('filter_id');
+    	$tweetId = $this->_getParam('tweet_id');
+    	$flag = $this->_getParam('flag');
+    	$ret = 0;
     	
-    }
-    
-    /*
-     * function to remove the analyse Ignore
-     */
-    public function deleteAnalyseIgnore () {
+    	$analysisIgnore = new Core_Model_AnalysisIgnore ();
     	
+    	$analysisIgnore = $analysisIgnore->loadByProperties(array ('tweet_id' => $tweetId, 'filter_id' => $filterId));
+    	
+    	$analysisIgnore->setFilterId ($filterId);
+    	$analysisIgnore->setTweetId ($tweetId);
+    	
+    	if ($analysisIgnore->getId() != null && $analysisIgnore->getId() != '' && $flag) {
+    		$analysisIgnore->delete ($analysisIgnore->getId());
+    		$ret = 1;
+    	}
+    	else {
+    		$analysisIgnore->save();
+    		$ret = 1;
+    	}
+    	
+    	echo $ret;
     }
     
     /**
@@ -414,17 +425,20 @@ class ApiController extends Core_AbstractController
     		
     		$tweetEntry = new Core_Model_TweetEntry();
     		$tweetEntrys = $tweetEntry->loadAll();
+    		$analyseIgnoreList = Core_Listhelper::getAnalysisIgnoreList ($selectedChooseFilter);
     		
     		foreach($tweets as $entry){
     			
-    			$analysisTweets = new Core_Model_AnalysisTweets();
-				$tweetEntry = Core_Listhelper::getModelById($tweetEntrys, $entry->getId ());
-    			
-    			if (isset ($tweetEntry)) {    			
-	    			$analysisTweets->setAnalysisId($analysisId);
-	    			$analysisTweets->setTweetId($tweetEntry->getId());
-	    			$analysisTweets->setValue($tweetEntry->getWeight());
-	    			$analysisTweets->save();
+    			if (!in_array ($tweetEntry->getId(), $analyseIgnoreList)) {
+	    			$analysisTweets = new Core_Model_AnalysisTweets();
+					$tweetEntry = Core_Listhelper::getModelById($tweetEntrys, $entry->getId ());
+	    			
+	    			if (isset ($tweetEntry)) {    			
+		    			$analysisTweets->setAnalysisId($analysisId);
+		    			$analysisTweets->setTweetId($tweetEntry->getId());
+		    			$analysisTweets->setValue($tweetEntry->getWeight());
+		    			$analysisTweets->save();
+	    			}
     			}
     		}
     		

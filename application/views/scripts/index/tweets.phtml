@@ -101,7 +101,7 @@
 	                                <tr class="user-row">
 	                                    <td class="warning">
 	                                    <input type="checkbox" name="tweet_delete" title="delete" class="tweet_delete" value="<?= $tweet->getId (); ?>">
-	                                    <button type="button" class="btn btn-mini" title="ignore" data-toggle="button">-</button>    
+	                                    <button type="button" class="btn btn-mini <?= in_array($tweet->getId(), $this->analysisIgnoreList) ? 'active' : ''; ?>" title="ignore" data-toggle="button" value="<?= $tweet->getId (); ?>">-</button>    
 	                                    </td>
 	                                    <td><?= $tweet->getTweetText (); ?></td>
 	                                    <td><?= date_format (new DateTime($tweet->getCreationDate ()), 'd.m.Y'); ?></td>
