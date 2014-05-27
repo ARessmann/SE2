@@ -63,7 +63,7 @@
 	                                    <td><?= date_format (new DateTime($event->getEventFrom ()), 'd.m.Y'); ?></td>
 	                                    <td><?= date_format (new DateTime($event->getEventTo ()), 'd.m.Y'); ?></td>
 	                                    <td><?= $event->getEventDescription (); ?></td>
-	                                    <td><?= ($event->getEventState ()== '0') ? $this->translator->translate("view_event_initalized") : ($event->getEventState ()== '1') ? $this->translator->translate("view_event_collection") : $this->translator->translate("view_event_collected"); ?></td>
+	                                    <td><?php if($event->getEventState ()== '0') {echo $this->translator->translate("view_event_initalized");} elseif($event->getEventState ()== '1') {echo $this->translator->translate("view_event_collection");} else {echo $this->translator->translate("view_event_collected");} ?></td>
 	                                    <td><?= $event->getEventTwCount (); ?></td>
 	                                </tr>
 	                            
