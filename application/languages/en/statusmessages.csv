@@ -79,3 +79,10 @@ view_deleteTweets;delete Tweets
 view_event_initalized;initialized
 view_event_collection;collection running
 view_event_collected;collection finished
+menu_create_event;Create event
+menu_show_tweets;Show tweets
+menu_sentiment_analysis;Sentiment analysis
+menu_sentiment_maintenance;Sentiment maintenance
+mainmenu_event;Event
+mainmenu_map;Map
+mainmenu_statistics;Statistics

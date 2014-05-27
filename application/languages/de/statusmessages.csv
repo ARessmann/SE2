@@ -79,3 +79,10 @@ view_deleteTweets;Tweets löschen
 view_event_initalized;initialisiert
 view_event_collection;Sammlung läuft
 view_event_collected;Sammlung beendet
+menu_create_event;Veranstaltung anlegen
+menu_show_tweets;Tweets anzeigen
+menu_sentiment_analysis;Sentiment Analyse
+menu_sentiment_maintenance;Sentiment Wartung
+mainmenu_event;Veranstaltung
+mainmenu_map;Landkarte
+mainmenu_statistics;Statistik
