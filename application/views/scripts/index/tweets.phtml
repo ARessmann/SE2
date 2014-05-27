@@ -113,7 +113,7 @@
 					    </tbody>
 					</table>
 					<a id="delete_tweets" href="#!" onclick="javascript:deleteTweets();" class="btn"><?=$this->translator->translate("view_deleteTweets");?></a><br /><br />
-					<?php echo $this->partial('_partials/pagination/pager.phtml', array('total' => $this->total, 'page' => $this->page)); ?>
+					<?php echo $this->partial('_partials/pagination/pager.phtml', array('translator' => $this->translator, 'total' => $this->total, 'page' => $this->page)); ?>
 				</div>
 			</div>
 		</form>

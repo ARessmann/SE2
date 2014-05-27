@@ -25,4 +25,4 @@
 		<a class="next paginate_button" tabindex="0" id="dolast_">&gt;&gt;</a>
 	<?php } ?>
 </div>
-<?php echo $this->partial('_partials/pagination/script.phtml', array('total' => $this->total, 'page' => $this->page, 'max' => $max)); ?>
+<?php echo $this->partial('_partials/pagination/script.phtml', array('translator' => $this->translator, 'total' => $this->total, 'page' => $this->page, 'max' => $max)); ?>

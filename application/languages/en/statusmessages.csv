@@ -86,4 +86,7 @@ menu_sentiment_maintenance;Sentiment maintenance
 mainmenu_event;Event
 mainmenu_map;Map
 mainmenu_statistics;Statistics
-pager_show;Show
+pager_show;Show 
+pager_from; from 
+pager_to; to 
+pager_entries; Entries

@@ -34,7 +34,7 @@
 			}
 		?>
 
-		$('#info').html("$this->translator->translate(pager_show) <?= ($tillAmount > 0 ? (($this->page - 1) * 25 + 1) : 0) ?> bis <?= $tillAmount ?> von <?= $this->total ?> Eintr&auml;gen");
+		$('#info').html("<?= $this->translator->translate('pager_show'); ?><?= ($tillAmount > 0 ? (($this->page - 1) * 25 + 1) : 0) ?><?= $this->translator->translate('pager_to'); ?><?= $tillAmount ?><?= $this->translator->translate('pager_from'); ?><?= $this->total ?><?= $this->translator->translate('pager_entries'); ?>");
 		$('#first_').attr("tabindex",'<?= ($this->page - 1) ?>');
 		$('#next_').attr("tabindex",'<?= ($this->page + 1) ?>');			
 		$('#paginate').remove();
