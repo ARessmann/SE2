@@ -3,11 +3,11 @@
 echo '<div class="span3">';
 echo '<div class="well sidebar-nav">';
 echo '<ul class="nav nav-list">';
-echo '<li class="nav-header">' . $this->translator->translate("view_showEvent") . '</li>';
+echo '<li class="nav-header">' . $this->translator->translate("view_management") . '</li>';
 
 foreach($this->menuOptions as $m) {
 	$activeClass = ($m[1] == $this->action) ? 'active' : '';
-	echo '<li class="' . $activeClass . '"><a href="' . $m[1] . '">' . $m[0] . '</a></li>';
+	echo '<li class="' . $activeClass . '"><a href="' . $m[1] . '">' . $this->translator->translate($m[0]) . '</a></li>';
 }
 
 echo '</ul>';

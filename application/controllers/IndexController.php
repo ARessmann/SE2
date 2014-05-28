@@ -113,6 +113,7 @@ class IndexController extends Core_AbstractController {
 		$tweets = $this->removeDeletedFromList ($tweets);
 		
         $this->view->filter = $filter;
+        $this->view->analysisIgnoreList = Core_Listhelper::getAnalysisIgnoreList ($selectedChooseFilter);
         $this->view->counter = count($tweets);
         $this->view->menuOptions = $this->getMenu ();
         $this->view->events = $event;
@@ -124,7 +125,6 @@ class IndexController extends Core_AbstractController {
        	
        	$this->view->tweets = $this->getPagedElements($tweets);
     }
-    
     
     public function analysisAction () {
     	$tweetEntry = new Core_Model_TweetEntry ();

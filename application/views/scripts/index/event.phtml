@@ -71,7 +71,7 @@
 	           				<?php } ?>
 					    </tbody>
 					</table>
-					<?php echo $this->partial('_partials/pagination/pager.phtml', array('total' => $this->total, 'page' => $this->page)); ?>
+					<?php echo $this->partial('_partials/pagination/pager.phtml', array('translator' => $this->translator, 'total' => $this->total, 'page' => $this->page)); ?>
 				</div>
 			</div>
 		</form>

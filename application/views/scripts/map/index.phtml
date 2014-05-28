@@ -20,11 +20,64 @@
 			  			mapTypeId:google.maps.MapTypeId.ROADMAP
 			  		  });
 
-		//gmegMarker = new google.maps.Marker({map:gmegMap,position:gmegLatLng});
-		//gmegInfoWindow = new google.maps.InfoWindow({content:'<b>ta</b><br><br>'});
-		//gmegInfoWindow.open(gmegMap,gmegMarker);
+
+		var blueCircle = this.getCircle('blue');
+		var redCircle = this.getCircle('red');
+		var greenCircle = this.getCircle('green');
+
+//		$.ajax({
+//			type: "POST",
+//		  	url: '../../../../api/getsentimentdata',
+//		  	data: { analyse_id: analyse_id }
+//		}).done(function(data) {
+			var i = 0;
+			while (i < 20) {
+				var pos = new google.maps.LatLng(33.277148 + i, 8.05006);
+				
+				gmegMarker = new google.maps.Marker({
+					map: gmegMap,
+					position: pos,
+					icon: greenCircle
+				});
+
+				if (i%2 == 0) {
+					var pos = new google.maps.LatLng(33.277148 - i, 8.05006 - i);
+					
+					gmegMarker = new google.maps.Marker({
+						map: gmegMap,
+						position: pos,
+						icon: redCircle
+					});
+				}
+
+				if (i%2 == 1) {
+					var pos = new google.maps.LatLng(33.277148, 8.05006 - i);
+					
+					gmegMarker = new google.maps.Marker({
+						map: gmegMap,
+						position: pos,
+						icon: blueCircle
+					});
+				}
+
+				i++;
+			}
+			//		});
 	}
 
+	function getCircle (color) {
+		var circle ={
+			    path: google.maps.SymbolPath.CIRCLE,
+			    fillColor: color,
+			    fillOpacity: .6,
+			    scale: 5.5,
+			    strokeColor: 'white',
+			    strokeWeight: 1
+			};
+
+		return circle;
+	}
+	
 	google.maps.event.addDomListener(window, "load", gmegInitializeMap);
 
 </script>

@@ -1,10 +1,15 @@
 <?php
 
+$mnupoints = array ('index' => array ('/index', 'Veranstaltung'), 
+					'map' => array ('/map', 'Map'),
+					'statistics' => array('/statistics', 'Statistik')
+				    );
+
 echo '<ul class="nav">';
 
-echo '<li class="active"><a href="/index">Veranstaltung</a></li>';
-echo '<li><a href="/map">Map</a></li>';
-echo '<li><a href="/statistics">Statistics</a></li>';
+foreach ($mnupoints as $key => $point) {
+	echo '<li ' . (($key == $this->controller) ? 'class="active"' : '') . '><a href="' . $point[0] . '">' . $point[1] . '</a></li>';
+}
 
 echo '</ul>';
     	

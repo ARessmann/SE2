@@ -8,6 +8,26 @@
 		$('#choose_filter').change(function(){
 			$('#action_frm').submit();
 		});
+
+		$('table').find (':button').each (function () {
+			$(this).click (function () {
+				var attr 		= $(this).attr('class');
+				var id 			= $(this).attr('value');
+				var filter_id 	= $('#choose_filter').val();
+				var pattern 	= 'btn btn-mini';
+				var flag		= 0;
+
+				attr 		= attr.replace(pattern, "");
+
+				var flag = (attr.length > 0) ? 1 : 0; 
+				
+				$.ajax({
+					type: "POST",
+				  	url: '../../../../api/setinclude',
+				  	data: { tweet_id: id, filter_id: filter_id, flag: flag }
+				})
+			});
+		});
 		
 	});
 </script>

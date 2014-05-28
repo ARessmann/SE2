@@ -2475,6 +2475,15 @@ CREATE TABLE IF NOT EXISTS `filter` (
   KEY `event_id` (`event_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
+
+DROP TABLE IF EXISTS `analysis_ignore`;
+CREATE TABLE `analysis_ignore` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filter_id` int(11) DEFAULT NULL,
+  `tweet_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
 --
 -- Daten für Tabelle `filter`
 --
