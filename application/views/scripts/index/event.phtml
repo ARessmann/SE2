@@ -42,7 +42,7 @@
 			        <table class="table table-condensed table-bordered table-striped" id="event-table">
 						<thead>
 			            	<tr>
-			                	<th width="37px" class="grid-caption"></th>
+			                	<th width="56px" class="grid-caption"></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("event_title"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("event_from"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("event_to"); ?></th>
@@ -56,8 +56,9 @@
 	                            
 	                                <tr class="user-row">
 	                                    <td class="warning">
-	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_edit"); ?>" class="icon-edit"></i>&nbsp;
-	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_deactivate"); ?>" class="icon-ban-circle">
+	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_edit"); ?>" class="icon-edit"></i>
+	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_deactivate"); ?>" class="icon-ban-circle"></i>
+	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_clone"); ?>" class="icon-plus-sign"></i>
 	                                    </td>
 	                                    <td><?= $event->getEventTitle (); ?></td>
 	                                    <td><?= date_format (new DateTime($event->getEventFrom ()), 'd.m.Y'); ?></td>
