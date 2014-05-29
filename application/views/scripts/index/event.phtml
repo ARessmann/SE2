@@ -58,7 +58,6 @@
 	                                    <td class="warning">
 	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_edit"); ?>" class="icon-edit"></i>
 	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_deactivate"); ?>" class="icon-ban-circle"></i>
-	                                        <i view-name="event" data-id="<?= $event->getId (); ?>" title="<?= $this->translator->translate("event_clone"); ?>" class="icon-plus-sign"></i>
 	                                    </td>
 	                                    <td><?= $event->getEventTitle (); ?></td>
 	                                    <td><?= date_format (new DateTime($event->getEventFrom ()), 'd.m.Y'); ?></td>
