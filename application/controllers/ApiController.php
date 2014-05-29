@@ -308,7 +308,7 @@ class ApiController extends Core_AbstractController
     	$filter_location = $data->filter_location;
     	$filter_language = $data->filter_language;
 		$event_id = $data->event_id;
-    
+    	
     	try {
     
     		$filter = new Core_Model_Filter();

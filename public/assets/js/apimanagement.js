@@ -339,7 +339,7 @@ function editFilter (data_id, viewName, event_id)
 				filter_language: '',
 				event_id: event_id
 			};
-
+			
 			modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
 			_addModalHandle (modal, viewName);
 		}
