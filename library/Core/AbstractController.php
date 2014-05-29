@@ -48,7 +48,6 @@ class Core_AbstractController extends Zend_Controller_Action {
         $menuOptions = array(
             array("menu_create_event", 'event'),
         	array("menu_show_tweets", 'tweets'),
-        	array("menu_sentiment_analysis", 'analysis'),
         	array("menu_sentiment_maintenance", 'sentiment')
         );
         
