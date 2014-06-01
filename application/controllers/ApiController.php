@@ -308,7 +308,7 @@ class ApiController extends Core_AbstractController
     	$filter_location = $data->filter_location;
     	$filter_language = $data->filter_language;
 		$event_id = $data->event_id;
-    	
+    
     	try {
     
     		$filter = new Core_Model_Filter();
@@ -581,15 +581,17 @@ class ApiController extends Core_AbstractController
     public function deletetweetsAction () {
         
         $id = $this->_getParam('id');
-  
+  		
         $id = explode(",", $id);
+        $id = array_filter($id);
         
         try {
             if (isset ($id)) {
+            	$tweetEntry = new Core_Model_TweetEntry ();
+            	$tweetEntries = $tweetEntry->loadAll();
             	foreach($id as $tweet){
-            		if($tweet != ""){
-            			$tweetEntry = new Core_Model_TweetEntry ();
-            			$tweetEntries = $tweetEntry->loadAll();
+            		if($tweet != ''){
+            			
             			$tweetEntry = $this->getTweetEntryById($tweetEntries, $tweet);
                 		$tweetEntry->setDeletedState ('1');
                 		$tweetEntry->update();
@@ -610,5 +612,14 @@ class ApiController extends Core_AbstractController
                 'error_description' => ''
             ));
         }
+    }
+    
+    private function getTweetEntryById($tweets, $id){
+    	
+    	foreach($tweets as $entry){
+    		if($id == $entry->getId())
+    			$ret = $entry;
+    	}
+    	return $ret;
     }
 }
