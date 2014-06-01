@@ -622,4 +622,65 @@ class ApiController extends Core_AbstractController
     	}
     	return $ret;
     }
+    
+    
+    public function getsentimentdataAction(){
+		$selectedChooseAnalysis = $this->_getParam('analyse_id');
+		$tweets = new Core_Model_AnalysisTweets();
+		$tweetAnalysis = $tweets->loadByAnalysisId($selectedChooseAnalysis);
+		$minusfive = 0;
+		$minusfour = 0;
+		$minusthree = 0;
+		$minustwo = 0;
+		$minusone = 0;
+		$zero = 0;
+		$one = 0;
+		$two = 0;
+		$three = 0;
+		$four = 0;
+		$five = 0;
+		foreach($tweetAnalysis as $weight){
+			switch($weight->getValue()){
+				case -5:
+					$minusfive++;
+					break;
+				case -4:
+					$minusfour++;
+					break;
+				case -3:
+					$minusthree++;
+					break;
+				case -2:
+					$minustwo++;
+					break;
+				case -1:
+					$minusone++;
+					break;
+				case 0:
+					$zero++;
+					break;
+				case 1:
+					$one++;
+					break;
+				case 2:
+					$two++;
+					break;
+				case 3:
+					$three++;
+					break;
+				case 4:
+					$four++;
+					break;
+				case 5:
+					$five++;
+					break;
+			}
+		}
+		//var_dump($zero);
+		
+		return $this->apiControllerHelper->formatOutput(array($zero,
+                $one
+                
+            ));
+	}
 }

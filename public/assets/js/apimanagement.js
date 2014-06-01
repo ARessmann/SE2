@@ -78,6 +78,18 @@ function initTriggers() {
        		$("#choose_filter").removeAttr("disabled");  
 	})
 	
+	// function for analysis-drop-down for correct disable/enable handling
+	$(function(){
+	      //Set button disabled
+	      $("#choose_analysis").attr("disabled", "disabled");
+	 
+          var hasAnalysis = $("select#choose_analysis").find("option").length;
+          if(hasAnalysis < 2)
+        	$("#choose_analysis").attr("disabled", "disabled");
+       	  else
+       		$("#choose_analysis").removeAttr("disabled");  
+	})
+	
 	// function for start analysis button for correct disable/enable handling
 	$(function(){
 	      //Set button disabled
