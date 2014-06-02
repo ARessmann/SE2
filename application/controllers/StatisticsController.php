@@ -58,6 +58,8 @@ class StatisticsController extends Core_AbstractController {
 				if($list->getFilterId() == 0 || $list->getFilterId() == null)
 					$analysisList[] = $list;
 			}
+		}else{
+			$analysisList = 0;
 		}
 		
 		

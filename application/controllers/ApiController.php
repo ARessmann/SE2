@@ -628,6 +628,7 @@ class ApiController extends Core_AbstractController
 		$selectedChooseAnalysis = $this->_getParam('analyse_id');
 		$tweets = new Core_Model_AnalysisTweets();
 		$tweetAnalysis = $tweets->loadByAnalysisId($selectedChooseAnalysis);
+		$count = count($tweetAnalysis);
 		$minusfive = 0;
 		$minusfour = 0;
 		$minusthree = 0;
@@ -676,11 +677,20 @@ class ApiController extends Core_AbstractController
 					break;
 			}
 		}
-		//var_dump($zero);
 		
-		return $this->apiControllerHelper->formatOutput(array($zero,
-                $one
-                
-            ));
+		$minusfivepercent = round($minusfive/$count, 4)*100;
+		$minusfourpercent = round($minusfour/$count, 4)*100;
+		$minusthreepercent = round($minusthree/$count, 4)*100;
+		$minustwopercent = round($minustwo/$count, 4)*100;
+		$minusonepercent = round($minusone/$count, 4)*100;
+		$zeropercent = round($zero/$count, 4)*100;
+		$onepercent = round($one/$count, 4)*100;
+		$twopercent = round($two/$count, 4)*100;
+		$threepercent = round($three/$count, 4)*100;
+		$fourpercent = round($four/$count, 4)*100;
+		$fivepercent = round($five/$count, 4)*100;
+		var_dump($zeropercent);
+		
+		return $this->apiControllerHelper->formatOutput(array($minusfivepercent,$minusfourpercent,$minusthreepercent,$minustwopercent,$minusonepercent,$zeropercent,$onepercent,$twopercent,$threepercent,$fourpercent,$fivepercent));
 	}
 }
