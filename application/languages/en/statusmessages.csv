@@ -100,3 +100,21 @@ pager_show;Show
 pager_from; from 
 pager_to; to 
 pager_entries; Entries
+error_loading_translations;Error in loading translations
+success_delete_event;Event deleted successfully
+error_delete_event;Error in deleting event
+error_input;Input error
+success_save_event;Event saved successfully
+error_save_event;Error in saving event
+success_delete_filter;Filter saved successfully
+error_delete_filter;Error in deleting filter
+success_save_filter;Filter saved successfully
+error_save_filter;Error in saving filter
+success_save_analysis;Analysis saved successfully
+error_save_analysis;Error in saving analysis
+success_delete_sentiment;Sentiment deleted successfully
+error_delete_sentiment;Error in deleting sentiment
+success_save_sentiment;Sentiment saved successfully
+error_save_sentiment;Error in saving sentiment
+success_delete_tweets;Tweets deleted successfully
+error_delete_tweets;Error on deleting tweets

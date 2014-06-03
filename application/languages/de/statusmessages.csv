@@ -100,3 +100,21 @@ pager_show;Zeige
 pager_from; von 
 pager_to; bis 
 pager_entries; Einträgen
+error_loading_translations;Fehler beim Laden der Übersetzungen
+success_delete_event;Veranstaltung wurde erfolgreich gelöscht
+error_delete_event;Fehler beim Löschen der Veranstaltung
+error_input;Eingabefehler
+success_save_event;Veranstaltung wurde erfolgreich gespeichert
+error_save_event;Fehler beim Speicher der Veranstaltung
+success_delete_filter;Filter wurde erfolgreich gelöscht
+error_delete_filter;Fehler beim Löschen des Filters
+success_save_filter;Filter wurde erfolgreich gespeichert
+error_save_filter;Fehler beim Speichern des Filters
+success_save_analysis;Analyse wurde erfolgreich gespeichert
+error_save_analysis;Fehler beim Speichern der Analyse
+success_delete_sentiment;Sentiment wurde erfolgreich gelöscht
+error_delete_sentiment;Fehler beim Löschen des Sentiment
+success_save_sentiment;Sentiment wurde erfolgreich gespeichert
+error_save_sentiment;Fehler beim Speichern des Sentiment
+success_delete_tweets;Tweets wurden erfolgreich gelöscht
+error_delete_tweets;Fehler beim Löschen der Tweets

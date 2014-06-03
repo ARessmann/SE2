@@ -77,7 +77,7 @@ class ApiController extends Core_AbstractController
     	
     	return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Laden der Übersetzungen!',
+                'error_title'       => $this->translator->translate('error_loading_translations'),
                 'error_description' => ''
             ));
     }
@@ -126,14 +126,14 @@ class ApiController extends Core_AbstractController
             }
             return $this->apiControllerHelper->formatOutput(array(
                 'success'               => true,
-                'success_title'     => 'Event wurde erfolgreich gelöscht',
+                'success_title'     => $this->translator->translate('success_delete_event'),
                 'success_description'   => ''
             ));
         }
         catch (Exception $e) {
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Löschen des Events',
+                'error_title'       => $this->translator->translate('error_delete_event'),
                 'error_description' => ''
             ));
         }
@@ -179,7 +179,7 @@ class ApiController extends Core_AbstractController
             if ($validationResponse != null) {
             	return $this->apiControllerHelper->formatOutput(array(
             			'error'             => true,
-            			'error_title'       => 'Eingabefehler',
+            			'error_title'       => $this->translator->translate('error_input'),
             			'error_description' => $validationResponse
             	));
             }
@@ -201,14 +201,14 @@ class ApiController extends Core_AbstractController
             
             return $this->apiControllerHelper->formatOutput(array(
                 'success'               => true,
-                'success_title'     => 'Event wurde erfolgreich gespeichert',
+                'success_title'     => $this->translator->translate('success_save_event'),
                 'success_description'   => ''
             ));
         }
         catch (Exception $e) {
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Speichern des Events',
+                'error_title'       => $this->translator->translate('error_save_event'),
                 'error_description' => ''
             ));
         }
@@ -270,14 +270,14 @@ class ApiController extends Core_AbstractController
     		
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
-    				'success_title'     => 'Filter wurde erfolgreich gelöscht',
+    				'success_title'     => $this->translator->translate('success_delete_filter'),
     				'success_description'   => ''
     		));
     	}
     	catch (Exception $e) {
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
-    				'error_title'       => 'Fehler beim Löschen des Filters',
+    				'error_title'       => $this->translator->translate('error_delete_filter'),
     				'error_description' => ''
     		));
     	}
@@ -322,7 +322,7 @@ class ApiController extends Core_AbstractController
     		if ($validationResponse != null) {
     			return $this->apiControllerHelper->formatOutput(array(
     					'error'             => true,
-    					'error_title'       => 'Eingabefehler',
+    					'error_title'       => $this->translator->translate('error_input'),
     					'error_description' => $validationResponse
     			));
     		}
@@ -344,7 +344,7 @@ class ApiController extends Core_AbstractController
     
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
-    				'success_title'     => 'Filter wurde erfolgreich gespeichert',
+    				'success_title'     => $this->translator->translate('success_save_filter'),
     				'success_description'   => ''
     		));
     	}
@@ -354,7 +354,7 @@ class ApiController extends Core_AbstractController
     		
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
-    				'error_title'       => 'Fehler beim Speichern des Filters',
+    				'error_title'       => $this->translator->translate('error_save_filter'),
     				'error_description' => ''
     		));
     	}
@@ -444,7 +444,7 @@ class ApiController extends Core_AbstractController
     		
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
-    				'success_title'     => 'Analyse wurde erfolgreich gespeichert',
+    				'success_title'     => $this->translator->translate('success_save_analysis'),
     				'success_description'   => ''
     		));
     	}
@@ -454,7 +454,7 @@ class ApiController extends Core_AbstractController
     		
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
-    				'error_title'       => 'Fehler beim Speichern der Analyse',
+    				'error_title'       => $this->translator->translate('error_save_analysis'),
     				'error_description' => ''
     		));
     	}
@@ -496,7 +496,7 @@ class ApiController extends Core_AbstractController
     		}
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
-    				'success_title'     => 'Sentiment wurde erfolgreich gelöscht',
+    				'success_title'     => $this->translator->translate('success_delete_sentiment'),
     				'success_description'   => ''
     		));
     	}
@@ -504,7 +504,7 @@ class ApiController extends Core_AbstractController
     		
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
-    				'error_title'       => 'Fehler beim Löschen des Sentiment',
+    				'error_title'       => $this->translator->translate('error_delete_sentiment'),
     				'error_description' => ''
     		));
     	}
@@ -543,7 +543,7 @@ class ApiController extends Core_AbstractController
     		if ($validationResponse != null) {
     			return $this->apiControllerHelper->formatOutput(array(
     					'error'             => true,
-    					'error_title'       => 'Eingabefehler',
+    					'error_title'       => $this->translator->translate('error_input'),
     					'error_description' => $validationResponse
     			));
     		}
@@ -561,14 +561,14 @@ class ApiController extends Core_AbstractController
     
     		return $this->apiControllerHelper->formatOutput(array(
     				'success'               => true,
-    				'success_title'     => 'Sentiment wurde erfolgreich gespeichert',
+    				'success_title'     => $this->translator->translate('success_save_sentiment'),
     				'success_description'   => ''
     		));
     	}
     	catch (Exception $e) {
     		return $this->apiControllerHelper->formatOutput(array(
     				'error'             => true,
-    				'error_title'       => 'Fehler beim Speichern des Sentiment',
+    				'error_title'       => $this->translator->translate('error_save_sentiment'),
     				'error_description' => ''
     		));
     	}
@@ -601,14 +601,14 @@ class ApiController extends Core_AbstractController
             }
             return $this->apiControllerHelper->formatOutput(array(
                 'success'               => true,
-                'success_title'     => 'Tweets wurden erfolgreich gelöscht',
+                'success_title'     => $this->translator->translate('success_delete_tweets'),
                 'success_description'   => ''
             ));
         }
         catch (Exception $e) {
             return $this->apiControllerHelper->formatOutput(array(
                 'error'             => true,
-                'error_title'       => 'Fehler beim Löschen der Tweets',
+                'error_title'       => $this->translator->translate('error_delete_tweets'),
                 'error_description' => ''
             ));
         }
