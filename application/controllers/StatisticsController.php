@@ -22,7 +22,59 @@ class StatisticsController extends Core_AbstractController {
 	 * main action for the controller
 	 */
 	public function indexAction() {
-	
+
+    	$analysis = new Core_Model_Analysis();
+    	$analysisAll = $analysis->loadAll();
+    	$selectedChooseEvent = $this->_getParam('choose_event');
+    	$selectedChooseFilter = $this->_getParam('choose_filter');
+    	$selectedChooseAnalysis = $this->_getParam('choose_analysis');
+    	$eventList[] = null;
+    	$filterList[] = null;
+    	
+    	foreach($analysisAll as $id){
+    		$event = new Core_Model_Event();
+    		$events = $event->loadById($id->getEventId());
+    		
+    		if(!in_array($events, $eventList))
+    			$eventList[] = $events;
+    	}
+    	$eventList = array_filter($eventList);
+		
+		foreach($analysisAll as $id){
+    		$filter = new Core_Model_Filter();
+    		$filters = $filter->loadById($id->getFilterId());
+    		
+    		if(!in_array($filters, $filterList) && $id->getEventId() == $selectedChooseEvent && $id->getFilterId() != 0 && $id->getFilterId() != null)
+    			$filterList[] = $filter->loadById($id->getFilterId());
+    	}
+    	$filterList = array_filter($filterList);
+		
+		if(isset($selectedChooseFilter) && $selectedChooseFilter != 0){
+			$analysisList = $analysis->loadByFilterId($selectedChooseFilter);
+		}
+		elseif(isset($selectedChooseEvent)) {
+			$analyzesList = $analysis->loadByEventId($selectedChooseEvent);
+			foreach($analyzesList as $list){
+				if($list->getFilterId() == 0 || $list->getFilterId() == null)
+					$analysisList[] = $list;
+			}
+		}else{
+			$analysisList = 0;
+		}
+		
+		
+		
+		
+		
+        
+        $this->view->events = $eventList;
+        $this->view->filter = $filterList;
+        $this->view->analysis = $analysisList;
+        $this->view->selectedChooseEvent = $selectedChooseEvent;
+        $this->view->selectedChooseFilter = $selectedChooseFilter;
+        $this->view->selectedChooseAnalysis = $selectedChooseAnalysis;
 	}
+	
+	
 	
 }

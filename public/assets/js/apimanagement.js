@@ -78,6 +78,18 @@ function initTriggers() {
        		$("#choose_filter").removeAttr("disabled");  
 	})
 	
+	// function for analysis-drop-down for correct disable/enable handling
+	$(function(){
+	      //Set button disabled
+	      $("#choose_analysis").attr("disabled", "disabled");
+	 
+          var hasAnalysis = $("select#choose_analysis").find("option").length;
+          if(hasAnalysis < 2)
+        	$("#choose_analysis").attr("disabled", "disabled");
+       	  else
+       		$("#choose_analysis").removeAttr("disabled");  
+	})
+	
 	// function for start analysis button for correct disable/enable handling
 	$(function(){
 	      //Set button disabled
@@ -269,7 +281,7 @@ function editEventSubmit () {
 		event_state: $('#event_state').val(),
 		event_tweet_tags: $('#event_tweet_tags').val()
 	};
-	console.log($('#event_from').val());
+	
 	postData = App.toJSON(postData);
 	App.debug('POST: ' + postData);
 
@@ -493,7 +505,7 @@ function editSentiment(data_id, viewName)
 						sent_word: '',
 						sent_weight: ''
 					};
-
+					
 					modal = new EJS({url: '/assets/tpl/modal_sentiment_edit.ejs?v='+version_app}).render(data);
 					_addModalHandle (modal, viewName);
 				}
@@ -531,7 +543,7 @@ function editSentimentSubmit() {
 		sent_word: $('#sent_word').val(),
 		sent_weight: $('#sent_weight').val()
 	};
-
+	
 	postData = App.toJSON(postData);
 	App.debug('POST: ' + postData);
 
@@ -584,13 +596,13 @@ function deleteSentiment(data_id) {
  * the form will be submitted after displaying the response
  */
 function deleteTweets () {
-	var data_id = new Array();
+	var postData = new Array();
 	for ( var i = 0; i < $(".tweet_delete").length; i++ )
     {
     	if($(".tweet_delete")[i].checked)
-    		data_id[i] = $(".tweet_delete")[i].value;
-    	
+    		postData[i] = $(".tweet_delete")[i].value;	
     }
+	
 	$.ajax({
 		dataType : 'json',
 		error : function() {
@@ -605,6 +617,6 @@ function deleteTweets () {
 			}
 		},
 		type : 'GET',
-		url : '/api/deletetweets/id/' + data_id
+		url : '/api/deletetweets/id/' + postData
 	});
 }

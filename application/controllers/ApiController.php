@@ -308,7 +308,7 @@ class ApiController extends Core_AbstractController
     	$filter_location = $data->filter_location;
     	$filter_language = $data->filter_language;
 		$event_id = $data->event_id;
-    	
+    
     	try {
     
     		$filter = new Core_Model_Filter();
@@ -581,15 +581,17 @@ class ApiController extends Core_AbstractController
     public function deletetweetsAction () {
         
         $id = $this->_getParam('id');
-  
+  		
         $id = explode(",", $id);
+        $id = array_filter($id);
         
         try {
             if (isset ($id)) {
+            	$tweetEntry = new Core_Model_TweetEntry ();
+            	$tweetEntries = $tweetEntry->loadAll();
             	foreach($id as $tweet){
-            		if($tweet != ""){
-            			$tweetEntry = new Core_Model_TweetEntry ();
-            			$tweetEntries = $tweetEntry->loadAll();
+            		if($tweet != ''){
+            			
             			$tweetEntry = $this->getTweetEntryById($tweetEntries, $tweet);
                 		$tweetEntry->setDeletedState ('1');
                 		$tweetEntry->update();
@@ -611,4 +613,84 @@ class ApiController extends Core_AbstractController
             ));
         }
     }
+    
+    private function getTweetEntryById($tweets, $id){
+    	
+    	foreach($tweets as $entry){
+    		if($id == $entry->getId())
+    			$ret = $entry;
+    	}
+    	return $ret;
+    }
+    
+    
+    public function getsentimentdataAction(){
+		$selectedChooseAnalysis = $this->_getParam('analyse_id');
+		$tweets = new Core_Model_AnalysisTweets();
+		$tweetAnalysis = $tweets->loadByAnalysisId($selectedChooseAnalysis);
+		$count = count($tweetAnalysis);
+		$minusfive = 0;
+		$minusfour = 0;
+		$minusthree = 0;
+		$minustwo = 0;
+		$minusone = 0;
+		$zero = 0;
+		$one = 0;
+		$two = 0;
+		$three = 0;
+		$four = 0;
+		$five = 0;
+		foreach($tweetAnalysis as $weight){
+			switch($weight->getValue()){
+				case -5:
+					$minusfive++;
+					break;
+				case -4:
+					$minusfour++;
+					break;
+				case -3:
+					$minusthree++;
+					break;
+				case -2:
+					$minustwo++;
+					break;
+				case -1:
+					$minusone++;
+					break;
+				case 0:
+					$zero++;
+					break;
+				case 1:
+					$one++;
+					break;
+				case 2:
+					$two++;
+					break;
+				case 3:
+					$three++;
+					break;
+				case 4:
+					$four++;
+					break;
+				case 5:
+					$five++;
+					break;
+			}
+		}
+		
+		$minusfivepercent = round($minusfive/$count, 4)*100;
+		$minusfourpercent = round($minusfour/$count, 4)*100;
+		$minusthreepercent = round($minusthree/$count, 4)*100;
+		$minustwopercent = round($minustwo/$count, 4)*100;
+		$minusonepercent = round($minusone/$count, 4)*100;
+		$zeropercent = round($zero/$count, 4)*100;
+		$onepercent = round($one/$count, 4)*100;
+		$twopercent = round($two/$count, 4)*100;
+		$threepercent = round($three/$count, 4)*100;
+		$fourpercent = round($four/$count, 4)*100;
+		$fivepercent = round($five/$count, 4)*100;
+		var_dump($zeropercent);
+		
+		return $this->apiControllerHelper->formatOutput(array($minusfivepercent,$minusfourpercent,$minusthreepercent,$minustwopercent,$minusonepercent,$zeropercent,$onepercent,$twopercent,$threepercent,$fourpercent,$fivepercent));
+	}
 }
