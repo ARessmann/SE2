@@ -93,6 +93,7 @@
 			                    <th class="grid-caption"><?= $this->translator->translate("tweet_date"); ?></th>
 			                    <th class="grid-caption"><?= $this->translator->translate("tw_user"); ?></th>
 			                   	<th class="grid-caption"><?= $this->translator->translate("tw_location"); ?></th>
+			                   	<th class="grid-caption"><?= $this->translator->translate("tw_language"); ?></th>
 							</tr>
 			           	</thead>
 			       		<tbody>
@@ -107,6 +108,7 @@
 	                                    <td><?= date_format (new DateTime($tweet->getCreationDate ()), 'd.m.Y'); ?></td>
 	                                    <td><?= $tweet->getTweetUser (); ?></td>
 	                                    <td><?= $tweet->getLocation (); ?></td>
+	                                    <td><?= $tweet->getLanguage (); ?></td>
 	                                </tr>
 
 	           				<?php } ?>
