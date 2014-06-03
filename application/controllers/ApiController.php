@@ -689,8 +689,20 @@ class ApiController extends Core_AbstractController
 		$threepercent = round($three/$count, 4)*100;
 		$fourpercent = round($four/$count, 4)*100;
 		$fivepercent = round($five/$count, 4)*100;
-		var_dump($zeropercent);
 		
-		return $this->apiControllerHelper->formatOutput(array($minusfivepercent,$minusfourpercent,$minusthreepercent,$minustwopercent,$minusonepercent,$zeropercent,$onepercent,$twopercent,$threepercent,$fourpercent,$fivepercent));
+		
+		return $this->apiControllerHelper->formatOutput(array(
+		'countTweets'		=>		$count,
+		'minusfive'			=>		$minusfive,
+		'minusfour'			=>		$minusfour,
+		'minusthree'		=>		$minusthree,
+		'minustwo'			=>		$minustwo,
+		'minusone'			=>		$minusone,
+		'zero'				=>		$zero,
+		'one'				=>		$one,
+		'two'				=>		$two,
+		'three'				=>		$three,
+		'four'				=>		$four,
+		'five'				=>		$five));
 	}
 }

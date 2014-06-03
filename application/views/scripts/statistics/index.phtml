@@ -82,7 +82,7 @@
 		        	
 		        	</table>
 </form>
-	
+	<div id="test"></div>
 	<div id="tweet_statistics"></div>
     
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -94,8 +94,9 @@
 	function drawVisualization() {
 
 		var options = {'title':'Tweet Statistics',
-		               'width':1200,
-		               'height':500};
+		               'width':800,
+		               'height':500,
+		               };
 		
 		data = new google.visualization.DataTable();
 		data.addColumn('string', 'Location');
@@ -107,11 +108,11 @@
 			type: "POST",
 		  	url: '../../../../api/getsentimentdata',
 		  	data: { analyse_id: $('#analysis_id').val() }
-		}).done(function(data) {
+		}).done(function(data){
 				
-			});
+				
+		});
 
-	
 		
 		data.addRows([
 		  ['Location1', 30.1],
