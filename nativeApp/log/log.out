@@ -454,3 +454,36 @@
 2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460296181185138689| User: Brasilienfreunde - 27-04-2014
 2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Tweet successfully inserted to db: Id: 460249863809024000| User: Brasilienfreunde - 27-04-2014
 2014-05-04 07:37:40--INFO -com.triplex.tweet.TweetLoader:Event (3) successfully updated: 2
+2014-05-31 04:53:52--ERROR-com.triplex.tweet.TweetLoader:Communications link failure due to underlying exception: 
+
+** BEGIN NESTED EXCEPTION ** 
+
+java.net.SocketException
+MESSAGE: java.net.ConnectException: Connection refused
+
+STACKTRACE:
+
+java.net.SocketException: java.net.ConnectException: Connection refused
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:156)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:284)
+	at com.mysql.jdbc.Connection.createNewIO(Connection.java:2555)
+	at com.mysql.jdbc.Connection.<init>(Connection.java:1485)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:266)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at com.triplex.tweet.jdbc.TweetDatabaseConnector.initializeDatabaseConnection(TweetDatabaseConnector.java:86)
+	at com.triplex.tweet.jdbc.TweetDatabaseConnector.<init>(TweetDatabaseConnector.java:62)
+	at com.triplex.tweet.jdbc.TweetDatabaseConnector.getOnlyInstance(TweetDatabaseConnector.java:43)
+	at com.triplex.tweet.TweetLoader.main(TweetLoader.java:78)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader.main(JarRsrcLoader.java:58)
+
+
+** END NESTED EXCEPTION **
+
+
+
+Last packet sent to the server was 50 ms ago.
