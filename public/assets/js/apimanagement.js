@@ -336,41 +336,53 @@ function deleteEvent (data_id) {
  */
 function editFilter (data_id, viewName, event_id)
 {	
-	//get texts
-	$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
-		if (data_id == null){
-			var data = {
-				translations: translations, //must have for each dlg
-				
-				id: '',
-				filter_name: '',
-				filter_tags: '',
-				filter_from: '',
-				filter_to: '',
-				filter_location: '',
-				filter_language: '',
-				event_id: event_id
-			};
-			
-			modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
-			_addModalHandle (modal, viewName);
-		}
-		else {
-			$.ajax({
-				dataType : 'json',
-				error : function() {
-					App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
-				},
-				success : function(data) {
-					data['translations'] = translations;
-
+	var languages;
+	var lang_trans;
+	
+	$.get('/api/getlanguages', null,  function( data ) {
+		languages = data;
+		$.get('/api/gettranslations', {viewName: 'lang_'}, function (data){
+			lang_trans = data;
+			$.get('/api/gettranslations', { viewName: viewName },  function( translations ) {
+				if (data_id == null){
+					var data = {
+						translations: translations, //must have for each dlg
+						lang_trans: lang_trans,
+						languages: languages,
+							
+						id: '',
+						filter_name: '',
+						filter_tags: '',
+						filter_from: '',
+						filter_to: '',
+						filter_location: '',
+						filter_language: '',
+						event_id: event_id
+					};
+					
 					modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
 					_addModalHandle (modal, viewName);
-				},
-				type : 'GET',
-				url : '/api/getfilter/id/' + data_id
+				}
+				else {
+					$.ajax({
+						dataType : 'json',
+						error : function() {
+							App.notify('Unbekannter Fehler', 'Beim laden der Daten ist es zu einem Fehler gekommen', 'error');
+						},
+						success : function(data) {
+							data['translations'] = translations;
+							data['lang_trans'] = lang_trans;
+							data['languages'] = languages;
+		
+							modal = new EJS({url: '/assets/tpl/modal_filter_edit.ejs?v='+version_app}).render(data);
+							_addModalHandle (modal, viewName);
+						},
+						type : 'GET',
+						url : '/api/getfilter/id/' + data_id
+					});
+				}
 			});
-		}
+		});
 	});
 }
 
