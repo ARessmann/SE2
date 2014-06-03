@@ -144,7 +144,7 @@ class Core_Model_Sentiment extends Core_Model_Abstract {
 		
 		$language = new Core_Model_Language();
 		// read all languages and set it later to the sentiment object as language text 
-		$languages = $language->loadAll();
+		$languages = $language->_loadAllOrderBy("language_code");
 		
 		foreach ($results as $result)
 		{
