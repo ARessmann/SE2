@@ -39,10 +39,10 @@ tweet_id;Tweet-Id
 tweet_entries;Tweets
 tweet_choose_event;Eventauswahl
 tw_text;Beschreibung
-tw_creationdate;Tweet creation
-tw_user;Tweet-User
-tw_location;Tweet-Ort
-tw_language;Tweet-Sprache
+tw_creationdate;Erstellungsdatum
+tw_user;Tweet-Benutzer
+tw_location;Ort
+tw_language;Sprache
 tw_deleted;Tweet gel�scht
 filter_id;Filter-Id
 fi_description;Filter-Beschreibung
@@ -59,10 +59,10 @@ general_cancel;Abbrechen
 event_edit;Veranstaltung bearbeiten
 event_deactivate;Veranstaltung deaktivieren
 filter_tags;Tweet Tags
-filter_from;Tweet von
-filter_to;Tweet bis
-filter_location;Tweet Ort
-filter_language;Tweet Sprache
+filter_from;Von-Datum
+filter_to;Bis-Datum
+filter_location;Ort
+filter_language;Sprache
 filter_name;Name
 event_id;Veranstaltung
 filter_edit;Filter bearbeiten
@@ -75,6 +75,16 @@ lang_es;Spanisch
 lang_fr;Französisch
 lang_it;Italienisch
 lang_sv;Schwedisch
+lang_ar;Arabisch
+lang_id;Indonesisch
+lang_ja;Japanisch
+lang_ko;Koreanisch
+lang_nl;Niederländisch
+lang_no;Norwegisch
+lang_pl;Polnisch
+lang_pt;Portugiesisch
+lang_ru;Russisch
+lang_tr;Türkisch
 view_deleteTweets;Tweets löschen
 view_event_initalized;initialisiert
 view_event_collection;Sammlung läuft

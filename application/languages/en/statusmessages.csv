@@ -39,10 +39,10 @@ tweet_id;Tweet-Id
 tweet_entries;Tweets
 tweet_choose_event;Choose Event
 tw_text;Tweet-text
-tw_creationdate;Tweet creation
+tw_creationdate;Creation date
 tw_user;Tweet-User
-tw_location;Tweet-location
-tw_language;Tweet-language
+tw_location;Location
+tw_language;Language
 tw_deleted;Tweet deleted
 filter_id;Filter-Id
 fi_description;Filter-description
@@ -59,10 +59,10 @@ general_cancel;Cancel
 event_edit;edit event
 event_deactivate;deactivate event
 filter_tags;Tweet tags
-filter_from;Tweet from
-filter_to;Tweet to
-filter_location;Tweet location
-filter_language;Tweet language
+filter_from;From date
+filter_to;To date
+filter_location;Location
+filter_language;Language
 filter_name;Name
 event_id;Event
 filter_edit;edit filter
@@ -75,6 +75,16 @@ lang_es;Spanish
 lang_fr;French
 lang_it;Italian
 lang_sv;Swedish
+lang_ar;Arabic
+lang_id;Indonesian
+lang_ja;Japanese
+lang_ko;Korean
+lang_nl;Dutch
+lang_no;Norwegian
+lang_pl;Polish
+lang_pt;Portuguese
+lang_ru;Russian
+lang_tr;Turkish
 view_deleteTweets;delete Tweets
 view_event_initalized;initialized
 view_event_collection;collection running
