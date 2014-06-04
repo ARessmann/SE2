@@ -57,7 +57,7 @@ view_help;Help
 tweet_date;Date
 general_cancel;Cancel
 event_edit;edit event
-event_deactivate;deactivate event
+event_deactivate;delete event
 filter_tags;Tweet tags
 filter_from;From date
 filter_to;To date

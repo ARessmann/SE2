@@ -1,4 +1,4 @@
-ï»¿page_title;Event Analyse
+page_title;Event Analyse
 general_success;Erfolgreich gespeichert
 general_remove_success;Erfolgreich gelï¿½scht
 general_noentrysfound;Keine Eintrï¿½ge gefunden
@@ -57,7 +57,7 @@ menu_help;Hilfe
 tweet_date;Datum
 general_cancel;Abbrechen
 event_edit;Veranstaltung bearbeiten
-event_deactivate;Veranstaltung deaktivieren
+event_deactivate;Veranstaltung löschen
 filter_tags;Tweet Tags
 filter_from;Von-Datum
 filter_to;Bis-Datum
