@@ -11,8 +11,6 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	/* [PROPERTIES] */
     protected $filter_name;
     protected $filter_tags;
-    protected $filter_from;
-    protected $filter_to;
     protected $filter_location;
     protected $filter_language;
     protected $event_id;
@@ -71,39 +69,6 @@ class Core_Model_Filter extends Core_Model_Abstract {
 	 */
 	public function setFilterTags ($tags) {
 		$this->filter_tags = $tags;
-	}
-	
-	
-	/**
-	 * Get filter start date (filter from)
-	 */
-	public function getFilterFrom () {
-		return $this->filter_from;
-	}
-	
-	/**
-	 * Set the filter start date (filter from)
-	 * 
-	 * @param $from
-	 */
-	public function setFilterFrom ($from) {
-		$this->filter_from = $from;
-	}
-	
-	/**
-	 * Get the filter end date (filter to)
-	 */
-	public function getFilterTo () {
-		return $this->filter_to;
-	}
-	
-	/**
-	 * Set the filter end date (filter to)
-	 * 
-	 * @param $to
-	 */
-	public function setFilterTo ($to) {
-		$this->filter_to = $to;
 	}
 	
 	/**
@@ -177,8 +142,6 @@ class Core_Model_Filter extends Core_Model_Abstract {
 			'id'    				=> $this->id,
 			'filter_name'    		=> $this->filter_name,
 			'filter_tags'    		=> $this->filter_tags,
-			'filter_from'	       	=> $this->filter_from,
-			'filter_to'    			=> $this->filter_to,
 			'filter_location'    	=> $this->filter_location,
 			'filter_language'	    => $this->filter_language,
 			'event_id'  			=> $this->event_id,

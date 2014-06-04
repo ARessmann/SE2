@@ -57,10 +57,8 @@ menu_help;Hilfe
 tweet_date;Datum
 general_cancel;Abbrechen
 event_edit;Veranstaltung bearbeiten
-event_deactivate;Veranstaltung löschen
+event_deactivate;Veranstaltung lï¿½schen
 filter_tags;Tweet Tags
-filter_from;Von-Datum
-filter_to;Bis-Datum
 filter_location;Ort
 filter_language;Sprache
 filter_name;Name
