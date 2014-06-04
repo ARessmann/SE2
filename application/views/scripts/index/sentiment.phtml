@@ -13,8 +13,9 @@
 		<h3><?= $this->translator->translate("view_showSentiment"); ?></h3>
 		<br>
 	        
-	    <form id="action_frm" action="sentiment">
+	    <form id="action_frm" action="sentiment" enctype="multipart/form-data" method="POST">
 	    	<input type="hidden" id="filter" name="filter" value="" />
+
 	        <div class="row-fluid">
 		        <div class="span12">
 		        
@@ -22,6 +23,15 @@
 					    <div class="input-prepend pull-left">
 					    	<span class="add-on"><i class="icon-plus-sign"></i></span>
 					        	<a id="sentiment-add" href="#!" onclick="javascript:editModal(null, 'sentiment');" class="btn"><?= $this->translator->translate("view_newSentiment"); ?></a>
+						</div>
+						<div class="control-group pull-right">
+					    	<h5>Sentiment Datei hochladen:</h5>
+					    	<?php if (isset ($this->uploadResponse)) {
+					    		echo ($this->uploadResponse) ? '<p style="color:green;">erfolgreich upgeloadet</p>' : '<p style="color:red;">Fehler beim Upload - bitte Datei überprüfen!</p>';
+					    	}?>
+					    	<input type="hidden" name="MAX_FILE_SIZE" value="10000" />
+						    <input name="uploadedfile" type="file" />
+						    <input type="submit" value="Upload..." /><br>
 						</div>
 					            
 					</div>
