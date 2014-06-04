@@ -59,8 +59,6 @@ general_cancel;Cancel
 event_edit;edit event
 event_deactivate;delete event
 filter_tags;Tweet tags
-filter_from;From date
-filter_to;To date
 filter_location;Location
 filter_language;Language
 filter_name;Name
