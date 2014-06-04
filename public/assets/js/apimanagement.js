@@ -353,8 +353,6 @@ function editFilter (data_id, viewName, event_id)
 						id: '',
 						filter_name: '',
 						filter_tags: '',
-						filter_from: '',
-						filter_to: '',
 						filter_location: '',
 						filter_language: '',
 						event_id: event_id
@@ -397,8 +395,6 @@ function editFilterSubmit ()
 		id: $('#modal-submit').attr('data-id'),
 		filter_name: $('#filter_name').val(),
 		filter_tags: $('#filter_tags').val(),
-		filter_from: $('#filter_from').val(),
-		filter_to: $('#filter_to').val(),
 		filter_location: $('#filter_location').val(),
 		filter_language: $('#filter_language').val(),
 		event_id: $('#modal-submit').attr('event-id')
