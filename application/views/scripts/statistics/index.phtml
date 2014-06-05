@@ -9,14 +9,18 @@
 	$(document).ready(function() {
 		
 		$('#choose_event').change(function() {
+			$('#choose_filter').val(0);
+			$('#choose_analysis').val(0);
 			$('#action_frm').submit();		
 		});
 		$('#choose_filter').change(function(){
+			$('#choose_analysis').val(0);
 			$('#action_frm').submit();
 		});
 		$('#choose_analysis').change(function(){
 			$('#action_frm').submit();
 		});
+		
 	});
 </script>
    
@@ -81,52 +85,87 @@
 		        	</tr>
 		        	
 		        	</table>
+		        	
+	
 </form>
-	<div id="test"></div>
+	<table class="table table-bordered table-striped" width="400px">
+		<thead>
+			<tr>
+				<th class="grid-caption"><?= $this->translator->translate("analysis_weight"); ?></th>
+			    <th class="grid-caption"><?= $this->translator->translate("analysis_count"); ?></th>
+			    <th class="grid-caption"><?= $this->translator->translate("analysis_percent"); ?></th>
+			</tr>
+		</thead>
+		<tbody id="analysis_table">
+			       			
+		</tbody>
+	</table>
 	<div id="tweet_statistics"></div>
+	<div id="tweet_bar"></div>
     
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
-	google.load('visualization', '1.0', {'packages':['corechart']});
-    
-	google.setOnLoadCallback(drawVisualization);
-    
-	function drawVisualization() {
-
-		var options = {'title':'Tweet Statistics',
-		               'width':800,
-		               'height':500,
-		               };
-		
-		data = new google.visualization.DataTable();
-		data.addColumn('string', 'Location');
-		data.addColumn('number', 'Percent(%)');
-
-//		getting data
-		
-		$.ajax({
+	if($('#analysis_id').val() > 0){
+	$.ajax({
 			type: "POST",
 		  	url: '../../../../api/getsentimentdata',
 		  	data: { analyse_id: $('#analysis_id').val() }
-		}).done(function(data){
-				
-				
-		});
-
+		}).done(function(x){
+			$('#analysis_table').html('<tr><td>Bewertung -5</td><td>'+x['minusfive']+'</td><td>'+x['minusfivepercent']+' %</td>'+
+			'<tr><td>Bewertung -4</td><td>'+x['minusfour']+'</td><td>'+x['minusfourpercent']+' %</td>'+
+			'<tr><td>Bewertung -3</td><td>'+x['minusthree']+'</td><td>'+x['minusthreepercent']+' %</td>'+
+			'<tr><td>Bewertung -2</td><td>'+x['minustwo']+'</td><td>'+x['minustwopercent']+' %</td>'+
+			'<tr><td>Bewertung -1</td><td>'+x['minusone']+'</td><td>'+x['minusonepercent']+' %</td>'+
+			'<tr><td>Bewertung 0</td><td>'+x['zero']+'</td><td>'+x['zeropercent']+' %</td>'+
+			'<tr><td>Bewertung 1</td><td>'+x['one']+'</td><td>'+x['onepercent']+' %</td>'+
+			'<tr><td>Bewertung 2</td><td>'+x['two']+'</td><td>'+x['twopercent']+' %</td>'+
+			'<tr><td>Bewertung 3</td><td>'+x['three']+'</td><td>'+x['threepercent']+' %</td>'+
+			'<tr><td>Bewertung 4</td><td>'+x['four']+'</td><td>'+x['fourpercent']+' %</td>'+
+			'<tr><td>Bewertung 5</td><td>'+x['five']+'</td><td>'+x['fivepercent']+' %</td>');
+			
+			var options = {'title':'Tweet Statistics',
+		               'width':800,
+		               'height':500,
+		               'colors': ['#632523','#953735','#D99694','#E6B9B8','#F2DCDB','#F2F2F2','#EBF1DE','#D7E4BD','#C3D69B','#77933C','#4F6228']};
+								 
+			data = new google.visualization.DataTable();
+			data.addColumn('string', 'Valuation');
+			data.addColumn('number', 'Percent(%)');
+			
+			data.addRows([
+				  ['Bewertung -5', x['minusfive']],
+				  ['Bewertung -4', x['minusfour']],
+				  ['Bewertung -3', x['minusthree']],
+				  ['Bewertung -2', x['minustwo']],
+				  ['Bewertung -1', x['minusone']],
+				  ['Bewertung 0', x['zero']],
+				  ['Bewertung 1', x['one']],
+				  ['Bewertung 2', x['two']],
+				  ['Bewertung 3', x['three']],
+				  ['Bewertung 4', x['four']],
+				  ['Bewertung 5', x['five']]
+				]);	
 		
-		data.addRows([
-		  ['Location1', 30.1],
-		  ['Location2', 30.1],
-		  ['Location3', 15.1],
-		  ['Location4', 13.9],
-		  ['Location5',  2.9],
-		  ['Location6',  1.8],
-		  ['Location8',  1.4],
-		  ['Location9',  1.2]
-		]);
-	
-		var chart = new google.visualization.PieChart(document.getElementById('tweet_statistics'));
-		chart.draw(data, options);
-
+			var chart = new google.visualization.PieChart(document.getElementById('tweet_statistics'));
+			chart.draw(data, options);
+			
+			var data = google.visualization.arrayToDataTable([
+        	['Bewertung -5', 'Bewertung -4', 'Bewertung -3', 'Bewertung -2', 'Bewertung -1',
+         	'Bewertung 0', 'Bewertung 1', 'Bewertung 2', 'Bewertung 3', 'Bewertung 4', 'Bewertung 5', { role: 'annotation' } ],
+        	['', x['minusfive'], x['minusfour'], x['minusthree'], x['minustwo'], x['minusone'], x['zero'], x['one'], x['two'], x['three'], x['four'], x['five']],
+      		]);
+      		
+      		 var options = {
+       		 width: 600,
+        	height: 400,
+       	 	legend: { position: 'top', maxLines: 3 },
+			bar: { groupWidth: '75%' },
+        	isStacked: true,
+      		};
+      		var drawChart = new google.visualization.BarChart((document.getElementById('tweet_bar')));
+		});
 	}
+	google.load('visualization', '1.0', {'packages':['corechart']});
+	//google.load("drawChart", "1", {packages: ["corechart"]});
+	
 </script>
