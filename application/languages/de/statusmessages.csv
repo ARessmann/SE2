@@ -127,3 +127,6 @@ validationerror_mail;: (z.B. name@server.com)
 validationerror_double;: (z.B. 1.1)
 validationerror_string;: (z.B. Text)
 validationerror_date;: (z.B. 01.01.2014)
+analysis_weight;Bewertung
+analysis_count;Anzahl
+analysis_percent;Prozent
