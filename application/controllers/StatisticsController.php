@@ -30,6 +30,7 @@ class StatisticsController extends Core_AbstractController {
     	$selectedChooseAnalysis = $this->_getParam('choose_analysis');
     	$eventList[] = null;
     	$filterList[] = null;
+    	$analysisList = null;
     	
     	foreach($analysisAll as $id){
     		$event = new Core_Model_Event();
@@ -44,18 +45,23 @@ class StatisticsController extends Core_AbstractController {
     		$filter = new Core_Model_Filter();
     		$filters = $filter->loadById($id->getFilterId());
     		
-    		if(!in_array($filters, $filterList) && $id->getEventId() == $selectedChooseEvent && $id->getFilterId() != 0 && $id->getFilterId() != null)
-    			$filterList[] = $filter->loadById($id->getFilterId());
+    		//var_dump ($filters);die();
+    		
+    		if ($filters['id'] != null)
+    		{
+	    		if(!in_array($filters, $filterList) && $id->getEventId() == $selectedChooseEvent && $id->getFilterId() != 0 && $id->getFilterId() != null)
+	    			$filterList[] = $filter->loadById($id->getFilterId());
+    		}
     	}
     	$filterList = array_filter($filterList);
 		
-		if(isset($selectedChooseFilter) && $selectedChooseFilter != 0){
+		if(isset($selectedChooseFilter) && $selectedChooseFilter != 0 && $selectedChooseFilter != null){
 			$analysisList = $analysis->loadByFilterId($selectedChooseFilter);
 		}
 		elseif(isset($selectedChooseEvent)) {
 			$analyzesList = $analysis->loadByEventId($selectedChooseEvent);
 			foreach($analyzesList as $list){
-				if($list->getFilterId() == 0 || $list->getFilterId() == null)
+				//if($list->getFilterId() == 0 || $list->getFilterId() == null)
 					$analysisList[] = $list;
 			}
 		}else{

@@ -634,6 +634,7 @@ class ApiController extends Core_AbstractController
 		$three = 0;
 		$four = 0;
 		$five = 0;
+		if(isset($selectedChooseAnalysis) && $selectedChooseAnalysis != ''){
 		foreach($tweetAnalysis as $weight){
 			switch($weight->getValue()){
 				case -5:
@@ -671,18 +672,18 @@ class ApiController extends Core_AbstractController
 					break;
 			}
 		}
-		
-		$minusfivepercent = round($minusfive/$count, 4)*100;
-		$minusfourpercent = round($minusfour/$count, 4)*100;
-		$minusthreepercent = round($minusthree/$count, 4)*100;
-		$minustwopercent = round($minustwo/$count, 4)*100;
-		$minusonepercent = round($minusone/$count, 4)*100;
-		$zeropercent = round($zero/$count, 4)*100;
-		$onepercent = round($one/$count, 4)*100;
-		$twopercent = round($two/$count, 4)*100;
-		$threepercent = round($three/$count, 4)*100;
-		$fourpercent = round($four/$count, 4)*100;
-		$fivepercent = round($five/$count, 4)*100;
+		}
+		$minusfivepercent = round($minusfive*100/$count, 1);
+		$minusfourpercent = round($minusfour*100/$count, 1);
+		$minusthreepercent = round($minusthree*100/$count, 1);
+		$minustwopercent = round($minustwo*100/$count, 1);
+		$minusonepercent = round($minusone*100/$count, 1);
+		$zeropercent = round($zero*100/$count, 1);
+		$onepercent = round($one*100/$count, 1);
+		$twopercent = round($two*100/$count, 1);
+		$threepercent = round($three*100/$count, 1);
+		$fourpercent = round($four*100/$count, 1);
+		$fivepercent = round($five*100/$count, 1);
 		
 		
 		return $this->apiControllerHelper->formatOutput(array(
@@ -697,6 +698,17 @@ class ApiController extends Core_AbstractController
 		'two'				=>		$two,
 		'three'				=>		$three,
 		'four'				=>		$four,
-		'five'				=>		$five));
+		'five'				=>		$five,
+		'minusfivepercent'			=>		$minusfivepercent,
+		'minusfourpercent'			=>		$minusfourpercent,
+		'minusthreepercent'		=>		$minusthreepercent,
+		'minustwopercent'			=>		$minustwopercent,
+		'minusonepercent'			=>		$minusonepercent,
+		'zeropercent'				=>		$zeropercent,
+		'onepercent'				=>		$onepercent,
+		'twopercent'				=>		$twopercent,
+		'threepercent'				=>		$threepercent,
+		'fourpercent'				=>		$fourpercent,
+		'fivepercent'				=>		$fivepercent));
 	}
 }
