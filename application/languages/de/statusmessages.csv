@@ -116,3 +116,14 @@ success_save_sentiment;Sentiment wurde erfolgreich gespeichert
 error_save_sentiment;Fehler beim Speichern des Sentiment
 success_delete_tweets;Tweets wurden erfolgreich gelöscht
 error_delete_tweets;Fehler beim Löschen der Tweets
+msgbox_delete;Wollen Sie diesen Eintrag wirklich löschen?
+error_unknown;Unbekannter Fehler
+error;Fehler
+error_loading;Beim Laden der Daten ist es zu einem Fehler gekommen.
+error_transmit;Beim Übertragen der Daten ist es zu einem Fehler gekommen.
+error;Fehler
+validationerror_int;: (z.B. 1)
+validationerror_mail;: (z.B. name@server.com)
+validationerror_double;: (z.B. 1.1)
+validationerror_string;: (z.B. Text)
+validationerror_date;: (z.B. 01.01.2014)

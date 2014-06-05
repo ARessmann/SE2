@@ -116,3 +116,14 @@ success_save_sentiment;Sentiment saved successfully
 error_save_sentiment;Error in saving sentiment
 success_delete_tweets;Tweets deleted successfully
 error_delete_tweets;Error on deleting tweets
+msgbox_delete;Are you sure you want to delete this entry?
+error_unknown;Unknown error
+error;Error
+error_loading;An error occurred when loading data.
+error_transmit;An error occurred when transmitting data.
+error;Error
+validationerror_int;: (e.g. 1)
+validationerror_mail;: (e.g. name@server.com)
+validationerror_double;: (e.g. 1.1)
+validationerror_string;: (e.g. text)
+validationerror_date;: (e.g. 01.01.2014)
