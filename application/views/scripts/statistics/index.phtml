@@ -88,6 +88,7 @@
 		        	
 	
 </form>
+<h3><?= $this->translator->translate("tweet_statistics"); ?></h3>
 	<table class="table table-bordered table-striped" width="400px">
 		<thead>
 			<tr>
@@ -100,8 +101,8 @@
 			       			
 		</tbody>
 	</table>
-	<div id="tweet_statistics"></div>
-	<div id="tweet_bar"></div>
+	<div id="tweet_statistics" style="float:left;"></div>
+	<div id="tweet_bar" style="float:left;"></div>
     
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
@@ -123,8 +124,8 @@
 			'<tr><td>Bewertung 4</td><td>'+x['four']+'</td><td>'+x['fourpercent']+' %</td>'+
 			'<tr><td>Bewertung 5</td><td>'+x['five']+'</td><td>'+x['fivepercent']+' %</td>');
 			
-			var options = {'title':'Tweet Statistics',
-		               'width':800,
+			var options = {
+		               'width':700,
 		               'height':500,
 		               'colors': ['#632523','#953735','#D99694','#E6B9B8','#F2DCDB','#F2F2F2','#EBF1DE','#D7E4BD','#C3D69B','#77933C','#4F6228']};
 								 
@@ -149,23 +150,24 @@
 			var chart = new google.visualization.PieChart(document.getElementById('tweet_statistics'));
 			chart.draw(data, options);
 			
-			var data = google.visualization.arrayToDataTable([
+			var y = google.visualization.arrayToDataTable([
         	['Bewertung -5', 'Bewertung -4', 'Bewertung -3', 'Bewertung -2', 'Bewertung -1',
          	'Bewertung 0', 'Bewertung 1', 'Bewertung 2', 'Bewertung 3', 'Bewertung 4', 'Bewertung 5', { role: 'annotation' } ],
-        	['', x['minusfive'], x['minusfour'], x['minusthree'], x['minustwo'], x['minusone'], x['zero'], x['one'], x['two'], x['three'], x['four'], x['five']],
+        	['', x['minusfivepercent'], x['minusfourpercent'], x['minusthreepercent'], x['minustwopercent'], x['minusonepercent'], x['zeropercent'], x['onepercent'], x['twopercent'], x['threepercent'], x['fourpercent'], x['fivepercent']],
       		]);
       		
       		 var options = {
        		 width: 600,
         	height: 400,
-       	 	legend: { position: 'top', maxLines: 3 },
+       	 	legend: { position: 'top', maxLines: 4 },
 			bar: { groupWidth: '75%' },
         	isStacked: true,
-      		};
-      		var drawChart = new google.visualization.BarChart((document.getElementById('tweet_bar')));
+      		'colors': ['#632523','#953735','#D99694','#E6B9B8','#F2DCDB','#F2F2F2','#EBF1DE','#D7E4BD','#C3D69B','#77933C','#4F6228']};
+      		var chart = new google.visualization.BarChart((document.getElementById('tweet_bar')));
+      		chart.draw(y, options);
 		});
 	}
 	google.load('visualization', '1.0', {'packages':['corechart']});
-	//google.load("drawChart", "1", {packages: ["corechart"]});
+	
 	
 </script>
