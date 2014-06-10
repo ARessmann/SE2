@@ -6,8 +6,55 @@
  -->
 <script type="text/javascript">
  $(function() {
-    $( "#pic_from" ).datepicker();
-    $( "#pic_to" ).datepicker();
+   	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+	 
+	var checkin = $('#pic_from').datepicker({
+		onRender: function(date) {
+	    	return date.valueOf() < now.valueOf() ? 'disabled' : '';
+	  	}
+	}).on('changeDate', function(ev) {
+	  	if (ev.date.valueOf() > checkout.date.valueOf()) {
+	    	var newDate = new Date(ev.date)
+	    	newDate.setDate(newDate.getDate() + 1);
+	    	checkout.setValue(newDate);
+		}
+	  	checkin.hide();
+	
+		$('#pic_to')[0].focus();
+	}).data('datepicker');
+	
+	var checkout = $('#pic_to').datepicker({
+	  	onRender: function(date) {
+	    	return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+	  	}
+	}).on('changeDate', function(ev) {
+	  	checkout.hide();
+	}).data('datepicker');
+    
+    $('input').keypress (function (event) {
+       	var charCode = (event.which) ? event.which : event.keyCode;
+        
+        if(charCode !=8 && charCode != 9 )
+        {
+        	if (charCode != 32 && (charCode != 45 || $(this).val().indexOf('-') != -1)  && (charCode != 44 || $(this).val().indexOf(',') != -1) 
+        		&& (charCode < 48 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+				event.preventDefault();
+            }
+        }
+    });
+    
+    $('#event_tw_count').keypress (function (event) {
+       	var charCode = (event.which) ? event.which : event.keyCode;
+       
+        if(charCode !=8 && charCode != 9 )
+        {
+        	if (charCode < 48 || charCode > 57) {
+				event.preventDefault();
+            }
+        }
+    });
+    
  });
 </script> 
 <div class="modal hide fade" id="modal-info">
