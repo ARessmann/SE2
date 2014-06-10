@@ -4,6 +4,19 @@
  
 <script type="text/javascript">
  $(function() {
+ 
+ 	$('input').keypress (function (event) {
+       	var charCode = (event.which) ? event.which : event.keyCode;
+        
+        if(charCode !=8 && charCode != 9 )
+        {
+        	if (charCode != 32 && (charCode != 45 || $(this).val().indexOf('-') != -1)  && (charCode != 44 || $(this).val().indexOf(',') != -1) 
+        		&& (charCode < 48 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+				event.preventDefault();
+            }
+        }
+    });
+ 
     $( "#spinner" ).spinner({
 	      spin: function( event, ui ) {
 	        if ( ui.value > 5 ) {
@@ -15,18 +28,6 @@
 	        }
 	      }
 	    });
-	    
-	$('input').keypress (function (event) {
-       	var charCode = (event.which) ? event.which : event.keyCode;
-        
-        if(charCode !=8 && charCode != 9 )
-        {
-        	if (charCode != 32 && (charCode != 45 || $(this).val().indexOf('-') != -1)  && (charCode != 44 || $(this).val().indexOf(',') != -1) 
-        		&& (charCode < 48 || charCode > 90) && (charCode < 97 || charCode > 122)) {
-				event.preventDefault();
-            }
-        }
-    });
 	    
   });
 </script>
