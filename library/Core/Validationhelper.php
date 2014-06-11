@@ -88,7 +88,7 @@ class Core_Validationhelper {
     			}
     		}
     	}
-    	return true;
+    	return false;
     }
         
 	/**
