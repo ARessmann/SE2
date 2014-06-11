@@ -1,8 +1,9 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-		
+		 
 		$('#choose_event').change(function() {
+			$('#choose_filter').val(0);
 			$('#action_frm').submit();		
 		});
 		$('#choose_filter').change(function(){
