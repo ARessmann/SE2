@@ -28,6 +28,7 @@ class Core_ErrorHandler {
 	 */
 	public static function logToFile($subject, $exception, $user, $request, $error = true) {
 		
+		/*
 		$writer = new Zend_Log_Writer_Stream('log/error_' . date("Ymd") . '.log');
 		$logger = new Zend_Log($writer);
 		
@@ -42,6 +43,7 @@ class Core_ErrorHandler {
 			}
 			$logger->log($body."\n", Zend_Log::INFO);
 		}
+		*/
 	}
 	
 	/**
