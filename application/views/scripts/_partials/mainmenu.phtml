@@ -6,7 +6,7 @@ $mnupoints = array ('index' => array ('/index', 'Veranstaltung'),
 				    );
 
 echo '<ul class="nav">';
-
+ 
 foreach ($mnupoints as $key => $point) {
 	echo '<li ' . (($key == $this->controller) ? 'class="active"' : '') . '><a href="' . $point[0] . '">' . $point[1] . '</a></li>';
 }
