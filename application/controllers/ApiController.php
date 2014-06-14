@@ -721,10 +721,10 @@ class ApiController extends Core_AbstractController
 			$tweetEntry = new Core_Model_TweetEntry();
 			$entry = $tweetEntry->loadById($tweet->getTweetId());
             
-            $mapData[] = array(	'tweetId'			=>	$tweet->getTweetId(),
-            					'tweetWeight'		=>	$tweet->getValue(),
-            					'tweetLongitude'	=>	$entry->getLongitude(),
-            					'tweetLatitude'		=>	$entry->getLatitude());
+            $mapData[] = array(	'id'			=>	$tweet->getTweetId(),
+            					'weight'		=>	$tweet->getValue(),
+            					'longitude'	=>	$entry->getLongitude(),
+            					'latitude'		=>	$entry->getLatitude());
 		
 		}
 		
