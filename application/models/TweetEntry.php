@@ -15,7 +15,10 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
     protected $tw_location;
     protected $tw_language;
     protected $tw_deleted;
+    protected $tw_weight;
     protected $event_id;
+    protected $tw_longitude;
+    protected $tw_latitude;
     
     /* [CONSTRUCT] */
     /**
@@ -155,6 +158,40 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 	}
 	
 	
+			/**
+	 * Get the current tweet entry longitude
+	 */
+	public function getLongitude() {
+		return $this->tw_longitude;
+	}
+	
+	/**
+	 * Set the current tweet entry longitude
+	 * 
+	 * @param $location
+	 */
+	public function setLongitude ($longitude) {
+		$this->tw_longitude = $longitude;
+	}
+	
+	
+				/**
+	 * Get the current tweet entry latitude
+	 */
+	public function getLatitude() {
+		return $this->tw_latitude;
+	}
+	
+	/**
+	 * Set the current tweet entry latitude
+	 * 
+	 * @param $location
+	 */
+	public function setLatitude ($latitude) {
+		$this->tw_latitude = $latitude;
+	}
+	
+	
 	/**
 	 * Get the linked (parent) event identifier
 	 */
@@ -199,7 +236,9 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 			'tw_language'	    => $this->tw_language,
 			'tw_deleted'  		=> $this->tw_deleted,
 			'tw_weight'			=> $this->tw_weight,
-			'event_id'			=> $this->event_id
+			'event_id'			=> $this->event_id,
+			'tw_longitude'		=> $this->tw_longitude,
+			'tw_latitude'		=> $this->tw_latitude
 		);
 		
 		$this->data = $data;
@@ -234,8 +273,9 @@ class Core_Model_TweetEntry extends Core_Model_Abstract {
 	 */
 	public function loadById ($id) {
 		$values = $this->_loadById($id);
-		$this->setValues ($values);
-		return $this->getData();
+		$entry = new Core_Model_TweetEntry ();
+		$entry->setValues ($values);
+		return $entry;
 	}
 	
 	/**

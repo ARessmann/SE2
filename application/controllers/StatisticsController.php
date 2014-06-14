@@ -43,8 +43,10 @@ class StatisticsController extends Core_AbstractController {
 		
 		foreach($analysisAll as $id){
     		$filter = new Core_Model_Filter();
+    		if ($id->getFilterId() != null)
+    		{
     		$filters = $filter->loadById($id->getFilterId());
-    		
+    		}
     		//var_dump ($filters);die();
     		
     		if ($filters['id'] != null)

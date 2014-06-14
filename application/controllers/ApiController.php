@@ -701,7 +701,7 @@ class ApiController extends Core_AbstractController
 		'five'				=>		$five,
 		'minusfivepercent'			=>		$minusfivepercent,
 		'minusfourpercent'			=>		$minusfourpercent,
-		'minusthreepercent'		=>		$minusthreepercent,
+		'minusthreepercent'			=>		$minusthreepercent,
 		'minustwopercent'			=>		$minustwopercent,
 		'minusonepercent'			=>		$minusonepercent,
 		'zeropercent'				=>		$zeropercent,
@@ -710,5 +710,25 @@ class ApiController extends Core_AbstractController
 		'threepercent'				=>		$threepercent,
 		'fourpercent'				=>		$fourpercent,
 		'fivepercent'				=>		$fivepercent));
+	}
+	
+	public function getmapdataAction(){
+		$selectedChooseAnalysis = $this->_getParam('analyse_id');
+		$tweets = new Core_Model_AnalysisTweets();
+		$tweetAnalysis = $tweets->loadByAnalysisId($selectedChooseAnalysis);
+		
+		foreach($tweetAnalysis as $tweet){
+			$tweetEntry = new Core_Model_TweetEntry();
+			$entry = $tweetEntry->loadById($tweet->getTweetId());
+            
+            $mapData[] = array(	'id'			=>	$tweet->getTweetId(),
+            					'weight'		=>	$tweet->getValue(),
+            					'longitude'	=>	$entry->getLongitude(),
+            					'latitude'		=>	$entry->getLatitude());
+		
+		}
+		
+		
+		return $this->apiControllerHelper->formatOutput($mapData);
 	}
 }
