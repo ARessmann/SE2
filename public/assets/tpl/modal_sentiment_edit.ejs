@@ -13,18 +13,20 @@
         }
     });
  
-    $( "#spinner" ).spinner({
+    $("#spinner").spinner({
 	      spin: function( event, ui ) {
+	      
+	      	$('#sent_weight').val(ui.value);
+	      	
 	        if ( ui.value > 5 ) {
-	          $( this ).spinner( "value", -5 );
+	          $(this).spinner("value", -5);
 	          return false;
 	        } else if ( ui.value < -5 ) {
-	          $( this ).spinner( "value", 5 );
+	          $(this).spinner("value", 5);
 	          return false;
 	        }
 	      }
 	    });
-	    
   });
 </script>
  
@@ -36,6 +38,7 @@
   <div class="modal-body">
 
 	<form class="form-horizontal">
+		<input type="text" style="margin: -500px;" id="sent_weight" name="sent_weight" value="<%= sent_weight %>"/>
 		<div class="control-group">
             <label class="control-label" for="sent_language"><%= translations['sentiment_lang'] %></label>
             <div class="controls">
@@ -71,7 +74,7 @@
         <div class="control-group">
             <label class="control-label" for="sent_weight"><%= translations['sentiment_weight'] %></label>
             <div class="controls">
-            	<input disabled="disabled" style="width:20px;" id="spinner" name="value" value="<%= sent_weight %>">
+            	<input disabled="disabled" style="width:20px;" id="spinner" name="spinner" value="<%= sent_weight %>">
             </div>
         </div>
 	</form>
