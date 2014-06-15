@@ -423,11 +423,11 @@ class ApiController extends Core_AbstractController
     		
     		foreach($tweets as $entry){
     			
-    			if (!in_array ($tweetEntry->getId(), $analyseIgnoreList)) {
+    			if (!in_array ($entry->getId(), $analyseIgnoreList)) {
 	    			$analysisTweets = new Core_Model_AnalysisTweets();
 					$tweetEntry = Core_Listhelper::getModelById($tweetEntrys, $entry->getId ());
 	    			
-	    			if (isset ($tweetEntry)) {    			
+	    			if (isset ($tweetEntry) && $entry->getDeletedState() != 1) {    			
 		    			$analysisTweets->setAnalysisId($analysisId);
 		    			$analysisTweets->setTweetId($tweetEntry->getId());
 		    			$analysisTweets->setValue($tweetEntry->getWeight());
