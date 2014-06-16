@@ -11,15 +11,18 @@
 		}
 		
 		$('#choose_event').change(function() {
+			$('#doExport').val(0);
 			$('#choose_filter').val(0);
 			$('#choose_analysis').val(0);
 			$('#action_frm').submit();		
 		});
 		$('#choose_filter').change(function(){
+			$('#doExport').val(0);
 			$('#choose_analysis').val(0);
 			$('#action_frm').submit();
 		});
 		$('#choose_analysis').change(function(){
+			$('#doExport').val(0);
 			$('#action_frm').submit();
 		});
 		$('#csvExport').click(function() {
@@ -109,6 +112,7 @@
 
 	function gmegInitializeMap(){
 		gmegLatLng = new google.maps.LatLng(33.277148,8.05006);
+		geocoder = new google.maps.Geocoder();
 		
 		gmegMap = new google.maps.Map(document.getElementById("gmeg_map_canvas"),
 					  { zoom:2,
@@ -137,31 +141,81 @@
 				var longitude 	= data[i]['longitude'];
 				var latitude 	= data[i]['latitude'];
 				var weight 		= data[i]['weight'];
-
+				var location	= data[i]['location'];
+				var pos			= null;
+				
 				if (longitude != null && latitude != null) {
-
-					var pos = new google.maps.LatLng(latitude, longitude);
-					var circle = null;
+					pos = new google.maps.LatLng(latitude, longitude);
 					
-					if (weight < -1) {
-						circle = redCircle; 
-					} else if (weight > 1) {
-						circle = greenCircle;
-					} else {
-						circle = blueCircle; 
+					if (pos != null) {
+						var circle = null;
+						
+						if (weight < -1) {
+							circle = redCircle; 
+						} else if (weight > 1) {
+							circle = greenCircle;
+						} else {
+							circle = blueCircle; 
+						}
+
+						gmegMarker = new google.maps.Marker({
+							map: gmegMap,
+							position: pos,
+							icon: circle
+						});	
 					}
-					
-					gmegMarker = new google.maps.Marker({
-						map: gmegMap,
-						position: pos,
-						icon: circle
-					});	
+				}
+				else {
+					geocoder.geocode({ 'address': location.toLowerCase() }, function(results, status) {
+			      		if (status == google.maps.GeocoderStatus.OK) {
+			        		//pos = results[0].geometry.location;
 
+			        		if (pos != null) {
+			        			var circle = null;
+			        			
+			        			if (weight < -1) {
+			        				circle = redCircle; 
+			        			} else if (weight > 1) {
+			        				circle = greenCircle;
+			        			} else {
+			        				circle = blueCircle; 
+			        			}
+
+			        			gmegMarker = new google.maps.Marker({
+			        				map: gmegMap,
+			        				position: pos,
+			        				icon: circle
+			        			});	
+			        		}
+			      		}
+			      	});
 				}
 			}
 		});
 	}
 
+	function setMarker (weight, pos, gmegMap) {
+
+		if (pos != null) {
+			var circle = null;
+			
+			if (weight < -1) {
+				circle = redCircle; 
+			} else if (weight > 1) {
+				circle = greenCircle;
+			} else {
+				circle = blueCircle; 
+			}
+
+			gmegMarker = new google.maps.Marker({
+				map: gmegMap,
+				position: pos,
+				icon: circle
+			});	
+		}
+		
+	}
+	
 	function getCircle (color) {
 		var circle ={
 			    path: google.maps.SymbolPath.CIRCLE,

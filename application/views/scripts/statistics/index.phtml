@@ -15,15 +15,18 @@
 		}
 		
 		$('#choose_event').change(function() {
+			$('#doExport').val(0);
 			$('#choose_filter').val(0);
 			$('#choose_analysis').val(0);
 			$('#action_frm').submit();		
 		});
 		$('#choose_filter').change(function(){
+			$('#doExport').val(0);
 			$('#choose_analysis').val(0);
 			$('#action_frm').submit();
 		});
 		$('#choose_analysis').change(function(){
+			$('#doExport').val(0);
 			$('#action_frm').submit();
 		});
 		$('#csvExport').click(function() {
@@ -152,12 +155,12 @@
 				  ['Bewertung -3', x['minusthree']],
 				  ['Bewertung -2', x['minustwo']],
 				  ['Bewertung -1', x['minusone']],
-				  ['Bewertung 0', x['zero']],
-				  ['Bewertung 1', x['one']],
-				  ['Bewertung 2', x['two']],
-				  ['Bewertung 3', x['three']],
-				  ['Bewertung 4', x['four']],
-				  ['Bewertung 5', x['five']]
+				  ['Bewertung  0', x['zero']],
+				  ['Bewertung  1', x['one']],
+				  ['Bewertung  2', x['two']],
+				  ['Bewertung  3', x['three']],
+				  ['Bewertung  4', x['four']],
+				  ['Bewertung  5', x['five']]
 				]);	
 		
 			var chart = new google.visualization.PieChart(document.getElementById('tweet_statistics'));
@@ -165,7 +168,7 @@
 			
 			var y = google.visualization.arrayToDataTable([
         	['Bewertung -5', 'Bewertung -4', 'Bewertung -3', 'Bewertung -2', 'Bewertung -1',
-         	'Bewertung 0', 'Bewertung 1', 'Bewertung 2', 'Bewertung 3', 'Bewertung 4', 'Bewertung 5', { role: 'annotation' } ],
+         	'Bewertung 0', 'Bewertung 1', 'Bewertung 2', 'Bewertung 3', 'Bewertung  4', 'Bewertung 5', { role: 'annotation' } ],
         	['', x['minusfivepercent'], x['minusfourpercent'], x['minusthreepercent'], x['minustwopercent'], x['minusonepercent'], x['zeropercent'], x['onepercent'], x['twopercent'], x['threepercent'], x['fourpercent'], x['fivepercent']],
       		]);
       		
