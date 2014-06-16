@@ -10,13 +10,11 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FIL
 
 if(!defined('APPLICATION_ENV')) {
 	switch($_SERVER['HTTP_HOST']) {
-		case 'creditserver':
-			$env = 'production';
-			break;
 		default:
 			$env = 'development';
 			break;
 	}
+	
 	define('APPLICATION_ENV', $env);
 }
 
