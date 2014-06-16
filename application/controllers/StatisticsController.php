@@ -32,6 +32,12 @@ class StatisticsController extends Core_AbstractController {
     	$filterList[] = null;
     	$analysisList = null;
     	
+    	$doExport = $this->_getParam('doExport');
+    	 
+    	if ($doExport == 1 && isset ($selectedChooseAnalysis)) {
+    		Core_Exporthelper::doExport($selectedChooseAnalysis);
+    	}
+    	
     	foreach($analysisAll as $id){
     		$event = new Core_Model_Event();
     		$events = $event->loadById($id->getEventId());

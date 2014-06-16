@@ -723,7 +723,7 @@ class ApiController extends Core_AbstractController
             
             $mapData[] = array(	'id'			=>	$tweet->getTweetId(),
             					'weight'		=>	$tweet->getValue(),
-            					'longitude'	=>	$entry->getLongitude(),
+            					'longitude'		=>	$entry->getLongitude(),
             					'latitude'		=>	$entry->getLatitude());
 		
 		}

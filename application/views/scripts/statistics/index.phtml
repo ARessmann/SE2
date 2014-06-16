@@ -7,6 +7,12 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+
+		$('#csvExport').hide();
+
+		if ($('#analysis_id').val() != "") {
+			$('#csvExport').show();
+		}
 		
 		$('#choose_event').change(function() {
 			$('#choose_filter').val(0);
@@ -20,17 +26,20 @@
 		$('#choose_analysis').change(function(){
 			$('#action_frm').submit();
 		});
-		
+		$('#csvExport').click(function() {
+			$('#doExport').val(1);
+			$('#action_frm').submit();
+		});
 	});
 </script>
    
 <form id="action_frm" action="statistics">
 	<table>
 		        	<colgroup>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:60%"/>
 		        	</colgroup>
 	        		<tr>
 	        		<td>
@@ -80,6 +89,10 @@
 				    	<input type="hidden" id="analysis_id" value="<?= $this->selectedChooseAnalysis; ?>"/>
 				    	
 				    	</div>
+		        	</td>
+		        	<td align="right">
+		        		<a href="#" id="csvExport" name="csvExport"><img src="/assets/img/csv_file.png"></a>
+		        		<input type="hidden" id="doExport" name="doExport" value=""/>
 		        	</td>
 		        	
 		        	</tr>

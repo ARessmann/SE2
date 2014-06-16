@@ -19,13 +19,13 @@ class Core_Exporthelper {
 		
 		$result = $dbAdapter->fetchAll($query);
 		
-		$head = array ('Analyse Date', 'Filter Name', 'Filter Tags', 'Event Title', 'Tweet Text', 'Tweet Weight');
+		$head = array ('Analyse Date', 'Filter Name', 'Event Tweet Tags', 'Event Title', 'Tweet Weight');
 		
         $rows[] = $head;
         
         foreach ($result as $row) {
-            $rows[] = array ($row["analysis_date"], $row["filter_name"], $row["filter_tags"], 
-                            $row["event_title"], $row["tw_text"], $row["tw_weight"]);
+            $rows[] = array ($row["analysis_date"], utf8_encode($row["filter_name"]), utf8_encode($row["event_tweet_tags"]), 
+                            utf8_encode($row["event_title"]), $row["tw_weight"]);
         }
         
         $csv = '';

@@ -3,6 +3,12 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+
+		$('#csvExport').hide();
+
+		if ($('#analysis_id').val() != "") {
+			$('#csvExport').show();
+		}
 		
 		$('#choose_event').change(function() {
 			$('#choose_filter').val(0);
@@ -16,17 +22,21 @@
 		$('#choose_analysis').change(function(){
 			$('#action_frm').submit();
 		});
+		$('#csvExport').click(function() {
+			$('#doExport').val(1);
+			$('#action_frm').submit();
+		});
 		
 	});
 </script>
    
 <form id="action_frm" action="map">
-	<table>
+	<table width="100%">
 		        	<colgroup>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
-		        	<col style="width:30%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:10%"/>
+		        	<col style="width:60%"/>
 		        	</colgroup>
 	        		<tr>
 	        		<td>
@@ -77,6 +87,10 @@
 				    	
 				    	</div>
 		        	</td>
+		        	<td align="right">
+		        		<a href="#" id="csvExport" name="csvExport"><img src="/assets/img/csv_file.png"></a>
+		        		<input type="hidden" id="doExport" name="doExport" value=""/>
+		        	</td>
 		        	
 		        	</tr>
 		        	
@@ -108,9 +122,10 @@
 			  		  });
 
 
-//		var blueCircle = this.getCircle('blue');
-//		var redCircle = this.getCircle('red');
-//		var greenCircle = this.getCircle('green');
+		var blueCircle = this.getCircle('blue');
+		var redCircle = this.getCircle('red');
+		var greenCircle = this.getCircle('green');
+		  
 
 		$.ajax({
 			type: "POST",
@@ -118,54 +133,47 @@
 		  	data: { analyse_id: $('#analysis_id').val(),
 		  			event_id: $('#event_id').val() }
 		}).done(function(data) {
-			console.log(data);
-//			var i = 0;
-//			while (i < 20) {
-//				var pos = new google.maps.LatLng(33.277148 + i, 8.05006);
-//				
-//				gmegMarker = new google.maps.Marker({
-//					map: gmegMap,
-//					position: pos,
-//					icon: greenCircle
-//				});
-//
-//				if (i%2 == 0) {
-//					var pos = new google.maps.LatLng(33.277148 - i, 8.05006 - i);
-//					
-//					gmegMarker = new google.maps.Marker({
-//						map: gmegMap,
-//						position: pos,
-//						icon: redCircle
-//					});
-//				}
-//
-//				if (i%2 == 1) {
-//					var pos = new google.maps.LatLng(33.277148, 8.05006 - i);
-//					
-//					gmegMarker = new google.maps.Marker({
-//						map: gmegMap,
-//						position: pos,
-//						icon: blueCircle
-//					});
-//				}
-//
-//				i++;
-//			}
+			for (var i = 0; i < data.length; i++) {
+				var longitude 	= data[i]['longitude'];
+				var latitude 	= data[i]['latitude'];
+				var weight 		= data[i]['weight'];
+
+				if (longitude != null && latitude != null) {
+
+					var pos = new google.maps.LatLng(latitude, longitude);
+					var circle = null;
+					
+					if (weight < -1) {
+						circle = redCircle; 
+					} else if (weight > 1) {
+						circle = greenCircle;
+					} else {
+						circle = blueCircle; 
+					}
+					
+					gmegMarker = new google.maps.Marker({
+						map: gmegMap,
+						position: pos,
+						icon: circle
+					});	
+
+				}
+			}
 		});
 	}
 
-//	function getCircle (color) {
-//		var circle ={
-//			    path: google.maps.SymbolPath.CIRCLE,
-//			    fillColor: color,
-//			    fillOpacity: .6,
-//			    scale: 5.5,
-//			    strokeColor: 'white',
-//			    strokeWeight: 1
-//			};
-//
-//		return circle;
-//	}
+	function getCircle (color) {
+		var circle ={
+			    path: google.maps.SymbolPath.CIRCLE,
+			    fillColor: color,
+			    fillOpacity: .6,
+			    scale: 5.5,
+			    strokeColor: 'white',
+			    strokeWeight: 1
+			};
+
+		return circle;
+	}
 	
 	google.maps.event.addDomListener(window, "load", gmegInitializeMap);
 
