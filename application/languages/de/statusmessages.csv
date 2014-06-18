@@ -1,7 +1,7 @@
 page_title;Event Analyse
 general_success;Erfolgreich gespeichert
-general_remove_success;Erfolgreich gel�scht
-general_noentrysfound;Keine Eintr�ge gefunden
+general_remove_success;Erfolgreich gelöscht
+general_noentrysfound;Keine Einträge gefunden
 general_saving_error;Beim Speichern ist ein Fehler aufgetreten!
 view_language;Sprache
 view_showEvent;Alle Events anzeigen
@@ -43,7 +43,7 @@ tw_creationdate;Erstellungsdatum
 tw_user;Tweet-Benutzer
 tw_location;Ort
 tw_language;Sprache
-tw_deleted;Tweet gel�scht
+tw_deleted;Tweet gelöscht
 filter_id;Filter-Id
 fi_description;Filter-Beschreibung
 fi_consider_tweet;Filter-Tweet �berpr�fen
@@ -57,7 +57,7 @@ menu_help;Hilfe
 tweet_date;Datum
 general_cancel;Abbrechen
 event_edit;Veranstaltung bearbeiten
-event_deactivate;Veranstaltung l�schen
+event_deactivate;Veranstaltung löschen
 filter_tags;Tweet Tags
 filter_location;Ort
 filter_language;Sprache
@@ -131,3 +131,4 @@ analysis_weight;Bewertung
 analysis_count;Anzahl
 analysis_percent;Prozent
 tweet_statistics;Auswertung
+tweet_table;Tweets
